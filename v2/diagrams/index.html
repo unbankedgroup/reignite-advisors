@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reignite Diagram Lab — Static/Motion Toggle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--navy:#1B2A4A;--navy-dark:#0F1A2E;--orange:#CC6C05;--ink:#1A1A1A;--muted:#5E6574;--line:rgba(27,42,74,.16);--cream:#FAF9F7}
+    *{box-sizing:border-box} body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:linear-gradient(180deg,#f8f7f5,#fff 45%,#f8f7f5);color:var(--ink)}
+    .wrap{width:min(1240px,94vw);margin:0 auto}
+    .top{position:sticky;top:0;z-index:30;background:rgba(15,26,46,.96);border-bottom:1px solid rgba(204,108,5,.35);backdrop-filter:blur(8px)}
+    .top .wrap{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+    .brand{color:#fff;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}.brand .dot{color:var(--orange)}
+    .btn{color:#fff;text-decoration:none;border:1px solid rgba(204,108,5,.55);padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:700}
+    .btn.primary{background:var(--orange);border-color:var(--orange)}
+    .hero{padding:28px 0 10px} h1{margin:0 0 8px;color:var(--navy);font-size:clamp(1.45rem,2.2vw,2rem)}
+    .sub{color:var(--muted);max-width:920px;margin:0 0 10px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--navy)}
+
+    details{margin:14px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(15,26,46,.06)}
+    summary{list-style:none;cursor:pointer;padding:14px 16px;background:linear-gradient(90deg,rgba(204,108,5,.10),rgba(204,108,5,.03) 55%,#fff);border-bottom:1px solid var(--line)} summary::-webkit-details-marker{display:none}
+    .st{display:flex;justify-content:space-between;align-items:center;gap:10px}.ttl{font-weight:800;color:var(--navy-dark)}.src{font-size:.8rem;color:var(--muted);margin-top:3px}
+    .badge{font-size:.68rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px;font-weight:800;text-transform:uppercase;letter-spacing:.6px}
+    .body{padding:12px;background:var(--cream)} .placement{margin:0 0 12px;padding:9px 11px;border-left:3px solid var(--orange);border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);font-size:.85rem}
+
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px;display:grid;gap:8px;min-height:362px}
+    .vname{font-size:.79rem;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.5px}
+    .selected-badge{display:inline-flex;align-items:center;gap:4px;margin-left:8px;padding:2px 7px;border-radius:999px;background:rgba(204,108,5,.12);border:1px solid rgba(204,108,5,.45);color:#9a4f03;font-size:.6rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+
+    .canvas{border:1px dashed rgba(27,42,74,.26);border-radius:10px;background:linear-gradient(145deg,#fff,#f7f9fc);min-height:140px;display:grid;place-items:center;overflow:hidden;position:relative}
+    .static-view,.motion-view{width:100%;height:100%;display:grid;place-items:center}
+    .motion-view{display:none}
+
+    svg{width:100%;height:134px} .line{stroke:rgba(27,42,74,.45);stroke-width:2;fill:none}.accent{stroke:rgba(204,108,5,.9);stroke-width:2.3;fill:none}
+    .node{fill:#fff;stroke:rgba(204,108,5,.9);stroke-width:2}.node-dark{fill:var(--navy);stroke:rgba(204,108,5,.8);stroke-width:2}
+    .lbl{fill:#334;font-size:9px;font-weight:700}.lblw{fill:#fff;font-size:9px;font-weight:700}
+
+    .card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+
+    @keyframes dashFlow{to{stroke-dashoffset:-26}}
+    @keyframes pulseCore{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+    @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+    @keyframes orbit{to{transform:rotate(360deg)}}
+    @keyframes rise{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+    @keyframes scan{0%,100%{opacity:1}50%{opacity:.45}}
+.meta{font-size:.8rem;color:var(--muted);line-height:1.45;border-top:1px solid var(--line);padding-top:7px}
+    .meta b{color:var(--navy)}
+
+    @media (max-width:1060px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:740px){.grid{grid-template-columns:1fr}.st{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><div class="brand">Reignite<span class="dot">.</span> Diagram Lab</div><div style="display:flex;gap:8px"><a class="btn" href="/Reignite/work/">Back to Work</a><a class="btn primary" href="/steven/">Main Live</a></div></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Concept-Specific Variants + Static/Motion Toggle</h1>
+      <p class="sub">Each concept has distinct variants (not repeated templates). Use the toggle to preview static state vs motion behavior idea before implementation.</p>
+      <div class="chips"><span class="chip">8 Concepts</span><span class="chip">6 Variants each</span><span class="chip">48 Total options</span><span class="chip">Symmetry pass applied</span></div>
+      
+    </section>
+    <div id="gallery"></div>
+    <div style="padding:14px 0 38px;color:var(--muted);font-size:.8rem">Sprint 3 polish pass. Pick shortlist before integration to main page.</div>
+  </main>
+<script>
+const concepts=[
+{id:'C1',name:'Momentum Triangle',placement:'Early mechanism anchor under hero.'},
+{id:'C2',name:'Growth Flywheel',placement:'Mid-page system section (compounding logic).'},
+{id:'C3',name:'Advisory Build Path',placement:'Process section before CTA.'},
+{id:'C4',name:'Before / After Shift',placement:'Objection + transformation section.'},
+{id:'C5',name:'Signal-to-Scale Ladder',placement:'Late-stage leverage section.'},
+{id:'C6',name:'Core Bottleneck Signal',placement:'Problem framing (weak market signal).'},
+{id:'C7',name:'Inside the REIGNITE System Stack',placement:'Dedicated stack section (Layer 1/2/3).'},
+{id:'C8',name:'Experience → Asset Pipeline',placement:'Bridge from process to commercial outcome.'}
+];
+
+function dualSvg(svg){return `<div class='static-view'>${svg}</div>`}
+
+function V_C1(){return[
+['Equilateral Core',`<svg viewBox='0 0 360 134'><path class='line' d='M180 20 L74 111 L286 111 Z'/><path class='accent' d='M180 20 L74 111 L286 111 Z'/><circle class='node' cx='180' cy='20' r='11'/><circle class='node' cx='74' cy='111' r='11'/><circle class='node' cx='286' cy='111' r='11'/><circle class='node-dark' cx='180' cy='80' r='13'/><text class='lblw' x='169' y='84'>Core</text></svg>`,`Conveys core mechanism from three equal drivers.`,`Hover each vertex to reveal one business lever + metric.`,`Subtle perimeter flow + center pulse to show compounding.`],
+['Inverted Mirror',`<svg viewBox='0 0 360 134'><path class='line' d='M74 26 L286 26 L180 114 Z'/><path class='accent' d='M74 26 L286 26 L180 114 Z' stroke-dasharray='5 6'/><circle class='node' cx='74' cy='26' r='10'/><circle class='node' cx='286' cy='26' r='10'/><circle class='node-dark' cx='180' cy='114' r='12'/></svg>`,`Conveys instability to stabilization path.`,`Click top nodes to compare weak vs strong input states.`,`Top edge traces inward toward bottom anchor.`],
+['Dual-Triangle Frame',`<svg viewBox='0 0 360 134'><path class='line' d='M180 18 L80 108 L280 108 Z'/><path class='line' d='M180 34 L106 100 L254 100 Z'/><circle class='node' cx='180' cy='18' r='9'/><circle class='node-dark' cx='180' cy='68' r='12'/></svg>`,`Conveys outer strategy vs inner execution.`,`Toggle inner layer labels for architecture depth.`,`Inner triangle slowly breathes to indicate active system.`],
+['Centerline Split',`<svg viewBox='0 0 360 134'><path class='line' d='M180 18 L78 110 L282 110 Z'/><line class='accent' x1='180' y1='18' x2='180' y2='110'/><circle class='node' cx='180' cy='18' r='10'/><circle class='node' cx='78' cy='110' r='10'/><circle class='node' cx='282' cy='110' r='10'/></svg>`,`Conveys one central decision axis across the model.`,`Hover centerline to reveal governance/decision rule.`,`Centerline animates top-to-bottom as directional guide.`],
+['Triangle + Ring',`<svg viewBox='0 0 360 134'><path class='line' d='M180 20 L78 108 L282 108 Z'/><circle class='accent' cx='180' cy='74' r='34'/><circle class='node-dark' cx='180' cy='74' r='10'/></svg>`,`Conveys mechanism + compounding loop in one frame.`,`Click ring to open compounding assumptions.`,`Ring rotates lightly while core stays fixed.`],
+['Base-Load Geometry',`<svg viewBox='0 0 360 134'><path class='line' d='M180 18 L86 104 L274 104 Z'/><rect class='node' x='110' y='108' width='140' height='12' rx='3'/><circle class='node-dark' cx='180' cy='58' r='12'/></svg>`,`Conveys load-bearing foundation under strategy.`,`Hover base bar to show foundational prerequisites.`,`Base glow animates left-to-right as stability signal.`]
+]}
+function V_C2(){return[
+['Three-Node Orbit',`<svg viewBox='0 0 360 134'><circle class='line' cx='180' cy='67' r='42'/><circle class='node' cx='180' cy='25' r='10'/><circle class='node' cx='144' cy='88' r='10'/><circle class='node' cx='216' cy='88' r='10'/><circle class='node-dark' cx='180' cy='67' r='12'/></svg>`,`Conveys compounding loop around a central engine.`,`Hover each node to show stage KPI.`,`Outer orbit traces continuously around core.`],
+['Quadrant Flywheel',`<svg viewBox='0 0 360 134'><circle class='line' cx='180' cy='67' r='44'/><line class='line' x1='136' y1='67' x2='224' y2='67'/><line class='line' x1='180' y1='23' x2='180' y2='111'/><circle class='node-dark' cx='180' cy='67' r='10'/></svg>`,`Conveys four equal operating quadrants.`,`Click quadrant to reveal role + output.`,`Quadrants highlight in sequence.`],
+['Aligned Orbit Rail',`<svg viewBox='0 0 360 134'><line class='line' x1='28' y1='67' x2='332' y2='67'/><circle class='node' cx='72' cy='67' r='14'/><circle class='node-dark' cx='180' cy='67' r='16'/><circle class='node' cx='288' cy='67' r='14'/><path class='accent' d='M86 67 Q180 24 274 67'/></svg>`,`Conveys input-core-output alignment (centerline true).`,`Hover each node for stage definition.`,`Arc draws repeatedly across aligned nodes.`],
+['Double-Ring Engine',`<svg viewBox='0 0 360 134'><circle class='line' cx='180' cy='67' r='46'/><circle class='accent' cx='180' cy='67' r='30'/><circle class='node-dark' cx='180' cy='67' r='9'/></svg>`,`Conveys tactical cycle inside strategic cycle.`,`Click inner/outer rings to compare cadence.`,`Inner ring pulses faster than outer ring.`],
+['Spoke Wheel',`<svg viewBox='0 0 360 134'><circle class='line' cx='180' cy='67' r='40'/><line class='line' x1='180' y1='27' x2='180' y2='107'/><line class='line' x1='140' y1='67' x2='220' y2='67'/><line class='line' x1='152' y1='39' x2='208' y2='95'/><line class='line' x1='152' y1='95' x2='208' y2='39'/><circle class='node-dark' cx='180' cy='67' r='8'/></svg>`,`Conveys multiple drivers feeding one system.`,`Hover spokes to reveal driver names.`,`Spokes brighten in rotational order.`],
+['Loop + Output Gate',`<svg viewBox='0 0 360 134'><circle class='line' cx='140' cy='67' r='34'/><line class='accent' x1='174' y1='67' x2='286' y2='67'/><rect class='node' x='286' y='55' width='42' height='24' rx='4'/><circle class='node-dark' cx='140' cy='67' r='8'/></svg>`,`Conveys loop translated into commercial output.`,`Click output gate to reveal conversion assumptions.`,`Loop animates into output gate as handoff.`]
+]}
+function V_C3(){return[
+['Milestone Timeline',`<svg viewBox='0 0 360 134'><line class='line' x1='26' y1='67' x2='334' y2='67'/>${[52,112,172,232,292].map(x=>`<circle class='node' cx='${x}' cy='67' r='9'/>`).join('')}</svg>`,`Conveys clean sequential delivery milestones.`,`Hover each milestone for deliverable text.`,`Milestones activate left-to-right.`],
+['Zig-Zag Path',`<svg viewBox='0 0 360 134'><path class='line' d='M32 26 L104 56 L176 26 L248 56 L320 26'/><circle class='node' cx='32' cy='26' r='8'/><circle class='node' cx='320' cy='26' r='8'/></svg>`,`Conveys iterative path with controlled pivots.`,`Click nodes to open stage risks + checks.`,`Path glows in directional sequence.`],
+['Stair Build',`<svg viewBox='0 0 360 134'><path class='line' d='M40 104 H90 V84 H140 V64 H190 V44 H240 V24 H300'/><circle class='node-dark' cx='300' cy='24' r='8'/></svg>`,`Conveys value accumulation by deliberate stages.`,`Hover each step for capability gained.`,`Step edges illuminate upward.`],
+['Swimlane Path',`<svg viewBox='0 0 360 134'><rect class='line' x='26' y='24' width='308' height='22' rx='3'/><rect class='line' x='26' y='56' width='308' height='22' rx='3'/><rect class='line' x='26' y='88' width='308' height='22' rx='3'/><path class='accent' d='M40 35 L110 35 L110 67 L200 67 L200 99 L320 99'/></svg>`,`Conveys cross-lane process coordination.`,`Click lane segments for owner + output.`,`Path traverses lane-to-lane over time.`],
+['Phase Gates',`<svg viewBox='0 0 360 134'><rect class='node' x='34' y='48' width='74' height='38' rx='6'/><rect class='node' x='144' y='48' width='74' height='38' rx='6'/><rect class='node-dark' x='254' y='48' width='74' height='38' rx='6'/><line class='accent' x1='108' y1='67' x2='144' y2='67'/><line class='accent' x1='218' y1='67' x2='254' y2='67'/></svg>`,`Conveys gated progression with clear approvals.`,`Hover gates to view pass/fail criteria.`,`Connectors pulse only when gate is active.`],
+['Vertical Checklist',`<svg viewBox='0 0 360 134'><line class='line' x1='180' y1='18' x2='180' y2='116'/>${[24,44,64,84,104].map(y=>`<circle class='node' cx='180' cy='${y}' r='8'/>`).join('')}</svg>`,`Conveys a compact, mobile-first execution list.`,`Click each node to mark completion state.`,`Nodes animate top-down as progression cue.`]
+]}
+function V_C4(){return[
+['Split Board',`<svg viewBox='0 0 360 134'><rect class='node' x='24' y='24' width='136' height='86' rx='8'/><rect class='node-dark' x='200' y='24' width='136' height='86' rx='8'/><line class='accent' x1='160' y1='67' x2='200' y2='67'/></svg>`,`Conveys direct before-vs-after contrast.`,`Hover rows for shift detail and impact.`,`Bridge line animates to reinforce transition.`],
+['Mirror Bars',`<svg viewBox='0 0 360 134'><rect class='node' x='30' y='24' width='120' height='14' rx='3'/><rect class='node' x='30' y='46' width='96' height='14' rx='3'/><rect class='node' x='30' y='68' width='72' height='14' rx='3'/><rect class='node-dark' x='210' y='24' width='120' height='14' rx='3'/><rect class='node-dark' x='210' y='46' width='120' height='14' rx='3'/><rect class='node-dark' x='210' y='68' width='120' height='14' rx='3'/></svg>`,`Conveys measurable gap closure.`,`Click bars for quant deltas.`,`After bars rise while before bars fade.`],
+['Bridge Transform',`<svg viewBox='0 0 360 134'><rect class='node' x='28' y='44' width='90' height='46' rx='6'/><rect class='node-dark' x='242' y='44' width='90' height='46' rx='6'/><path class='accent' d='M118 67 Q180 20 242 67'/></svg>`,`Conveys transition path between states.`,`Hover bridge points for stage-by-stage shifts.`,`Bridge traces left-to-right with easing.`],
+['Flip Cards',`<svg viewBox='0 0 360 134'><rect class='node' x='42' y='28' width='82' height='76' rx='8'/><rect class='node' x='138' y='28' width='82' height='76' rx='8'/><rect class='node-dark' x='234' y='28' width='82' height='76' rx='8'/></svg>`,`Conveys modular transformation stories.`,`Click cards to reveal before/after specifics.`,`Cards gently flip to reveal outcomes.`],
+['Delta Table',`<svg viewBox='0 0 360 134'><rect class='line' x='30' y='24' width='300' height='86' rx='6'/><line class='line' x1='130' y1='24' x2='130' y2='110'/><line class='line' x1='230' y1='24' x2='230' y2='110'/><line class='line' x1='30' y1='52' x2='330' y2='52'/><line class='line' x1='30' y1='80' x2='330' y2='80'/></svg>`,`Conveys benchmark-style comparison matrix.`,`Hover cells for detail annotations.`,`Row highlights sweep through major deltas.`],
+['Funnel Contrast',`<svg viewBox='0 0 360 134'><path class='line' d='M24 24 H152 L122 110 H54 Z'/><path class='accent' d='M206 24 H336 L306 110 H238 Z'/></svg>`,`Conveys efficiency and conversion quality shift.`,`Click funnel stages for conversion rates.`,`Right funnel pulse implies improved throughput.`]
+]}
+function V_C5(){return[
+['Classic Ladder',`<svg viewBox='0 0 360 134'><line class='line' x1='90' y1='20' x2='90' y2='114'/><line class='line' x1='146' y1='20' x2='146' y2='114'/>${[28,46,64,82,100].map(y=>`<line class='accent' x1='90' y1='${y}' x2='146' y2='${y}'/>`).join('')}</svg>`,`Conveys structured leverage progression.`,`Hover each rung for maturity definition.`,`Rungs light up bottom-to-top.`],
+['Diagonal Climb',`<svg viewBox='0 0 360 134'><path class='line' d='M34 106 L320 26'/>${[0,1,2,3,4].map(i=>`<circle class='node' cx='${34+i*71.5}' cy='${106-i*20}' r='8'/>`).join('')}</svg>`,`Conveys acceleration over time.`,`Click nodes for stage outcomes.`,`Trajectory draws progressively.`],
+['Tower Milestones',`<svg viewBox='0 0 360 134'>${[40,95,150,205,260].map((x,i)=>`<rect class='${i<4?'node':'node-dark'}' x='${x}' y='${90-i*10}' width='38' height='${22+i*10}' rx='4'/>`).join('')}</svg>`,`Conveys milestone solidity and growth.`,`Hover each tower for KPI target.`,`Final tower pulses to indicate end-state.`],
+['Maturity Stair',`<svg viewBox='0 0 360 134'><path class='line' d='M30 108 H90 V90 H150 V72 H210 V54 H270 V36 H330'/><rect class='node-dark' x='314' y='24' width='18' height='18' rx='3'/></svg>`,`Conveys level-by-level readiness progression.`,`Click steps for requirements per level.`,`Step edges animate upward.`],
+['Leverage Pyramid',`<svg viewBox='0 0 360 134'><path class='line' d='M180 18 L60 112 H300 Z'/><line class='line' x1='100' y1='86' x2='260' y2='86'/><line class='line' x1='130' y1='60' x2='230' y2='60'/></svg>`,`Conveys leverage tiers with clear hierarchy.`,`Hover tiers for value layer details.`,`Tier lines illuminate from base to top.`],
+['Signal Bars',`<svg viewBox='0 0 360 134'>${[50,95,140,185,230,275].map((x,i)=>`<rect class='${i<5?'node':'node-dark'}' x='${x}' y='${104-i*12}' width='28' height='${16+i*12}' rx='3'/>`).join('')}</svg>`,`Conveys market signal strength increase.`,`Hover bars for signal quality metrics.`,`Bars grow upward in sequence.`]
+]}
+function V_C6(){return[
+['Signal Loss Chain',`<svg viewBox='0 0 360 134'><line class='line' x1='30' y1='67' x2='330' y2='67'/><circle class='node-dark' cx='60' cy='67' r='11'/><circle class='node' cx='140' cy='67' r='11'/><circle class='node' cx='220' cy='67' r='11'/><circle class='node' cx='300' cy='67' r='11'/></svg>`,`Conveys erosion from raw expertise to market perception.`,`Click each node to show where value leaks.`,`Signal trail fades as it moves right.`],
+['Bottleneck Pinch',`<svg viewBox='0 0 360 134'><path class='line' d='M26 36 H150 L182 67 L150 98 H26 Z'/><path class='accent' d='M334 36 H210 L178 67 L210 98 H334 Z'/></svg>`,`Conveys bottleneck constraining commercial flow.`,`Hover pinch-point for diagnostic criteria.`,`Pinch glows to show critical constraint.`],
+['Noise Filter',`<svg viewBox='0 0 360 134'><rect class='node' x='26' y='28' width='112' height='78' rx='8'/><rect class='line' x='148' y='28' width='62' height='78' rx='8'/><rect class='node-dark' x='220' y='28' width='114' height='78' rx='8'/><line class='accent' x1='138' y1='67' x2='148' y2='67'/><line class='accent' x1='210' y1='67' x2='220' y2='67'/></svg>`,`Conveys raw signal → filter → market-ready signal.`,`Click filter block for codification levers.`,`Flow lines animate through filter window.`],
+['Undoc vs Codified',`<svg viewBox='0 0 360 134'><rect class='node' x='30' y='20' width='130' height='94' rx='8'/><rect class='node-dark' x='200' y='20' width='130' height='94' rx='8'/><path class='accent' d='M160 67 L200 67'/></svg>`,`Conveys undocumented vs structured states.`,`Hover both blocks for capability differences.`,`Connector pulses to emphasize shift path.`],
+['Broken Pipeline',`<svg viewBox='0 0 360 134'><rect class='line' x='24' y='56' width='88' height='24' rx='4'/><rect class='line' x='136' y='56' width='88' height='24' rx='4'/><rect class='line' x='248' y='56' width='88' height='24' rx='4'/><line class='accent' x1='112' y1='68' x2='136' y2='68' stroke-dasharray='4 5'/><line class='accent' x1='224' y1='68' x2='248' y2='68' stroke-dasharray='4 5'/></svg>`,`Conveys disjointed commercialization sequence.`,`Click broken links for remediation actions.`,`Broken links animate intermittently.`],
+['Amplification Curve',`<svg viewBox='0 0 360 134'><path class='line' d='M30 94 Q110 88 170 74 T330 28'/><path class='accent' d='M30 104 Q110 98 170 84 T330 38'/></svg>`,`Conveys compounding signal strength with structure.`,`Hover curve points for maturity checkpoints.`,`Upper curve traces continuously as momentum.`]
+]}
+function V_C7(){return[
+['Three-Layer Stack',`<svg viewBox='0 0 360 134'><rect class='node' x='40' y='16' width='280' height='28' rx='6'/><rect class='node' x='40' y='54' width='280' height='28' rx='6'/><rect class='node-dark' x='40' y='92' width='280' height='28' rx='6'/></svg>`,`Conveys Layer 1/2/3 architecture plainly.`,`Click layer to expand its modules.`,`Layers highlight top→bottom in sequence.`],
+['Stack + Connectors',`<svg viewBox='0 0 360 134'><rect class='node' x='50' y='18' width='260' height='24' rx='5'/><rect class='node' x='50' y='56' width='260' height='24' rx='5'/><rect class='node-dark' x='50' y='94' width='260' height='24' rx='5'/><line class='accent' x1='180' y1='42' x2='180' y2='56'/><line class='accent' x1='180' y1='80' x2='180' y2='94'/></svg>`,`Conveys inter-layer dependency links.`,`Hover connectors to reveal handoff logic.`,`Connectors pulse to indicate flow.`],
+['Block Architecture',`<svg viewBox='0 0 360 134'><rect class='node' x='42' y='74' width='92' height='46' rx='6'/><rect class='node' x='142' y='54' width='92' height='66' rx='6'/><rect class='node-dark' x='242' y='34' width='76' height='86' rx='6'/></svg>`,`Conveys stack as buildable system blocks.`,`Click blocks for subsystem detail.`,`Blocks glow in build order.`],
+['Layer + Modules',`<svg viewBox='0 0 360 134'><rect class='line' x='36' y='16' width='288' height='106' rx='8'/><line class='line' x1='36' y1='52' x2='324' y2='52'/><line class='line' x1='36' y1='88' x2='324' y2='88'/><line class='line' x1='132' y1='16' x2='132' y2='122'/><line class='line' x1='228' y1='16' x2='228' y2='122'/></svg>`,`Conveys matrixed architecture planning view.`,`Hover cells to inspect module ownership.`,`Rows animate one layer at a time.`],
+['Cascading Tiers',`<svg viewBox='0 0 360 134'><rect class='node' x='54' y='20' width='252' height='24' rx='6'/><rect class='node' x='74' y='56' width='212' height='24' rx='6'/><rect class='node-dark' x='94' y='92' width='172' height='24' rx='6'/></svg>`,`Conveys narrowing from extraction to leverage.`,`Click each tier for deliverable list.`,`Tier edges illuminate top-down.`],
+['Matrix Stack',`<svg viewBox='0 0 360 134'><rect class='line' x='44' y='20' width='272' height='94' rx='6'/><line class='line' x1='44' y1='51' x2='316' y2='51'/><line class='line' x1='44' y1='82' x2='316' y2='82'/><line class='line' x1='136' y1='20' x2='136' y2='114'/><line class='line' x1='224' y1='20' x2='224' y2='114'/></svg>`,`Conveys operational blueprint structure.`,`Hover matrix cells for architecture checkpoints.`,`Cell highlight sweeps by path.`]
+]}
+function V_C8(){return[
+['Straight Pipeline',`<svg viewBox='0 0 360 134'><line class='line' x1='24' y1='67' x2='336' y2='67'/>${[48,112,176,240,304].map(x=>`<rect class='node' x='${x-12}' y='55' width='24' height='24' rx='4'/>`).join('')}<rect class='node-dark' x='292' y='53' width='28' height='28' rx='5'/></svg>`,`Conveys end-to-end conversion pipeline.`,`Click any stage for expected output.`,`Flow indicator travels stage-by-stage.`],
+['Chevron Flow',`<svg viewBox='0 0 360 134'><path class='line' d='M24 42 H86 L106 67 L86 92 H24 Z'/><path class='line' d='M96 42 H158 L178 67 L158 92 H96 Z'/><path class='line' d='M168 42 H230 L250 67 L230 92 H168 Z'/><path class='accent' d='M240 42 H320 L340 67 L320 92 H240 Z'/></svg>`,`Conveys directional stage progression.`,`Hover each chevron for transformation detail.`,`Chevron highlights move left-to-right.`],
+['Assembly Line',`<svg viewBox='0 0 360 134'><line class='line' x1='20' y1='86' x2='340' y2='86'/><circle class='node' cx='56' cy='66' r='10'/><rect class='node' x='104' y='54' width='30' height='24' rx='4'/><rect class='node' x='160' y='52' width='34' height='28' rx='4'/><rect class='node' x='224' y='50' width='38' height='32' rx='4'/><rect class='node-dark' x='286' y='46' width='42' height='36' rx='5'/></svg>`,`Conveys build-process from judgment to asset.`,`Click stations for artifacts produced.`,`Stations activate in sequence.`],
+['Hourglass Transform',`<svg viewBox='0 0 360 134'><path class='line' d='M70 20 H290 L194 67 L290 114 H70 L166 67 Z'/><circle class='node-dark' cx='180' cy='67' r='8'/></svg>`,`Conveys compression then scalable expansion.`,`Hover center point for codification moment.`,`Center node pulses as conversion pivot.`],
+['Conveyor Cards',`<svg viewBox='0 0 360 134'><rect class='line' x='24' y='78' width='312' height='22' rx='5'/>${[44,98,152,206,260].map((x,i)=>`<rect class='${i<4?'node':'node-dark'}' x='${x}' y='42' width='42' height='28' rx='5'/>`).join('')}</svg>`,`Conveys consistent throughput of asset-building steps.`,`Click cards for stage dependencies.`,`Conveyor line traces continuously.`],
+['Asset Tree',`<svg viewBox='0 0 360 134'><line class='line' x1='180' y1='112' x2='180' y2='62'/><line class='line' x1='180' y1='62' x2='110' y2='30'/><line class='line' x1='180' y1='62' x2='250' y2='30'/><line class='line' x1='180' y1='62' x2='180' y2='22'/><circle class='node-dark' cx='180' cy='112' r='10'/><circle class='node' cx='110' cy='30' r='10'/><circle class='node' cx='250' cy='30' r='10'/><circle class='node' cx='180' cy='22' r='10'/></svg>`,`Conveys one core method branching into assets.`,`Hover branches for asset type detail.`,`Branch nodes glow outward from core.`]
+]}
+
+const factory={C1:V_C1,C2:V_C2,C3:V_C3,C4:V_C4,C5:V_C5,C6:V_C6,C7:V_C7,C8:V_C8};
+const gallery=document.getElementById('gallery');
+
+// Approved selections (top 5 graphics only)
+const selectedByConcept={
+  C6:'Noise Filter',
+  C7:'Three-Layer Stack',
+  C3:'Phase Gates',
+  C4:'Mirror Bars',
+  C8:'Straight Pipeline'
+};
+
+concepts.forEach((c,i)=>{
+  const d=document.createElement('details'); d.open=i<2;
+  d.innerHTML=`<summary><div class='st'><div><div class='ttl'>${c.id} — ${c.name}</div><div class='src'>Placement: ${c.placement}</div></div><span class='badge'>6 Variants</span></div></summary>`;
+  const body=document.createElement('div'); body.className='body';
+  body.innerHTML=`<p class='placement'><strong>Placement logic:</strong> ${c.placement}</p>`;
+  const g=document.createElement('div'); g.className='grid';
+  const selectedName=selectedByConcept[c.id]||null;
+  const ordered=[...factory[c.id]()];
+  if(selectedName){
+    ordered.sort((a,b)=>a[0]===selectedName?-1:b[0]===selectedName?1:0);
+  }
+
+  ordered.forEach((v,idx)=>{
+    const card=document.createElement('article'); card.className='card';
+    const selected=v[0]===selectedName;
+    const selectedTag=selected?`<span class='selected-badge'>Selected</span>`:'';
+    card.innerHTML=`<div class='card-head'><div class='vname'>Variant ${String.fromCharCode(65+idx)} · ${v[0]} ${selectedTag}</div></div><div class='canvas'>${dualSvg(v[1])}</div><div class='meta'><b>Conveys:</b> ${v[2]}</div><div class='meta'><b>Interactive option:</b> ${v[3]}</div><div class='meta'><b>Motion option:</b> ${v[4]}</div>`;
+    g.appendChild(card);
+  });
+  body.appendChild(g); d.appendChild(body); gallery.appendChild(d);
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steven Tshakatumba | Reignite Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --navy: #1B2A4A;
+      --navy-dark: #0F1A2E;
+      --gold: #C9A84C;
+      --gold-light: #E5D4A1;
+      --gold-dim: #9A7B32;
+      --white: #FFFFFF;
+      --cream: #FAF9F7;
+      --light-gray: #F5F5F5;
+      --text-dark: #1A1A1A;
+      --text-muted: #666666;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.65; }
+    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+    a { text-decoration: none; transition: all 0.3s ease; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem; border: none; }
+    .btn-gold { background: var(--gold); color: var(--navy-dark); }
+    .btn-gold:hover { background: #B8943F; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.35); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: var(--navy-dark); transform: translateY(-2px); }
+
+    /* Navigation */
+    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 1000; padding: 12px 0; border-bottom: 1px solid rgba(27,42,74,0.08); }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo-group { display: flex; flex-direction: column; }
+    .logo-mark { display: flex; align-items: baseline; gap: 0; }
+    .logo { font-size: 1.65rem; font-weight: 800; color: var(--navy); letter-spacing: 2px; text-transform: uppercase; }
+    .logo-dot { color: var(--gold); font-size: 1.75rem; line-height: 1; margin-left: -2px; }
+    .logo-sub { font-size: 0.58rem; font-weight: 600; color: var(--gold-dim); text-transform: uppercase; letter-spacing: 4px; margin-top: 2px; }
+
+    /* Hero Section */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 62vh; }
+    .hero-left { background: var(--navy); padding: 72px 44px 42px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero-left::before { content: ''; position: absolute; top: -100px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 60%); }
+    .hero-left::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to top, rgba(27,42,74,0.5) 0%, transparent 100%); }
+    .hero-tag { color: var(--gold); font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 16px; position: relative; z-index: 1; }
+    .hero-left h1 { font-size: 2.5rem; line-height: 1.15; color: var(--white); margin-bottom: 18px; font-weight: 800; letter-spacing: -0.5px; position: relative; z-index: 1; }
+    .hero-left h1 .highlight { color: var(--gold); }
+    .hero-sub { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 28px; max-width: 480px; line-height: 1.7; position: relative; z-index: 1; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+    
+    .hero-right { position: relative; overflow: hidden; padding: 30px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--navy) 0%, #243B5A 100%); }
+    .hero-image-wrapper { position: relative; width: 100%; max-width: 320px; display: flex; justify-content: center; }
+    .hero-image-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 90%; background: radial-gradient(ellipse at center, rgba(201,168,76,0.15) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+    .hero-image-wrapper img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: contain; object-position: center bottom; -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%); }
+    .hero-wordmark { position: absolute; bottom: 20px; right: 20px; font-size: 5rem; font-weight: 800; color: rgba(255,255,255,0.06); letter-spacing: -2px; line-height: 1; }
+
+    /* Trust Strip */
+    .trust-strip { background: var(--navy); padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .trust-strip p { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 18px; font-weight: 600; }
+    .trust-logos { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+    .trust-logo { display: flex; align-items: center; justify-content: center; height: 28px; }
+    .trust-logo img { height: 100%; max-width: 110px; object-fit: contain; filter: grayscale(100%) brightness(1.4) opacity(0.75); transition: all 0.3s ease; }
+    .trust-logo img:hover { filter: grayscale(100%) brightness(1.6) opacity(1); }
+    .trust-logo-fallback { color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
+
+    /* Why This Matters - with diagram */
+    .why { padding: 88px 0; background: var(--white); }
+    .why h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .why h2 span { color: var(--gold); }
+    .why .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    
+    .why-visual { max-width: 520px; margin: 0 auto 45px; position: relative; }
+    .flywheel { position: relative; width: 280px; height: 280px; margin: 0 auto; }
+    .flywheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 8px 30px rgba(27,42,74,0.3); }
+    .flywheel-center span { color: var(--gold); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+    .flywheel-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; border: 2px dashed rgba(201,168,76,0.35); border-radius: 50%; animation: spin 30s linear infinite; }
+    .flywheel-node { position: absolute; width: 72px; height: 72px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(27,42,74,0.12); border: 2px solid var(--gold); z-index: 2; }
+    .flywheel-node i { color: var(--navy); font-size: 1.4rem; }
+    .flywheel-node.n1 { top: calc(50% - 100px); left: 50%; transform: translate(-50%, -50%); }
+    .flywheel-node.n2 { top: calc(50% + 50px); left: calc(50% - 86.6px); transform: translate(-50%, -50%); }
+    .flywheel-node.n3 { top: calc(50% + 50px); left: calc(50% + 86.6px); transform: translate(-50%, -50%); }
+    @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .flywheel-arrows { position: absolute; top: 0; left: 0; z-index: 1; }
+    
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card { background: var(--cream); padding: 28px 22px; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 1px solid transparent; }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(27,42,74,0.1); border-color: var(--gold-light); }
+    .why-card-num { width: 40px; height: 40px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; margin: 0 auto 14px; }
+    .why-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--navy); }
+    .why-card p { color: var(--text-muted); font-size: 0.88rem; }
+
+    /* Reignite Advantage */
+    .advantage { padding: 88px 0; background: var(--cream); }
+    .advantage h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .advantage h2 span { color: var(--gold); }
+    .advantage .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 45px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .advantage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .advantage-card { background: var(--white); padding: 32px 26px; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(27,42,74,0.08); }
+    .advantage-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 35px rgba(27,42,74,0.1); }
+    .advantage-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--navy) 0%, #2A3D5C 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+    .advantage-icon i { color: var(--gold); font-size: 1.4rem; }
+    .advantage-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--navy); }
+    .advantage-card p { color: var(--text-muted); font-size: 0.88rem; }
+
+    /* Method */
+    /* Removed - replaced by Framework pathway section */
+
+    /* Results Carousel */
+    .results { padding: 88px 0; background: var(--navy); position: relative; overflow: hidden; }
+    .results::before { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 60%); }
+    .results h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--white); letter-spacing: -0.5px; }
+    .results h2 span { color: var(--gold); }
+    .results .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    
+    .carousel-wrapper { position: relative; max-width: 700px; margin: 0 auto; }
+    .carousel-track { display: flex; gap: 20px; overflow: hidden; scroll-behavior: smooth; }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-card { flex: 0 0 100%; min-width: 100%; background: rgba(255,255,255,0.05); padding: 26px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; }
+    .carousel-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(201,168,76,0.3); }
+    .carousel-card img { width: 54px; height: 54px; border-radius: 50%; margin-bottom: 12px; object-fit: cover; border: 2px solid var(--gold); }
+    .carousel-card h3 { font-size: 1rem; margin-bottom: 3px; color: var(--white); }
+    .carousel-card .result-role { color: var(--gold); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; }
+    .carousel-card p { color: rgba(255,255,255,0.6); font-size: 0.82rem; line-height: 1.6; margin-bottom: 12px; }
+    .result-shift { padding: 10px 14px; background: rgba(201,168,76,0.15); border-radius: 6px; font-size: 0.78rem; font-weight: 600; color: var(--gold-light); border-left: 3px solid var(--gold); text-align: left; }
+    
+    .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 30px; }
+    .carousel-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: var(--navy-dark); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.3s ease; }
+    .carousel-btn:hover { background: #B8943F; transform: scale(1.05); }
+    .results-trust-line { text-align: center; margin-top: 18px; color: rgba(255,255,255,0.72); font-size: 0.78rem; letter-spacing: 0.3px; }
+
+    /* Who */
+    .who { padding: 88px 0; background: var(--cream); }
+    .who h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .who h2 span { color: var(--gold); }
+    .who .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 720px; margin: 0 auto; }
+    .who-item { display: flex; align-items: flex-start; gap: 12px; padding: 18px; background: var(--white); border-radius: 10px; border: 1px solid rgba(27,42,74,0.06); }
+    .who-item i { color: var(--gold); margin-top: 3px; font-size: 0.9rem; }
+    .who-item p { font-size: 0.92rem; color: var(--text-dark); }
+
+    /* Lead Capture */
+    .lead-capture { padding: 60px 0; background: var(--white); text-align: center; border-top: 1px solid var(--light-gray); }
+    .lead-capture h2 { font-size: 1.7rem; margin-bottom: 10px; color: var(--navy); }
+    .lead-capture h2 span { color: var(--gold); }
+    .lead-capture p { color: var(--text-muted); margin-bottom: 26px; }
+    .lead-form { display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }
+    .lead-form input { flex: 1; min-width: 220px; padding: 14px 18px; border: 2px solid #E5E5E5; border-radius: 6px; font-size: 1rem; font-family: inherit; }
+    .lead-form input:focus { outline: none; border-color: var(--gold); }
+
+    /* FAQ */
+    .faq { padding: 88px 0; background: var(--cream); }
+    .faq h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .faq h2 span { color: var(--gold); }
+    .faq .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .faq-list { max-width: 660px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(27,42,74,0.08); }
+    .faq-question { padding: 18px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .faq-question h4 { font-size: 0.98rem; font-weight: 600; color: var(--navy); }
+    .faq-question i { color: var(--gold); transition: transform 0.3s ease; font-size: 0.8rem; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-answer p { color: var(--text-muted); font-size: 0.88rem; padding-bottom: 18px; }
+    .faq-item.active .faq-answer { max-height: 140px; }
+    .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+    /* Final CTA */
+    .final-cta { padding: 60px 0; background: var(--navy); text-align: center; color: var(--white); position: relative; overflow: hidden; }
+    .final-cta::before { content: ''; position: absolute; top: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 60%); }
+    .final-cta::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 60%); }
+    .final-cta h2 { font-size: 1.8rem; margin-bottom: 10px; position: relative; }
+    .final-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 1rem; position: relative; }
+
+    /* Footer */
+    footer { background: var(--navy-dark); padding: 36px 0 26px; color: rgba(255,255,255,0.45); text-align: center; }
+    footer .logo-group { align-items: center; margin-bottom: 6px; }
+    footer .logo { color: var(--white); font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+    footer .logo-dot { font-size: 1.5rem; margin-left: -2px; }
+    footer .logo-sub { color: var(--gold); font-size: 0.52rem; letter-spacing: 4px; }
+    footer .tagline { color: var(--gold); margin-bottom: 14px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+    footer .copyright { font-size: 0.65rem; margin-top: 16px; opacity: 0.4; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 24px 36px; min-height: 48vh; }
+      .hero-right { height: 420px; }
+      .hero-right img { max-width: 300px; }
+      .why-grid, .advantage-grid { grid-template-columns: 1fr 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      .lead-form { flex-direction: column; padding: 0 20px; }
+      .carousel-card { flex: 0 0 100%; }
+    }
+    @media (max-width: 600px) {
+      .why-grid, .advantage-grid { grid-template-columns: 1fr; }
+      .hero-left h1 { font-size: 1.9rem; }
+      .trust-logos { gap: 24px; }
+      .flywheel { transform: scale(0.85); }
+      .why-visual { max-width: 360px; }
+      .flywheel-label {
+        font-size: 0.63rem;
+        letter-spacing: 0.7px;
+      }
+    }
+    /* Anti-Pattern Stack */
+    .anti-pattern { padding: 70px 0; background: var(--white); border-bottom: 1px solid var(--light-gray); }
+    .anti-pattern h2 { font-size: 1.7rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .anti-pattern .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .anti-pattern-stack { max-width: 560px; margin: 0 auto; background: var(--light-gray); border-radius: 10px; padding: 8px; }
+    .anti-pattern-row { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--white); border-radius: 8px; margin-bottom: 6px; border: 1px solid rgba(27,42,74,0.06); }
+    .anti-pattern-row:last-child { margin-bottom: 0; }
+    .anti-pattern-row i { color: var(--gold-dim); font-size: 0.85rem; width: 18px; text-align: center; }
+    .anti-pattern-row span { color: var(--text-muted); font-size: 0.92rem; }
+    .anti-pattern-transition { text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
+
+    /* Contrast Matrix */
+    .contrast-matrix { padding: 80px 0; background: var(--cream); }
+    .contrast-matrix h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .contrast-matrix h2 span { color: var(--gold); }
+    .contrast-matrix .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .matrix-container { max-width: 800px; margin: 0 auto; }
+    .matrix-header { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 6px; }
+    .matrix-header-left { background: #E8E8E8; padding: 14px 20px; text-align: center; border-radius: 8px 0 0 8px; font-weight: 600; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .matrix-header-right { background: var(--navy); padding: 14px 20px; text-align: center; border-radius: 0 8px 8px 0; font-weight: 700; font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--navy); }
+    .matrix-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 6px; }
+    .matrix-row-left { background: var(--white); padding: 18px 20px; border-radius: 8px 0 0 8px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(27,42,74,0.08); }
+    .matrix-row-left i { color: var(--gold-dim); font-size: 0.8rem; }
+    .matrix-row-left span { color: var(--text-muted); font-size: 0.88rem; }
+    .matrix-row-right { background: var(--navy); padding: 18px 20px; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; border: 2px solid var(--navy); border-left: none; }
+    .matrix-row-right i { color: var(--gold); font-size: 0.8rem; }
+    .matrix-row-right span { color: var(--white); font-size: 0.88rem; font-weight: 500; }
+    
+    .matrix-cta { text-align: center; margin-top: 36px; }
+    .matrix-cta .btn { margin-bottom: 10px; }
+    .matrix-cta .micro-assurance { color: var(--text-muted); }
+    
+    @media (max-width: 600px) {
+      .matrix-container { padding: 0 16px; }
+      .matrix-header, .matrix-row { grid-template-columns: 1fr; }
+      .matrix-header-left { border-radius: 8px 8px 0 0; }
+      .matrix-header-right { border-radius: 0 0 8px 8px; }
+      .matrix-row-left { border-radius: 8px 8px 0 0; }
+      .matrix-row-right { border-radius: 0 0 8px 8px; border-left: 2px solid var(--navy); }
+    }
+
+    /* Micro assurance text */
+    .micro-assurance { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; text-align: center; }
+    .hero-left .micro-assurance { color: rgba(255,255,255,0.5); }
+    .final-cta .micro-assurance { color: rgba(255,255,255,0.6); }
+    /* Flywheel labels */
+    .flywheel {
+      --flywheel-label-gap: 14px;
+    }
+    .flywheel-label {
+      position: absolute;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      white-space: nowrap;
+      z-index: 4;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .flywheel-label.l1 {
+      top: calc(50% - 100px - 36px - var(--flywheel-label-gap));
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+    .flywheel-label.l2 {
+      top: calc(50% + 50px + 36px + var(--flywheel-label-gap));
+      left: calc(50% - 86.6px);
+      transform: translateX(-50%);
+    }
+    .flywheel-label.l3 {
+      top: calc(50% + 50px + 36px + var(--flywheel-label-gap));
+      left: calc(50% + 86.6px);
+      transform: translateX(-50%);
+    }
+    /* Flywheel caption */
+    .flywheel-caption { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 16px; font-style: italic; }
+    /* Arrow between nodes */
+    .flywheel-arrow { position: absolute; color: var(--gold-dim); font-size: 1rem; }
+    
+    /* Framework Pathway - New visual */
+    .framework { padding: 88px 0; background: var(--white); }
+    .framework h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; }
+    .framework h2 span { color: var(--gold); }
+    .framework .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 50px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .framework-icon { width: 72px; height: 72px; background: linear-gradient(135deg, var(--navy) 0%, #2A3D5C 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold); box-shadow: 0 10px 24px rgba(27,42,74,0.2); }
+    .framework-icon i { color: var(--gold); font-size: 1.25rem; }
+    .framework-step-badge { width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--navy-dark); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+    .framework-pathway-desktop { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; position: relative; max-width: 980px; margin: 0 auto; }
+    .framework-pathway-desktop::before { content: ''; position: absolute; top: 62px; left: 8%; right: 8%; height: 2px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.7), transparent); }
+    .framework-step { position: relative; background: linear-gradient(180deg, #ffffff, #f8f9fc); border: 1px solid rgba(27,42,74,0.1); border-radius: 14px; padding: 18px 14px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .framework-step:nth-child(5), .framework-step:nth-child(6), .framework-step:nth-child(7) { transform: translateY(26px); }
+    .framework-step h4 { font-size: 0.95rem; color: var(--navy); }
+    .framework-step p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+
+    .framework-pathway-mobile { display: none; position: relative; max-width: 680px; margin: 0 auto; }
+    .framework-mobile-line { position: absolute; top: 20px; bottom: 20px; left: 24px; width: 2px; background: linear-gradient(180deg, rgba(201,168,76,0.15), rgba(201,168,76,0.8), rgba(201,168,76,0.15)); }
+    .framework-stage { display: flex; align-items: flex-start; gap: 12px; position: relative; margin-bottom: 18px; background: #fff; border: 1px solid rgba(27,42,74,0.1); border-radius: 12px; padding: 12px; }
+    .framework-stage .framework-icon { width: 54px; height: 54px; flex-shrink: 0; }
+    .framework-stage .framework-icon i { font-size: 1rem; }
+    .framework-stage-content h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+    .framework-stage-content p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+    @media (max-width: 768px) {
+      .framework-pathway-desktop { display: none; }
+      .framework-pathway-mobile { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo-group">
+        <div class="logo-mark">
+          <a href="#" class="logo">REIGNITE</a><span class="logo-dot">.</span>
+        </div>
+        <span class="logo-sub">Advisors</span>
+      </div>
+      <a href="https://calendly.com/mposha-malanga/30min" class="btn btn-gold" target="_blank">Book Strategy Call</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Private Architecture Engagement</div>
+      <h1>Turn What You Already Know Into a <span class="highlight">Sellable Intellectual Asset</span></h1>
+      <p class="hero-sub">A private architecture engagement for experienced professionals ready to turn lived expertise into structured offers for a defined audience. No courses. No guesswork. No trading time for money.</p>
+      <div class="hero-ctas">
+        <a href="https://calendly.com/mposha-malanga/30min" class="btn btn-gold" target="_blank">
+          <i class="fas fa-calendar-check"></i> Request a Private Consultation
+        </a>
+        <span class="micro-assurance">20-minute call. No pressure. No obligation.</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-image-wrapper">
+        <img src="steven-headshot-transparent.png" alt="Steven Tshakatumba">
+      </div>
+      <div class="hero-wordmark">REIGNITE</div>
+    </div>
+  </section>
+
+
+  <section class="why">
+    <div class="container">
+      <h2>The Problem Isn't <span>Experience</span> — It's Packaging</h2>
+      <p class="section-sub">You've built real value. But without structure, it stays invisible.</p>
+      
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-num">1</div>
+          <h3>Patterns You've Learned</h3>
+          <p>Years of refined intuition that clients would pay for — if they could see it.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">2</div>
+          <h3>Processes You Apply</h3>
+          <p>Systems and methodologies that work — but exist only in your head.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">3</div>
+          <h3>Decisions You Make Instinctively</h3>
+          <p>Judgment honed through experience that others desperately need.</p>
+        </div>
+      </div>
+
+      <!-- Flywheel Diagram -->
+      <div class="why-visual" style="margin-top: 50px;">
+        <div class="flywheel" style="position: relative;">
+          <span class="flywheel-label l1">Clarity</span>
+          <span class="flywheel-label l2">Offer</span>
+          <span class="flywheel-label l3">Demand</span>
+          <div class="flywheel-center"><span>Momentum</span></div>
+          <div class="flywheel-ring"></div>
+          <div class="flywheel-node n1"><i class="fas fa-lightbulb"></i></div>
+          <div class="flywheel-node n2"><i class="fas fa-box"></i></div>
+          <div class="flywheel-node n3"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <p class="flywheel-caption">Clarity creates structured offers. Structured offers create demand. Demand creates momentum.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Anti-Pattern Stack -->
+  <section class="anti-pattern">
+    <div class="container">
+      <h2>You've Probably Tried...</h2>
+      <p class="section-sub">Common approaches that keep you stuck in the advisory trap.</p>
+      
+      <div class="anti-pattern-stack">
+        <div class="anti-pattern-row">
+          <i class="fas fa-times-circle"></i>
+          <span>Free advice on LinkedIn</span>
+        </div>
+        <div class="anti-pattern-row">
+          <i class="fas fa-times-circle"></i>
+          <span>Generic courses that don't fit your context</span>
+        </div>
+        <div class="anti-pattern-row">
+          <i class="fas fa-times-circle"></i>
+          <span>Pricing guesswork</span>
+        </div>
+        <div class="anti-pattern-row">
+          <i class="fas fa-times-circle"></i>
+          <span>Hourly consulting with no leverage</span>
+        </div>
+      </div>
+      
+      <p class="anti-pattern-transition">None of these create a structured, repeatable advisory asset.</p>
+    </div>
+  </section>
+
+  <section class="framework">
+    <div class="container">
+      <h2>The REIGNITE™ <span>Architecture System</span></h2>
+      <p class="section-sub">A premium 7-step pathway to turn expertise into a scalable intellectual asset.</p>
+
+      <div class="framework-pathway-desktop">
+        <div class="framework-step">
+          <div class="framework-step-badge">1</div>
+          <div class="framework-icon"><i class="fas fa-eye"></i></div>
+          <h4>Reveal</h4>
+          <p>uncover what’s really valuable in what you’ve done</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">2</div>
+          <div class="framework-icon"><i class="fas fa-gem"></i></div>
+          <h4>Essence</h4>
+          <p>distill why it matters and what you stand for</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">3</div>
+          <div class="framework-icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Ideal Client</h4>
+          <p>clarify who pays and why</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">4</div>
+          <div class="framework-icon"><i class="fas fa-box-open"></i></div>
+          <h4>Offer Generation</h4>
+          <p>create a sellable product</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">5</div>
+          <div class="framework-icon"><i class="fas fa-compass"></i></div>
+          <h4>Navigate the Market</h4>
+          <p>test and validate quickly</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">6</div>
+          <div class="framework-icon"><i class="fas fa-layer-group"></i></div>
+          <h4>Intellectual Asset</h4>
+          <p>package it so it works without you</p>
+        </div>
+        <div class="framework-step">
+          <div class="framework-step-badge">7</div>
+          <div class="framework-icon"><i class="fas fa-chart-line"></i></div>
+          <h4>Traction</h4>
+          <p>build momentum and optionality</p>
+        </div>
+      </div>
+
+      <div class="framework-pathway-mobile">
+        <div class="framework-mobile-line"></div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">1</div><div class="framework-icon"><i class="fas fa-eye"></i></div><div class="framework-stage-content"><h4>Reveal</h4><p>uncover what’s really valuable in what you’ve done</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">2</div><div class="framework-icon"><i class="fas fa-gem"></i></div><div class="framework-stage-content"><h4>Essence</h4><p>distill why it matters and what you stand for</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">3</div><div class="framework-icon"><i class="fas fa-bullseye"></i></div><div class="framework-stage-content"><h4>Ideal Client</h4><p>clarify who pays and why</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">4</div><div class="framework-icon"><i class="fas fa-box-open"></i></div><div class="framework-stage-content"><h4>Offer Generation</h4><p>create a sellable product</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">5</div><div class="framework-icon"><i class="fas fa-compass"></i></div><div class="framework-stage-content"><h4>Navigate the Market</h4><p>test and validate quickly</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">6</div><div class="framework-icon"><i class="fas fa-layer-group"></i></div><div class="framework-stage-content"><h4>Intellectual Asset</h4><p>package it so it works without you</p></div>
+        </div>
+        <div class="framework-stage">
+          <div class="framework-step-badge">7</div><div class="framework-icon"><i class="fas fa-chart-line"></i></div><div class="framework-stage-content"><h4>Traction</h4><p>build momentum and optionality</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contrast Matrix -->
+  <section class="contrast-matrix">
+    <div class="container">
+      <h2>What REIGNITE <span>Delivers</span></h2>
+      <p class="section-sub">The difference between struggling to monetize and building a scalable asset.</p>
+      
+      <div class="matrix-container">
+        <div class="matrix-header">
+          <div class="matrix-header-left">Typical Approach</div>
+          <div class="matrix-header-right">REIGNITE Approach</div>
+        </div>
+        
+        <div class="matrix-row">
+          <div class="matrix-row-left">
+            <i class="fas fa-minus"></i>
+            <span>Vague expertise</span>
+          </div>
+          <div class="matrix-row-right">
+            <i class="fas fa-check"></i>
+            <span>Clearly defined intellectual asset</span>
+          </div>
+        </div>
+        
+        <div class="matrix-row">
+          <div class="matrix-row-left">
+            <i class="fas fa-minus"></i>
+            <span>Broad audience</span>
+          </div>
+          <div class="matrix-row-right">
+            <i class="fas fa-check"></i>
+            <span>Precise buyer profile</span>
+          </div>
+        </div>
+        
+        <div class="matrix-row">
+          <div class="matrix-row-left">
+            <i class="fas fa-minus"></i>
+            <span>Inconsistent services</span>
+          </div>
+          <div class="matrix-row-right">
+            <i class="fas fa-check"></i>
+            <span>Structured sellable offer</span>
+          </div>
+        </div>
+        
+        <div class="matrix-row">
+          <div class="matrix-row-left">
+            <i class="fas fa-minus"></i>
+            <span>Time-for-money</span>
+          </div>
+          <div class="matrix-row-right">
+            <i class="fas fa-check"></i>
+            <span>Scalable advisory model</span>
+          </div>
+        </div>
+        
+        <div class="matrix-cta">
+          <a href="https://calendly.com/mposha-malanga/30min" class="btn btn-gold" target="_blank">
+            <i class="fas fa-calendar-check"></i> Request a Private Consultation
+          </a>
+          <span class="micro-assurance">20-minute call. No pressure. No obligation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results">
+    <div class="container">
+      <h2>Client <span>Results</span></h2>
+      <p class="section-sub">Real shifts. Real outcomes. See how professionals transformed their expertise.</p>
+      
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="resultsCarousel">
+          <div class="carousel-card">
+            <img src="https://ui-avatars.com/api/?name=Greg+B&background=1B2A4A&color=C9A84C&size=112&rounded=true&bold=true" alt="Greg B">
+            <h3>Greg B</h3>
+            <div class="result-role">Real Estate Executive</div>
+            <p>After two decades in real estate development, Greg had deep operational experience but no structured offer.</p>
+            <div class="result-shift">From operator to board-level advisor.</div>
+          </div>
+          <div class="carousel-card">
+            <img src="https://ui-avatars.com/api/?name=Julie+K&background=1B2A4A&color=C9A84C&size=112&rounded=true&bold=true" alt="Julie K">
+            <h3>Julie K</h3>
+            <div class="result-role">Strategy Executive</div>
+            <p>Julie had broad transformation experience but struggled to articulate a distinct commercial edge.</p>
+            <div class="result-shift">From "available" to clearly positioned founder.</div>
+          </div>
+          <div class="carousel-card">
+            <img src="https://ui-avatars.com/api/?name=James+T&background=1B2A4A&color=C9A84C&size=112&rounded=true&bold=true" alt="James T">
+            <h3>James T</h3>
+            <div class="result-role">Military Officer</div>
+            <p>James developed high-level decision-making skills but translating that to the civilian market was unclear.</p>
+            <div class="result-shift">From résumé to commercialized asset.</div>
+          </div>
+          <div class="carousel-card">
+            <img src="https://ui-avatars.com/api/?name=Marjorie+K&background=1B2A4A&color=C9A84C&size=112&rounded=true&bold=true" alt="Marjorie K">
+            <h3>Marjorie K</h3>
+            <div class="result-role">Finance Director</div>
+            <p>Marjorie had deep financial expertise but no framework to position it as a premium advisory service.</p>
+            <div class="result-shift">From function to strategic advisor.</div>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" onclick="scrollCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-btn" onclick="scrollCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <p class="results-trust-line">Trusted by current and former executives and leaders across Fortune 500 and high-growth organizations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="lead-capture" style="background: var(--cream);">
+    <div class="container">
+      <h2>Investment</h2>
+      <p class="section-sub" style="max-width: 560px; margin: 0 auto 20px;">REIGNITE is priced as architecture, not content. All engagements start with a consultation to determine mutual fit.</p>
+      <a href="https://calendly.com/mposha-malanga/30min" class="btn btn-gold" target="_blank">
+        <i class="fas fa-calendar-check"></i> Request a Private Consultation
+      </a>
+      <span class="micro-assurance">20-minute call. No pressure. No obligation.</span>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Frequently <span>Asked</span></h2>
+      <p class="section-sub">Common questions about working with Reignite Advisors.</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Who is REIGNITE for?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>REIGNITE is for experienced professionals with 10+ years of expertise who are ready to monetize their knowledge. You should have deep experience in your field and be willing to package it into a structured offer. This is not for those looking for quick fixes — it's for professionals ready to build a real, scalable asset.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do I need a business idea already?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>No. You bring the experience — we bring the structure. Many of our clients have expertise but no clear business idea. We help you identify what you've actually built and how to package it. You don't need a plan; you need experience and willingness to do the work.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Is this a course?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>No. REIGNITE is a private architecture engagement — not a course, not a group program. You get 1-on-1 strategic advisory throughout the entire process. We build your asset with you, not just teach you how to do it.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How long is the engagement?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>The core engagement is designed to deliver clarity within 30 days and a market-ready offer within 90 days. However, the exact timeline depends on your starting position and the complexity of your expertise. Strategic advisory continues throughout to ensure your asset evolves with market opportunities.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What do I leave with?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You leave with a clearly defined intellectual asset, a precise audience willing to pay, a structured sellable offer, and premium-aligned positioning. You'll have a repeatable system that converts expertise into revenue and scales beyond your time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Ready to Structure What You Already Know?</h2>
+      <p>Book a consultation to map your next 90 days.</p>
+      <a href="https://calendly.com/mposha-malanga/30min" class="btn btn-gold" target="_blank">
+        <i class="fas fa-calendar-check"></i> Request a Private Consultation
+      </a>
+      <span class="micro-assurance">20-minute call. No pressure. No obligation.</span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="logo-group">
+        <div class="logo-mark">
+          <span class="logo">REIGNITE</span><span class="logo-dot">.</span>
+        </div>
+        <span class="logo-sub">Advisors</span>
+      </div>
+      <p class="tagline">Transform expertise into impact.</p>
+      <p class="copyright">&copy; 2025 Reignite Advisors. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function scrollCarousel(direction) {
+      const track = document.getElementById('resultsCarousel');
+      const card = track.querySelector('.carousel-card');
+      const cardWidth = card.offsetWidth + 20;
+
+      track.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleFaq(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

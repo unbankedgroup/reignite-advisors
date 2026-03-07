@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reignite Assessment — Design Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2A4A;
+  --orange: #FF6B35;
+  --dark: #0A0F1C;
+  --white: #FFFFFF;
+  --gray: #F5F7FA;
+  --mid-gray: #E2E8F0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--dark); color: var(--white); line-height: 1.5; }
+
+/* Sticky Nav */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,28,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,107,53,0.2);
+  padding: 14px 32px; display: flex; align-items: center; gap: 24px;
+}
+.sticky-nav .logo-mark { flex-shrink: 0; }
+.sticky-nav h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+.sticky-nav .nav-links { margin-left: auto; display: flex; gap: 20px; }
+.sticky-nav .nav-links a {
+  color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s;
+}
+.sticky-nav .nav-links a:hover { color: var(--orange); }
+
+/* Section Headers */
+.section-header {
+  text-align: center; padding: 64px 24px 40px;
+}
+.section-header h2 {
+  font-size: 32px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  background: linear-gradient(135deg, var(--orange), #ff9a6c);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.section-header p { color: rgba(255,255,255,0.5); margin-top: 8px; font-size: 15px; }
+
+/* Cards Grid */
+.cards-grid {
+  max-width: 1400px; margin: 0 auto; padding: 0 24px 64px;
+  display: grid; grid-template-columns: 1fr; gap: 48px;
+}
+@media(min-width:900px) { .cards-grid { grid-template-columns: 1fr; } }
+
+/* Variation Card */
+.var-card {
+  background: rgba(27,42,74,0.25); border: 1px solid rgba(255,107,53,0.15);
+  border-radius: 16px; overflow: hidden;
+}
+.var-card-header {
+  padding: 20px 28px; display: flex; align-items: baseline; gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.var-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--orange);
+  text-transform: uppercase; background: rgba(255,107,53,0.1); padding: 4px 10px; border-radius: 4px;
+}
+.var-name { font-size: 20px; font-weight: 700; }
+.var-desc { font-size: 13px; color: rgba(255,255,255,0.45); margin-left: auto; }
+
+/* Preview Frame */
+.preview-frame {
+  margin: 20px; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+  overflow: hidden; background: var(--white); position: relative;
+}
+/* All mockups contained */
+.mockup {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #333; font-size: 14px; line-height: 1.5;
+  min-height: 500px; position: relative;
+}
+
+/* Shared utility classes inside mockups */
+.mockup .btn-orange {
+  display: inline-block; background: var(--orange); color: #fff; font-weight: 700;
+  padding: 14px 36px; border-radius: 8px; font-size: 15px; letter-spacing: 0.3px;
+  text-decoration: none; border: none; cursor: pointer;
+}
+.mockup .btn-orange-outline {
+  display: inline-block; background: transparent; color: var(--orange); font-weight: 700;
+  padding: 14px 36px; border-radius: 8px; font-size: 15px; border: 2px solid var(--orange);
+  text-decoration: none;
+}
+.mockup .pill {
+  display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 12px;
+  font-weight: 600; margin: 4px;
+}
+.mockup .reignite-logo { display: inline-block; }
+.mockup .category-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+
+/* ===== START PAGE VARIATIONS ===== */
+
+/* S1: Clean White */
+.s1 { background: #fff; text-align: center; padding: 60px 40px; }
+.s1 h2 { color: var(--navy); font-size: 28px; font-weight: 800; margin: 24px 0 8px; }
+.s1 .subtitle { color: #64748b; font-size: 15px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.s1 .cats { display: flex; justify-content: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.s1 .cat-item { color: var(--navy); font-weight: 600; font-size: 13px; padding: 8px 0; border-bottom: 2px solid var(--orange); }
+
+/* S2: Navy Immersive */
+.s2 { background: var(--navy); color: #fff; text-align: center; padding: 60px 40px; }
+.s2 .accent-line { width: 60px; height: 3px; background: var(--orange); margin: 0 auto 28px; }
+.s2 h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+.s2 .subtitle { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 32px; }
+.s2 .pills { margin-bottom: 36px; }
+.s2 .pill { background: rgba(255,107,53,0.15); color: var(--orange); }
+
+/* S3: Split Hero */
+.s3 { display: flex; min-height: 520px; }
+.s3 .left { background: var(--navy); color: #fff; flex: 1; padding: 48px 36px; display: flex; flex-direction: column; justify-content: center; }
+.s3 .left h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+.s3 .left .subtitle { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 28px; }
+.s3 .right { background: #fff; flex: 1; padding: 48px 32px; display: flex; flex-direction: column; justify-content: center; }
+.s3 .right h3 { color: var(--navy); font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.s3 .right .cat-card { border: 1px solid var(--mid-gray); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.s3 .right .cat-card strong { color: var(--navy); font-size: 13px; }
+.s3 .right .cat-card p { color: #64748b; font-size: 12px; margin-top: 4px; }
+
+/* S4: Card Stack */
+.s4 { background: var(--gray); padding: 48px 24px; display: flex; justify-content: center; align-items: center; }
+.s4 .card-main {
+  background: var(--navy); color: #fff; border-radius: 16px; padding: 44px 40px;
+  max-width: 460px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.s4 .card-main h2 { font-size: 22px; font-weight: 800; margin: 20px 0 8px; }
+.s4 .card-main .subtitle { color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 24px; }
+.s4 .mini-cards { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; justify-content: center; }
+.s4 .mini-card {
+  background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; flex: 1; min-width: 100px;
+}
+.s4 .mini-card .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); font-weight: 700; }
+.s4 .mini-card .name { font-size: 12px; margin-top: 4px; color: rgba(255,255,255,0.8); }
+
+/* S5: Gradient Flow */
+.s5 { background: linear-gradient(180deg, var(--navy) 0%, var(--dark) 100%); color: #fff; text-align: center; padding: 60px 40px; }
+.s5 h2 { font-size: 30px; font-weight: 800; margin: 24px 0 8px; }
+.s5 .subtitle { color: rgba(255,255,255,0.55); font-size: 14px; margin-bottom: 36px; }
+.s5 .icon-row { display: flex; justify-content: center; gap: 32px; margin-bottom: 36px; flex-wrap: wrap; }
+.s5 .icon-item { text-align: center; }
+.s5 .icon-circle {
+  width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--orange);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+  font-size: 18px; color: var(--orange);
+}
+.s5 .icon-item span { font-size: 11px; color: rgba(255,255,255,0.6); }
+.s5 .cta-wrap { position: relative; display: inline-block; }
+.s5 .cta-glow {
+  position: absolute; inset: -12px; border-radius: 20px;
+  background: radial-gradient(circle, rgba(255,107,53,0.3) 0%, transparent 70%);
+}
+
+/* S6: Editorial */
+.s6 { background: #fff; padding: 48px 44px; position: relative; min-height: 540px; }
+.s6 h2 { color: var(--navy); font-size: 34px; font-weight: 800; line-height: 1.15; max-width: 500px; margin-bottom: 16px; }
+.s6 .subtitle { color: #64748b; font-size: 15px; max-width: 500px; margin-bottom: 28px; }
+.s6 .why-section { max-width: 500px; margin-bottom: 28px; }
+.s6 .why-section h3 { color: var(--navy); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.s6 .why-section p { color: #64748b; font-size: 13px; line-height: 1.7; }
+.s6 .steven-corner { position: absolute; bottom: 28px; right: 36px; text-align: center; }
+.s6 .steven-corner img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--orange); display: block; margin: 0 auto 6px; }
+.s6 .steven-corner span { font-size: 11px; color: #64748b; }
+
+/* S7: Scorecard Preview */
+.s7 { background: #fff; text-align: center; padding: 56px 40px; }
+.s7 h2 { color: var(--navy); font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.s7 .subtitle { color: #64748b; font-size: 14px; margin-bottom: 32px; }
+.s7 .gauge-wrap { margin-bottom: 28px; }
+.s7 .bars { max-width: 360px; margin: 0 auto 28px; text-align: left; }
+.s7 .bar-row { margin-bottom: 12px; }
+.s7 .bar-label { font-size: 12px; color: var(--navy); font-weight: 600; margin-bottom: 4px; }
+.s7 .bar-track { height: 8px; background: var(--mid-gray); border-radius: 4px; overflow: hidden; }
+.s7 .bar-fill { height: 100%; background: var(--mid-gray); border-radius: 4px; }
+
+/* S8: Trust Bar */
+.s8-header { background: var(--navy); padding: 16px 28px; display: flex; align-items: center; }
+.s8-header span { color: #fff; font-weight: 700; font-size: 15px; margin-left: 12px; }
+.s8-body { background: #fff; padding: 40px 36px; text-align: center; }
+.s8-body h2 { color: var(--navy); font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.s8-body .subtitle { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+.s8-body .trust-row { display: flex; justify-content: center; gap: 32px; margin-bottom: 28px; flex-wrap: wrap; }
+.s8-body .trust-item { text-align: center; }
+.s8-body .trust-num { font-size: 24px; font-weight: 800; color: var(--orange); }
+.s8-body .trust-label { font-size: 11px; color: #64748b; margin-top: 2px; }
+.s8-body .cat-row { display: flex; gap: 12px; margin-bottom: 28px; justify-content: center; flex-wrap: wrap; }
+.s8-body .cat-pill { background: var(--gray); color: var(--navy); padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+/* S9: Video Style */
+.s9 { background: var(--dark); color: #fff; text-align: center; padding: 60px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; }
+.s9 .play-circle {
+  width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--orange);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 28px;
+  position: relative;
+}
+.s9 .play-circle::after {
+  content: ''; width: 0; height: 0;
+  border-top: 20px solid transparent; border-bottom: 20px solid transparent;
+  border-left: 32px solid var(--orange); margin-left: 6px;
+}
+.s9 h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.s9 .subtitle { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 32px; }
+
+/* S10: Full Branded */
+.s10-top { background: var(--navy); color: #fff; padding: 40px 36px; text-align: center; }
+.s10-top h2 { font-size: 26px; font-weight: 800; margin: 16px 0 6px; }
+.s10-top .subtitle { color: rgba(255,255,255,0.6); font-size: 14px; }
+.s10-mid { background: #fff; padding: 36px; }
+.s10-mid h3 { color: var(--navy); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.s10-mid p { color: #64748b; font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+.s10-mid .cats { display: flex; gap: 12px; flex-wrap: wrap; }
+.s10-mid .cat-tag { background: var(--gray); padding: 10px 16px; border-radius: 8px; font-size: 12px; color: var(--navy); font-weight: 600; border-left: 3px solid var(--orange); }
+.s10-bot { background: var(--navy); padding: 24px 36px; text-align: center; }
+
+/* ===== RESULTS PAGE VARIATIONS ===== */
+
+/* R1: Clean Dashboard */
+.r1 { background: #fff; padding: 48px 40px; text-align: center; }
+.r1 h3 { color: var(--navy); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.r1 .score-wrap { margin-bottom: 32px; }
+.r1 .cats { max-width: 420px; margin: 0 auto 32px; text-align: left; }
+.r1 .cat-row { margin-bottom: 16px; }
+.r1 .cat-top { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.r1 .cat-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+.r1 .cat-score { font-size: 13px; font-weight: 700; color: var(--orange); }
+.r1 .cat-bar { height: 8px; background: var(--mid-gray); border-radius: 4px; overflow: hidden; }
+.r1 .cat-fill { height: 100%; background: var(--orange); border-radius: 4px; }
+.r1 .cat-narrative { font-size: 12px; color: #64748b; margin-top: 6px; }
+
+/* R2: Dark Executive */
+.r2 { background: var(--navy); color: #fff; padding: 48px 36px; text-align: center; }
+.r2 .big-score { font-size: 72px; font-weight: 800; color: var(--orange); text-shadow: 0 0 40px rgba(255,107,53,0.4); margin-bottom: 4px; }
+.r2 .score-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 2px; }
+.r2 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 480px; margin: 0 auto 32px; }
+.r2 .grid-card { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 20px 16px; text-align: center; }
+.r2 .grid-card .card-score { font-size: 28px; font-weight: 800; color: var(--orange); }
+.r2 .grid-card .card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.r2 .grid-card .card-text { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+
+/* R3: Radial Gauge */
+.r3 { background: #fff; padding: 48px 40px; text-align: center; }
+.r3 .gauge-area { margin-bottom: 28px; }
+.r3 h3 { color: var(--navy); font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.r3 .bars { max-width: 400px; margin: 0 auto 28px; text-align: left; }
+.r3 .bar-row { margin-bottom: 14px; }
+.r3 .bar-top { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.r3 .bar-name { font-size: 12px; font-weight: 600; color: var(--navy); }
+.r3 .bar-pct { font-size: 12px; font-weight: 700; color: var(--orange); }
+.r3 .bar-track { height: 10px; background: var(--mid-gray); border-radius: 5px; overflow: hidden; }
+.r3 .bar-fill { height: 100%; border-radius: 5px; }
+
+/* R4: Report Card */
+.r4 { background: #fff; padding: 48px 36px; }
+.r4 h3 { color: var(--navy); font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 24px; border-bottom: 2px solid var(--navy); padding-bottom: 12px; }
+.r4 table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.r4 th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; padding: 8px 12px; border-bottom: 2px solid var(--mid-gray); }
+.r4 td { padding: 12px; border-bottom: 1px solid var(--mid-gray); font-size: 13px; color: var(--navy); }
+.r4 .grade { font-weight: 800; font-size: 18px; }
+.r4 .grade-a { color: #22c55e; } .r4 .grade-b { color: #3b82f6; } .r4 .grade-c { color: var(--orange); } .r4 .grade-d { color: #ef4444; }
+.r4 .insight { font-size: 12px; color: #64748b; }
+.r4 .total-row { background: var(--gray); font-weight: 700; }
+
+/* R5: Tier Spotlight */
+.r5 { background: #fff; padding: 48px 40px; text-align: center; }
+.r5 .tier-label { font-size: 28px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 4px; }
+.r5 .tier-line { width: 80px; height: 3px; background: var(--orange); margin: 8px auto 8px; }
+.r5 .tier-score { font-size: 48px; font-weight: 800; color: var(--orange); margin-bottom: 28px; }
+.r5 .accordion { max-width: 440px; margin: 0 auto 28px; text-align: left; }
+.r5 .acc-item { border: 1px solid var(--mid-gray); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+.r5 .acc-header { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; background: var(--gray); }
+.r5 .acc-title { font-size: 13px; font-weight: 700; color: var(--navy); }
+.r5 .acc-score { font-size: 13px; font-weight: 700; color: var(--orange); }
+.r5 .acc-body { padding: 14px 18px; font-size: 12px; color: #64748b; border-top: 1px solid var(--mid-gray); }
+.r5 .acc-bar { height: 6px; background: var(--mid-gray); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.r5 .acc-fill { height: 100%; background: var(--orange); border-radius: 3px; }
+
+/* R6: Before/After */
+.r6 { display: flex; min-height: 500px; }
+.r6 .before { background: var(--gray); flex: 1; padding: 40px 28px; }
+.r6 .after { background: var(--navy); color: #fff; flex: 1; padding: 40px 28px; }
+.r6 h3 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.r6 .before h3 { color: #64748b; }
+.r6 .after h3 { color: var(--orange); }
+.r6 .score-row { margin-bottom: 14px; }
+.r6 .score-name { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.r6 .before .score-name { color: #94a3b8; }
+.r6 .after .score-name { color: rgba(255,255,255,0.7); }
+.r6 .score-bar { height: 8px; border-radius: 4px; overflow: hidden; }
+.r6 .before .score-bar { background: var(--mid-gray); }
+.r6 .before .score-fill { height: 100%; background: #94a3b8; border-radius: 4px; }
+.r6 .after .score-bar { background: rgba(255,255,255,0.1); }
+.r6 .after .score-fill { height: 100%; background: var(--orange); border-radius: 4px; }
+.r6 .before .big { font-size: 36px; font-weight: 800; color: #94a3b8; margin-bottom: 20px; }
+.r6 .after .big { font-size: 36px; font-weight: 800; color: var(--orange); margin-bottom: 20px; }
+.r6 .cta-mid { display: flex; align-items: center; justify-content: center; background: var(--orange); writing-mode: vertical-lr; padding: 20px 8px; }
+.r6 .cta-mid span { color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transform: rotate(180deg); }
+
+/* R7: Narrative Report */
+.r7 { background: #fff; padding: 56px 48px; max-width: 100%; }
+.r7 .score-badge { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; font-size: 20px; padding: 8px 20px; border-radius: 8px; margin-bottom: 24px; }
+.r7 h3 { color: var(--navy); font-size: 22px; font-weight: 700; margin-bottom: 16px; font-style: italic; }
+.r7 p { color: #475569; font-size: 14px; line-height: 1.8; margin-bottom: 16px; }
+.r7 .cat-section { margin-bottom: 16px; }
+.r7 .cat-title { color: var(--navy); font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.r7 .signoff { margin-top: 32px; display: flex; align-items: center; gap: 16px; }
+.r7 .signoff img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.r7 .signoff .text { font-size: 13px; color: var(--navy); font-weight: 600; }
+.r7 .signoff .role { font-size: 11px; color: #64748b; }
+
+/* R8: Category Deep Dive */
+.r8 { background: var(--gray); padding: 40px 32px; }
+.r8 .top-score { text-align: center; margin-bottom: 28px; }
+.r8 .top-score .num { font-size: 48px; font-weight: 800; color: var(--orange); }
+.r8 .top-score .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+.r8 .deep-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.r8 .deep-card { background: #fff; border-radius: 12px; padding: 24px 20px; }
+.r8 .deep-card h4 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.r8 .deep-card .dscore { color: var(--orange); font-weight: 800; font-size: 22px; margin-bottom: 8px; }
+.r8 .deep-card p { font-size: 12px; color: #64748b; margin-bottom: 10px; }
+.r8 .deep-card ul { padding-left: 16px; }
+.r8 .deep-card li { font-size: 11px; color: #475569; margin-bottom: 4px; }
+
+/* R9: Comparison Matrix */
+.r9 { background: #fff; padding: 48px 36px; text-align: center; }
+.r9 h3 { color: var(--navy); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.r9 .score-sub { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+.r9 .matrix-wrap { margin: 0 auto 28px; max-width: 400px; }
+
+/* R10: Full Branded Report */
+.r10-header { background: var(--navy); color: #fff; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; }
+.r10-header .left-h { display: flex; align-items: center; gap: 14px; }
+.r10-header .brand-text { font-weight: 700; font-size: 15px; }
+.r10-header .score-badge { background: var(--orange); color: #fff; font-weight: 800; font-size: 24px; padding: 10px 22px; border-radius: 10px; }
+.r10-body { background: #fff; padding: 36px 32px; }
+.r10-body h3 { color: var(--navy); font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.r10-body .cat-breakdown { margin-bottom: 24px; }
+.r10-body .cb-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.r10-body .cb-name { font-size: 13px; font-weight: 600; color: var(--navy); min-width: 140px; }
+.r10-body .cb-bar { flex: 1; height: 8px; background: var(--mid-gray); border-radius: 4px; overflow: hidden; }
+.r10-body .cb-fill { height: 100%; background: var(--orange); border-radius: 4px; }
+.r10-body .cb-pct { font-size: 13px; font-weight: 700; color: var(--orange); min-width: 36px; text-align: right; }
+.r10-body .rec-box { background: var(--gray); border-left: 4px solid var(--orange); padding: 20px 24px; border-radius: 8px; margin-bottom: 24px; }
+.r10-body .rec-box h4 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.r10-body .rec-box p { font-size: 13px; color: #475569; }
+.r10-body .steven-row { display: flex; align-items: center; gap: 16px; }
+.r10-body .steven-row img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--orange); }
+.r10-body .steven-row .quote { font-size: 13px; color: #475569; font-style: italic; }
+.r10-body .steven-row .name { font-size: 12px; color: var(--navy); font-weight: 700; margin-top: 4px; }
+.r10-footer { background: var(--navy); padding: 20px 32px; text-align: center; }
+
+/* Responsive */
+@media(max-width: 600px) {
+  .s3, .r6 { flex-direction: column; }
+  .r8 .deep-cards { grid-template-columns: 1fr; }
+  .r2 .grid { grid-template-columns: 1fr; }
+  .var-card-header { flex-direction: column; gap: 6px; }
+  .var-desc { margin-left: 0; }
+  .s6 .steven-corner { position: static; margin-top: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sticky Nav -->
+<nav class="sticky-nav">
+  <div class="logo-mark">
+    <svg width="32" height="32" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+  </div>
+  <h1>Assessment Design Variations</h1>
+  <div class="nav-links">
+    <a href="#start-pages">Start Pages</a>
+    <a href="#results-pages">Results Pages</a>
+  </div>
+</nav>
+
+<!-- ===== START PAGE VARIATIONS ===== -->
+<div id="start-pages">
+  <div class="section-header">
+    <h2>Start Page Variations</h2>
+    <p>10 different intro/landing page designs for the Experience-to-Asset Scorecard</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- S1: Clean White -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 01</span>
+        <span class="var-name">Clean White</span>
+        <span class="var-desc">Minimal, centered, professional — white background with navy headline</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s1">
+          <svg width="40" height="40" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+          <h2>The Experience-to-Asset Scorecard</h2>
+          <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+          <div class="cats">
+            <div class="cat-item">Signal</div>
+            <div class="cat-item">Structure</div>
+            <div class="cat-item">Commercial Gravity</div>
+            <div class="cat-item">Scale Readiness</div>
+          </div>
+          <button class="btn-orange">Start the Assessment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2: Navy Immersive -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 02</span>
+        <span class="var-name">Navy Immersive</span>
+        <span class="var-desc">Full dark navy, cinematic feel, floating category pills</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s2">
+          <svg width="40" height="40" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+          <div class="accent-line" style="margin-top:20px"></div>
+          <h2>The Experience-to-Asset<br>Scorecard</h2>
+          <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+          <div class="pills">
+            <span class="pill">Signal</span>
+            <span class="pill">Structure</span>
+            <span class="pill">Commercial Gravity</span>
+            <span class="pill">Scale Readiness</span>
+          </div>
+          <button class="btn-orange">Take the Scorecard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3: Split Hero -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 03</span>
+        <span class="var-name">Split Hero</span>
+        <span class="var-desc">Two-panel layout — navy hero left, category cards right</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s3">
+          <div class="left">
+            <svg width="36" height="36" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+            <h2 style="margin-top:20px">The Experience-to-Asset Scorecard</h2>
+            <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+            <button class="btn-orange">Start the Assessment</button>
+          </div>
+          <div class="right">
+            <h3>Why This Matters</h3>
+            <div class="cat-card">
+              <strong>Signal — Positioning Clarity</strong>
+              <p>How clearly your expertise translates into market positioning</p>
+            </div>
+            <div class="cat-card">
+              <strong>Structure — Architecture</strong>
+              <p>Whether your experience is organized into transferable systems</p>
+            </div>
+            <div class="cat-card">
+              <strong>Commercial Gravity — Revenue Power</strong>
+              <p>Your ability to attract and convert paying clients consistently</p>
+            </div>
+            <div class="cat-card">
+              <strong>Scale Readiness — Leverage + Direction</strong>
+              <p>Your capacity to grow beyond time-for-money models</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4: Card Stack -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 04</span>
+        <span class="var-name">Card Stack</span>
+        <span class="var-desc">Premium app-like card on gray background — everything contained</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s4">
+          <div class="card-main">
+            <svg width="40" height="40" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+            <h2>The Experience-to-Asset Scorecard</h2>
+            <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+            <div class="mini-cards">
+              <div class="mini-card">
+                <div class="label">Signal</div>
+                <div class="name">Positioning Clarity</div>
+              </div>
+              <div class="mini-card">
+                <div class="label">Structure</div>
+                <div class="name">Architecture</div>
+              </div>
+              <div class="mini-card">
+                <div class="label">Gravity</div>
+                <div class="name">Revenue Power</div>
+              </div>
+              <div class="mini-card">
+                <div class="label">Scale</div>
+                <div class="name">Leverage + Direction</div>
+              </div>
+            </div>
+            <button class="btn-orange">Take the Scorecard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5: Gradient Flow -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 05</span>
+        <span class="var-name">Gradient Flow</span>
+        <span class="var-desc">Navy-to-dark gradient, icon row, orange glow CTA — modern SaaS feel</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s5">
+          <svg width="40" height="40" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+          <h2>The Experience-to-Asset<br>Scorecard</h2>
+          <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+          <div class="icon-row">
+            <div class="icon-item">
+              <div class="icon-circle">S</div>
+              <span>Signal</span>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle">A</div>
+              <span>Structure</span>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle">G</div>
+              <span>Gravity</span>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle">R</div>
+              <span>Scale</span>
+            </div>
+          </div>
+          <div class="cta-wrap">
+            <div class="cta-glow"></div>
+            <button class="btn-orange" style="position:relative; z-index:1;">Start the Assessment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S6: Editorial -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 06</span>
+        <span class="var-name">Editorial</span>
+        <span class="var-desc">Magazine-style, left-aligned, heavy weight headline, Steven's photo</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s6">
+          <svg width="36" height="36" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+          <h2 style="margin-top:20px">The Experience-<br>to-Asset<br>Scorecard</h2>
+          <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+          <div class="why-section">
+            <h3>Why This Matters Now</h3>
+            <p>Most experienced professionals are sitting on decades of knowledge, relationships, and hard-won insight — but none of it is structured to function as an asset. AI is compressing the value of raw information. What remains valuable is architecture: the way your experience is organized, positioned, and packaged to generate revenue without your constant presence.</p>
+          </div>
+          <button class="btn-orange">Take the Scorecard</button>
+          <div class="steven-corner">
+            <img src="/Reignite/v3/steven-bio-transparent.png" alt="Steven" onerror="this.style.display='none'">
+            <span>Steven — Reignite Advisors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7: Scorecard Preview -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 07</span>
+        <span class="var-name">Scorecard Preview</span>
+        <span class="var-desc">Shows what they'll get — mock gauge + empty category bars</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s7">
+          <svg width="36" height="36" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+          <h2 style="margin-top:16px">The Experience-to-Asset Scorecard</h2>
+          <p class="subtitle">Discover how your experience scores across 4 critical dimensions</p>
+          <div class="gauge-wrap">
+            <svg width="180" height="110" viewBox="0 0 180 110">
+              <path d="M 20 100 A 70 70 0 0 1 160 100" fill="none" stroke="#E2E8F0" stroke-width="14" stroke-linecap="round"/>
+              <text x="90" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="32" font-weight="800" fill="#1B2A4A">??%</text>
+              <text x="90" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8">YOUR SCORE</text>
+            </svg>
+          </div>
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-label">Signal — Positioning Clarity</div>
+              <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Structure — Architecture</div>
+              <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Commercial Gravity — Revenue Power</div>
+              <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Scale Readiness — Leverage + Direction</div>
+              <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+            </div>
+          </div>
+          <button class="btn-orange">Discover Your Score</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- S8: Trust Bar -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 08</span>
+        <span class="var-name">Trust Bar</span>
+        <span class="var-desc">Authority-first — navy header, trust elements, category cards</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup">
+          <div class="s8-header">
+            <svg width="28" height="28" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+            <span>Reignite Advisors</span>
+          </div>
+          <div class="s8-body">
+            <h2>The Experience-to-Asset Scorecard</h2>
+            <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+            <div class="trust-row">
+              <div class="trust-item">
+                <div class="trust-num">15</div>
+                <div class="trust-label">Questions</div>
+              </div>
+              <div class="trust-item">
+                <div class="trust-num">5</div>
+                <div class="trust-label">Minutes</div>
+              </div>
+              <div class="trust-item">
+                <div class="trust-num">∞</div>
+                <div class="trust-label">Instant Results</div>
+              </div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-pill">Signal</div>
+              <div class="cat-pill">Structure</div>
+              <div class="cat-pill">Commercial Gravity</div>
+              <div class="cat-pill">Scale Readiness</div>
+            </div>
+            <button class="btn-orange">Start the Assessment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S9: Video Style -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 09</span>
+        <span class="var-name">Video Style</span>
+        <span class="var-desc">Dark, premium feel — large play button circle, interactive vibe</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup s9">
+          <div class="play-circle"></div>
+          <h2>The Experience-to-Asset Scorecard</h2>
+          <p class="subtitle">An interactive assessment to evaluate whether your experience is structured to function as a sellable asset</p>
+          <button class="btn-orange">Begin Assessment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- S10: Full Branded -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">START 10</span>
+        <span class="var-name">Full Branded</span>
+        <span class="var-desc">Navy bookends — header + footer with white content middle</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup">
+          <div class="s10-top">
+            <svg width="40" height="40" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+            <h2>The Experience-to-Asset Scorecard</h2>
+            <p class="subtitle">Is Your Experience Structured to Function as a Sellable Asset?</p>
+          </div>
+          <div class="s10-mid">
+            <h3>Why This Matters Now</h3>
+            <p>Most experienced professionals are sitting on decades of knowledge, relationships, and hard-won insight — but none of it is structured to function as an asset. This scorecard evaluates your experience across 4 critical dimensions to show you exactly where the gaps are.</p>
+            <div class="cats">
+              <div class="cat-tag">Signal — Positioning Clarity</div>
+              <div class="cat-tag">Structure — Architecture</div>
+              <div class="cat-tag">Commercial Gravity — Revenue Power</div>
+              <div class="cat-tag">Scale Readiness — Leverage + Direction</div>
+            </div>
+          </div>
+          <div class="s10-bot">
+            <button class="btn-orange">Take the Scorecard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end cards-grid -->
+</div>
+
+<!-- ===== RESULTS PAGE VARIATIONS ===== -->
+<div id="results-pages">
+  <div class="section-header">
+    <h2>Results Page Variations</h2>
+    <p>10 different results/score page designs — sample data: 65% overall</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- R1: Clean Dashboard -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 01</span>
+        <span class="var-name">Clean Dashboard</span>
+        <span class="var-desc">White background, score circle, horizontal bars, narrative per category</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r1">
+          <h3>Your Scorecard Results</h3>
+          <div class="score-wrap">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle cx="70" cy="70" r="58" fill="none" stroke="#E2E8F0" stroke-width="10"/>
+              <circle cx="70" cy="70" r="58" fill="none" stroke="#FF6B35" stroke-width="10" stroke-dasharray="365" stroke-dashoffset="128" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+              <text x="70" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="36" font-weight="800" fill="#1B2A4A">65%</text>
+              <text x="70" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8" text-transform="uppercase" letter-spacing="1">OVERALL</text>
+            </svg>
+          </div>
+          <div class="cats">
+            <div class="cat-row">
+              <div class="cat-top"><span class="cat-name">Signal — Positioning Clarity</span><span class="cat-score">6/10</span></div>
+              <div class="cat-bar"><div class="cat-fill" style="width:60%"></div></div>
+              <div class="cat-narrative">Your positioning has clarity but lacks the specificity needed to command premium pricing. The market can see you — but can't immediately understand why you're different.</div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-top"><span class="cat-name">Structure — Architecture</span><span class="cat-score">5/10</span></div>
+              <div class="cat-bar"><div class="cat-fill" style="width:50%"></div></div>
+              <div class="cat-narrative">Your knowledge exists but isn't organized into repeatable systems. Without architecture, your expertise dies with your availability.</div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-top"><span class="cat-name">Commercial Gravity — Revenue Power</span><span class="cat-score">5/10</span></div>
+              <div class="cat-bar"><div class="cat-fill" style="width:50%"></div></div>
+              <div class="cat-narrative">Revenue generation relies too heavily on direct effort. There's potential for leverage but the commercial engine needs architectural work.</div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-top"><span class="cat-name">Scale Readiness — Leverage + Direction</span><span class="cat-score">7/10</span></div>
+              <div class="cat-bar"><div class="cat-fill" style="width:70%"></div></div>
+              <div class="cat-narrative">You have the foundation for scale — the direction is clear and leverage points exist. The bottleneck is structural, not strategic.</div>
+            </div>
+          </div>
+          <div style="margin-top:8px"><button class="btn-orange">Book Your Architecture Call</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- R2: Dark Executive -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 02</span>
+        <span class="var-name">Dark Executive</span>
+        <span class="var-desc">Navy background, glowing score, 2×2 grid — premium consulting report</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r2">
+          <div class="big-score">65%</div>
+          <div class="score-label">Overall Experience-to-Asset Score</div>
+          <div class="grid">
+            <div class="grid-card">
+              <div class="card-score">6/10</div>
+              <div class="card-label">Signal</div>
+              <div class="card-text">Positioning has clarity but lacks the specificity to command premium pricing</div>
+            </div>
+            <div class="grid-card">
+              <div class="card-score">5/10</div>
+              <div class="card-label">Structure</div>
+              <div class="card-text">Knowledge exists but isn't organized into repeatable, transferable systems</div>
+            </div>
+            <div class="grid-card">
+              <div class="card-score">5/10</div>
+              <div class="card-label">Commercial Gravity</div>
+              <div class="card-text">Revenue relies too heavily on direct effort — leverage points need work</div>
+            </div>
+            <div class="grid-card">
+              <div class="card-score">7/10</div>
+              <div class="card-label">Scale Readiness</div>
+              <div class="card-text">Strong foundation for scale — direction is clear, bottleneck is structural</div>
+            </div>
+          </div>
+          <button class="btn-orange">Book Your Architecture Call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- R3: Radial Gauge -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 03</span>
+        <span class="var-name">Radial Gauge</span>
+        <span class="var-desc">Speedometer-style gauge with colored zones + progress bars</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r3">
+          <div class="gauge-area">
+            <svg width="280" height="160" viewBox="0 0 280 160">
+              <!-- Gauge background zones -->
+              <path d="M 30 140 A 110 110 0 0 1 73 43" fill="none" stroke="#ef4444" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 73 43 A 110 110 0 0 1 140 30" fill="none" stroke="#f59e0b" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 140 30 A 110 110 0 0 1 207 43" fill="none" stroke="#FF6B35" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 207 43 A 110 110 0 0 1 250 140" fill="none" stroke="#22c55e" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+              <!-- Needle -->
+              <line x1="140" y1="140" x2="117" y2="52" stroke="#1B2A4A" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="140" cy="140" r="6" fill="#1B2A4A"/>
+              <!-- Score text -->
+              <text x="140" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="28" font-weight="800" fill="#1B2A4A">65%</text>
+              <!-- Zone labels -->
+              <text x="35" y="155" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" fill="#94a3b8">0%</text>
+              <text x="240" y="155" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" fill="#94a3b8">100%</text>
+            </svg>
+          </div>
+          <h3>Category Breakdown</h3>
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-top"><span class="bar-name">Signal</span><span class="bar-pct">60%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:60%; background:#f59e0b"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span class="bar-name">Structure</span><span class="bar-pct">50%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:50%; background:#FF6B35"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span class="bar-name">Commercial Gravity</span><span class="bar-pct">50%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:50%; background:#FF6B35"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span class="bar-name">Scale Readiness</span><span class="bar-pct">70%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:70%; background:#22c55e"></div></div>
+            </div>
+          </div>
+          <button class="btn-orange">Get Your Action Plan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- R4: Report Card -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 04</span>
+        <span class="var-name">Report Card</span>
+        <span class="var-desc">Academic transcript style — grades, grid lines, formal feel</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r4">
+          <h3>Experience-to-Asset Report Card</h3>
+          <table>
+            <thead>
+              <tr><th>Category</th><th>Score</th><th>Grade</th><th>Insight</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Signal</strong><br><span style="font-size:11px;color:#94a3b8">Positioning Clarity</span></td>
+                <td>6/10</td>
+                <td><span class="grade grade-b">B-</span></td>
+                <td class="insight">Visible but not differentiated enough for premium pricing</td>
+              </tr>
+              <tr>
+                <td><strong>Structure</strong><br><span style="font-size:11px;color:#94a3b8">Architecture</span></td>
+                <td>5/10</td>
+                <td><span class="grade grade-c">C</span></td>
+                <td class="insight">Knowledge exists but lacks repeatable, transferable systems</td>
+              </tr>
+              <tr>
+                <td><strong>Commercial Gravity</strong><br><span style="font-size:11px;color:#94a3b8">Revenue Power</span></td>
+                <td>5/10</td>
+                <td><span class="grade grade-c">C</span></td>
+                <td class="insight">Revenue depends on direct effort — leverage points underutilized</td>
+              </tr>
+              <tr>
+                <td><strong>Scale Readiness</strong><br><span style="font-size:11px;color:#94a3b8">Leverage + Direction</span></td>
+                <td>7/10</td>
+                <td><span class="grade grade-b">B+</span></td>
+                <td class="insight">Strong foundation — clear direction, structural bottleneck only</td>
+              </tr>
+              <tr class="total-row">
+                <td><strong>OVERALL</strong></td>
+                <td><strong>65%</strong></td>
+                <td><span class="grade grade-c" style="font-size:22px">C+</span></td>
+                <td class="insight"><strong>Your experience has clear value but isn't yet structured as an asset</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align:center"><button class="btn-orange">Book Your Architecture Call</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- R5: Tier Spotlight -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 05</span>
+        <span class="var-name">Tier Spotlight</span>
+        <span class="var-desc">Large tier label, accordion-style category sections</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r5">
+          <div class="tier-label">STRUCTURED POTENTIAL</div>
+          <div class="tier-line"></div>
+          <div class="tier-score">65%</div>
+          <div class="accordion">
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Signal — Positioning Clarity</span>
+                <span class="acc-score">6/10</span>
+              </div>
+              <div class="acc-body">
+                Your positioning has clarity but lacks the specificity needed to command premium pricing. The market can see you — but can't immediately understand why you're different.
+                <div class="acc-bar"><div class="acc-fill" style="width:60%"></div></div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Structure — Architecture</span>
+                <span class="acc-score">5/10</span>
+              </div>
+              <div class="acc-body">
+                Your knowledge exists but isn't organized into repeatable systems. Without architecture, your expertise dies with your availability.
+                <div class="acc-bar"><div class="acc-fill" style="width:50%"></div></div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Commercial Gravity — Revenue Power</span>
+                <span class="acc-score">5/10</span>
+              </div>
+              <div class="acc-body">
+                Revenue generation relies too heavily on direct effort. There's potential for leverage but the commercial engine needs structural work.
+                <div class="acc-bar"><div class="acc-fill" style="width:50%"></div></div>
+              </div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Scale Readiness — Leverage + Direction</span>
+                <span class="acc-score">7/10</span>
+              </div>
+              <div class="acc-body">
+                You have the foundation for scale — the direction is clear and leverage points exist. The bottleneck is structural, not strategic.
+                <div class="acc-bar"><div class="acc-fill" style="width:70%"></div></div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-orange">Book Your Architecture Call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- R6: Before/After -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 06</span>
+        <span class="var-name">Before / After</span>
+        <span class="var-desc">Split view — current scores vs projected improvement, creates urgency</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r6">
+          <div class="before">
+            <h3>Where You Are</h3>
+            <div class="big">65%</div>
+            <div class="score-row">
+              <div class="score-name">Signal — 6/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:60%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Structure — 5/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:50%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Commercial Gravity — 5/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:50%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Scale Readiness — 7/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:70%"></div></div>
+            </div>
+          </div>
+          <div class="cta-mid"><span>TRANSFORM →</span></div>
+          <div class="after">
+            <h3>Where Architecture Takes You</h3>
+            <div class="big">88%</div>
+            <div class="score-row">
+              <div class="score-name">Signal — 9/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Structure — 8/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Commercial Gravity — 9/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
+            </div>
+            <div class="score-row">
+              <div class="score-name">Scale Readiness — 9/10</div>
+              <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- R7: Narrative Report -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 07</span>
+        <span class="var-name">Narrative Report</span>
+        <span class="var-desc">Personal letter format — reads like a consulting insight brief</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r7">
+          <span class="score-badge">65% Overall</span>
+          <h3>"Here's what we found…"</h3>
+          <p>Thank you for completing the Experience-to-Asset Scorecard. Your responses reveal a professional with significant expertise and clear ambition — but critical structural gaps that prevent your experience from functioning as a true sellable asset.</p>
+          <div class="cat-section">
+            <div class="cat-title">Signal — Positioning Clarity (6/10)</div>
+            <p>Your positioning has real clarity. People understand what you do. But there's a gap between visibility and premium differentiation — the market sees you, but it doesn't yet understand why you're the only option. Specificity is the bridge.</p>
+          </div>
+          <div class="cat-section">
+            <div class="cat-title">Structure — Architecture (5/10)</div>
+            <p>This is where the biggest opportunity lives. Your knowledge is real — decades of it. But it's locked inside your head, your habits, your presence. Without systems that can operate independently of you, your business has a ceiling equal to your calendar.</p>
+          </div>
+          <div class="cat-section">
+            <div class="cat-title">Commercial Gravity — Revenue Power (5/10)</div>
+            <p>Revenue is flowing, but it requires your direct involvement at every step. The engine works — it just doesn't scale. With architectural work, you could generate revenue from assets instead of hours.</p>
+          </div>
+          <div class="cat-section">
+            <div class="cat-title">Scale Readiness — Leverage + Direction (7/10)</div>
+            <p>This is your strongest dimension. The vision is there. The direction is clear. What's missing isn't strategy — it's structure. Once the architecture catches up to your ambition, scale becomes inevitable.</p>
+          </div>
+          <div class="signoff">
+            <img src="/Reignite/v3/steven-bio-transparent.png" alt="Steven" onerror="this.style.background='#E2E8F0';this.style.display='block'">
+            <div>
+              <div class="text">Steven</div>
+              <div class="role">Strategist & Positioning Expert · Reignite Advisors</div>
+            </div>
+          </div>
+          <div style="margin-top:24px"><button class="btn-orange">Book Your Architecture Call</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- R8: Category Deep Dive -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 08</span>
+        <span class="var-name">Category Deep Dive</span>
+        <span class="var-desc">Detailed cards with score rings, narratives, and action items</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r8">
+          <div class="top-score">
+            <div class="num">65%</div>
+            <div class="label">Overall Score</div>
+          </div>
+          <div class="deep-cards">
+            <div class="deep-card">
+              <h4>Signal</h4>
+              <div class="dscore">6/10</div>
+              <p>Positioning has clarity but lacks premium differentiation. The market sees you but can't articulate why you're different.</p>
+              <ul>
+                <li>Define your "only" statement — what only you do</li>
+                <li>Narrow your ideal client profile to one archetype</li>
+                <li>Rewrite your bio to lead with transformation, not credentials</li>
+              </ul>
+            </div>
+            <div class="deep-card">
+              <h4>Structure</h4>
+              <div class="dscore">5/10</div>
+              <p>Knowledge exists but isn't organized into repeatable systems. Expertise dies with your availability.</p>
+              <ul>
+                <li>Document your core methodology in a framework</li>
+                <li>Build one signature process that clients can follow</li>
+                <li>Create templates that deliver value without your presence</li>
+              </ul>
+            </div>
+            <div class="deep-card">
+              <h4>Commercial Gravity</h4>
+              <div class="dscore">5/10</div>
+              <p>Revenue relies on direct effort. Potential for leverage exists but the commercial engine needs work.</p>
+              <ul>
+                <li>Design a productized service with fixed scope and pricing</li>
+                <li>Build a lead magnet that attracts pre-qualified prospects</li>
+                <li>Create a pricing page that sells without a conversation</li>
+              </ul>
+            </div>
+            <div class="deep-card">
+              <h4>Scale Readiness</h4>
+              <div class="dscore">7/10</div>
+              <p>Strong foundation for scale. Direction is clear, leverage points exist. Bottleneck is structural.</p>
+              <ul>
+                <li>Identify the one asset that could generate revenue 24/7</li>
+                <li>Map the journey from 1:1 to 1:many delivery</li>
+                <li>Set a 90-day architecture sprint with clear milestones</li>
+              </ul>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:24px"><button class="btn-orange">Book Your Architecture Call</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- R9: Comparison Matrix -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 09</span>
+        <span class="var-name">Comparison Matrix</span>
+        <span class="var-desc">2×2 matrix plotting Signal vs Structure — visually unique positioning map</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup r9">
+          <h3>Your Position Map</h3>
+          <p class="score-sub">Overall Score: 65% — Here's where you sit relative to the ideal</p>
+          <div class="matrix-wrap">
+            <svg width="360" height="360" viewBox="0 0 360 360">
+              <!-- Grid -->
+              <rect x="40" y="20" width="300" height="300" fill="#F5F7FA" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+              <line x1="190" y1="20" x2="190" y2="320" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4"/>
+              <line x1="40" y1="170" x2="340" y2="170" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4"/>
+              <!-- Quadrant labels -->
+              <text x="115" y="95" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8" font-weight="600">HIGH SIGNAL</text>
+              <text x="115" y="107" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8" font-weight="600">LOW STRUCTURE</text>
+              <text x="265" y="95" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#22c55e" font-weight="700">IDEAL</text>
+              <text x="265" y="107" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#22c55e" font-weight="600">ZONE</text>
+              <text x="115" y="245" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#ef4444" font-weight="600">DANGER</text>
+              <text x="115" y="257" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#ef4444" font-weight="600">ZONE</text>
+              <text x="265" y="245" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8" font-weight="600">HIGH STRUCTURE</text>
+              <text x="265" y="257" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#94a3b8" font-weight="600">LOW SIGNAL</text>
+              <!-- Axes -->
+              <text x="190" y="345" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" fill="#1B2A4A" font-weight="700">STRUCTURE →</text>
+              <text x="16" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" fill="#1B2A4A" font-weight="700" transform="rotate(-90,16,170)">SIGNAL →</text>
+              <!-- Your position dot (Signal 60%, Structure 50%) -->
+              <circle cx="190" cy="140" r="28" fill="rgba(255,107,53,0.15)" stroke="#FF6B35" stroke-width="2"/>
+              <circle cx="190" cy="140" r="5" fill="#FF6B35"/>
+              <text x="190" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#FF6B35" font-weight="700">YOU</text>
+              <!-- Ideal position -->
+              <circle cx="280" cy="75" r="6" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="3"/>
+              <text x="280" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" fill="#22c55e" font-weight="600">TARGET</text>
+            </svg>
+          </div>
+          <p style="font-size:13px;color:#64748b;margin-bottom:24px">The bubble size represents your Commercial Gravity score. Your position shows strong signal potential with structural gaps holding you back from the ideal zone.</p>
+          <button class="btn-orange">Book Your Architecture Call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- R10: Full Branded Report -->
+    <div class="var-card">
+      <div class="var-card-header">
+        <span class="var-label">RESULTS 10</span>
+        <span class="var-name">Full Branded Report</span>
+        <span class="var-desc">Complete branded experience — header, breakdown, recommendation, Steven quote, CTA footer</span>
+      </div>
+      <div class="preview-frame">
+        <div class="mockup">
+          <div class="r10-header">
+            <div class="left-h">
+              <svg width="32" height="32" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+              <span class="brand-text">Your Scorecard Results</span>
+            </div>
+            <div class="score-badge">65%</div>
+          </div>
+          <div class="r10-body">
+            <h3>Category Breakdown</h3>
+            <div class="cat-breakdown">
+              <div class="cb-row">
+                <span class="cb-name">Signal</span>
+                <div class="cb-bar"><div class="cb-fill" style="width:60%"></div></div>
+                <span class="cb-pct">6/10</span>
+              </div>
+              <div class="cb-row">
+                <span class="cb-name">Structure</span>
+                <div class="cb-bar"><div class="cb-fill" style="width:50%"></div></div>
+                <span class="cb-pct">5/10</span>
+              </div>
+              <div class="cb-row">
+                <span class="cb-name">Commercial Gravity</span>
+                <div class="cb-bar"><div class="cb-fill" style="width:50%"></div></div>
+                <span class="cb-pct">5/10</span>
+              </div>
+              <div class="cb-row">
+                <span class="cb-name">Scale Readiness</span>
+                <div class="cb-bar"><div class="cb-fill" style="width:70%"></div></div>
+                <span class="cb-pct">7/10</span>
+              </div>
+            </div>
+            <div class="rec-box">
+              <h4>Architecture Recommendation</h4>
+              <p>Your experience has clear market value, but it's trapped in a delivery model that requires your constant presence. The highest-leverage move right now is to architect your core methodology into a repeatable system — one that can deliver value, generate revenue, and build credibility independently of your calendar. You're closer than you think. The gap isn't knowledge — it's structure.</p>
+            </div>
+            <div class="steven-row">
+              <img src="/Reignite/v3/steven-bio-transparent.png" alt="Steven" onerror="this.style.background='#E2E8F0';this.style.display='block'">
+              <div>
+                <div class="quote">"Your experience is the raw material. Architecture is what turns it into an asset that works without you."</div>
+                <div class="name">Steven — Strategist & Positioning Expert, Reignite Advisors</div>
+              </div>
+            </div>
+          </div>
+          <div class="r10-footer">
+            <button class="btn-orange">Book Your Architecture Call</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end cards-grid -->
+</div>
+
+<div style="text-align:center; padding: 48px 24px 64px; color: rgba(255,255,255,0.3); font-size: 12px;">
+  Reignite Advisors — Assessment Design Variations · 20 Layouts
+</div>
+
+</body>
+</html>

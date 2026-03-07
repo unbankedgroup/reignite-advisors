@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reignite — Logo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: #080E1A; color: #fff; }
+
+.page-header { text-align: center; padding: 56px 24px 20px; }
+.page-header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+.page-header p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.3); border-radius: 20px; padding: 5px 14px; font-size: 0.62rem; font-weight: 700; color: #FF8C60; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+
+.grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; padding: 32px 24px 64px;
+}
+
+.card {
+  background: #111827; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; overflow: hidden;
+}
+.card-preview {
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 32px; min-height: 260px;
+}
+.card-preview.light { background: #F5F5F5; }
+.card-preview.dark { background: #0A0F1C; }
+.card-preview.gradient { background: linear-gradient(135deg, #1B2A4A 0%, #0F1A2E 100%); }
+
+.card-info {
+  padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.card-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.card-name { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.card-desc { font-size: 0.72rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+.card-ref { display: inline-block; margin-top: 8px; background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.3); border-radius: 20px; padding: 3px 10px; font-size: 0.55rem; font-weight: 700; color: #FF8C60; letter-spacing: 1px; }
+
+.section-label {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px 8px;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 20px; margin-top: 24px;
+}
+
+.footer { text-align: center; padding: 24px; color: rgba(255,255,255,0.15); font-size: 0.68rem; border-top: 1px solid rgba(255,255,255,0.04); }
+
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="badge">Logo Concepts</div>
+  <h1>Reignite Brand Mark</h1>
+  <p>Reference design + 9 creative variations · Navy + Electric Orange</p>
+</div>
+
+<div class="section-label">Reference + Core Marks</div>
+
+<div class="grid">
+
+<!-- 1. REFERENCE (Steven's direction) -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="4" y="4" width="132" height="132" rx="14" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/>
+      <text x="32" y="105" font-family="'Plus Jakarta Sans',sans-serif" font-size="90" font-weight="800" fill="#ffffff">R</text>
+      <circle cx="102" cy="38" r="12" fill="#FF6B35"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 01</div>
+    <div class="card-name">Reference Mark</div>
+    <div class="card-desc">Steven's direction. Bold R, orange dot, navy square with orange border.</div>
+    <span class="card-ref">CLIENT DIRECTION</span>
+  </div>
+</div>
+
+<!-- 2. Refined Reference (cleaner proportions) -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="6" y="6" width="128" height="128" rx="18" fill="#1B2A4A" stroke="#FF6B35" stroke-width="3"/>
+      <text x="30" y="102" font-family="'Plus Jakarta Sans',sans-serif" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <circle cx="100" cy="36" r="10" fill="#FF6B35"/>
+      <circle cx="100" cy="36" r="4" fill="#1B2A4A"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 02</div>
+    <div class="card-name">Refined Mark</div>
+    <div class="card-desc">Cleaner proportions, thinner border, hollow dot adds depth. More premium.</div>
+  </div>
+</div>
+
+<!-- 3. Flame Dot -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="6" y="6" width="128" height="128" rx="18" fill="#1B2A4A"/>
+      <text x="30" y="102" font-family="'Plus Jakarta Sans',sans-serif" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <!-- Flame shape -->
+      <path d="M100,48 C100,48 96,40 96,35 C96,30 98,25 100,22 C102,25 104,30 104,35 C104,40 100,48 100,48Z" fill="#FF6B35"/>
+      <circle cx="100" cy="40" r="5" fill="#FF6B35"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 03</div>
+    <div class="card-name">Flame Mark</div>
+    <div class="card-desc">Dot becomes a flame. "Reignite" made literal. No border — cleaner silhouette.</div>
+  </div>
+</div>
+
+<!-- 4. Circle Mark -->
+<div class="card">
+  <div class="card-preview gradient">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <circle cx="70" cy="70" r="64" fill="#1B2A4A" stroke="#FF6B35" stroke-width="3"/>
+      <text x="38" y="97" font-family="'Plus Jakarta Sans',sans-serif" font-size="78" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <circle cx="105" cy="38" r="8" fill="#FF6B35"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 04</div>
+    <div class="card-name">Circle Mark</div>
+    <div class="card-desc">Softer shape. Circle feels approachable yet premium. Works well as favicon/avatar.</div>
+  </div>
+</div>
+
+<!-- 5. No Background -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <text x="22" y="108" font-family="'Plus Jakarta Sans',sans-serif" font-size="110" font-weight="900" fill="#ffffff" letter-spacing="-4">R</text>
+      <circle cx="108" cy="30" r="14" fill="#FF6B35"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 05</div>
+    <div class="card-name">Naked Mark</div>
+    <div class="card-desc">No container. Maximum boldness. The R and dot alone. Works on any background.</div>
+  </div>
+</div>
+
+<!-- 6. Horizontal Lockup -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="320" height="80" viewBox="0 0 320 80">
+      <rect x="4" y="4" width="72" height="72" rx="12" fill="#1B2A4A" stroke="#FF6B35" stroke-width="3"/>
+      <text x="18" y="58" font-family="'Plus Jakarta Sans',sans-serif" font-size="50" font-weight="800" fill="#ffffff">R</text>
+      <circle cx="58" cy="20" r="7" fill="#FF6B35"/>
+      <text x="90" y="52" font-family="'Plus Jakarta Sans',sans-serif" font-size="32" font-weight="800" fill="#ffffff" letter-spacing="4">REIGNITE</text>
+      <text x="90" y="68" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="3">ADVISORS</text>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 06</div>
+    <div class="card-name">Horizontal Lockup</div>
+    <div class="card-desc">Mark + wordmark side by side. For headers, email signatures, LinkedIn.</div>
+  </div>
+</div>
+
+<!-- 7. Spark Trail -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="6" y="6" width="128" height="128" rx="18" fill="#1B2A4A"/>
+      <text x="28" y="102" font-family="'Plus Jakarta Sans',sans-serif" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <!-- Spark trail from R leg to dot -->
+      <path d="M75,95 Q85,75 90,60 Q95,45 100,36" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round" opacity="0.5" stroke-dasharray="3 4"/>
+      <circle cx="100" cy="34" r="10" fill="#FF6B35"/>
+      <!-- Small sparks -->
+      <circle cx="90" cy="28" r="2" fill="#FF6B35" opacity="0.4"/>
+      <circle cx="108" cy="28" r="1.5" fill="#FF6B35" opacity="0.3"/>
+      <circle cx="104" cy="46" r="1.5" fill="#FF6B35" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 07</div>
+    <div class="card-name">Spark Trail</div>
+    <div class="card-desc">Ignition trail from R to dot. Energy and motion. The "reigniting" moment captured.</div>
+  </div>
+</div>
+
+<!-- 8. Inverted / Orange Mode -->
+<div class="card">
+  <div class="card-preview light">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="4" y="4" width="132" height="132" rx="16" fill="#FF6B35"/>
+      <text x="30" y="102" font-family="'Plus Jakarta Sans',sans-serif" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <circle cx="100" cy="36" r="10" fill="#1B2A4A"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 08</div>
+    <div class="card-name">Inverted Mark</div>
+    <div class="card-desc">Orange background, white R, navy dot. For light backgrounds, merch, print.</div>
+  </div>
+</div>
+
+<!-- 9. Outline -->
+<div class="card">
+  <div class="card-preview dark">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <rect x="6" y="6" width="128" height="128" rx="18" fill="none" stroke="#FF6B35" stroke-width="2.5"/>
+      <text x="30" y="102" font-family="'Plus Jakarta Sans',sans-serif" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">R</text>
+      <circle cx="100" cy="36" r="10" fill="#FF6B35"/>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 09</div>
+    <div class="card-name">Outline Mark</div>
+    <div class="card-desc">Transparent interior, orange outline. Elegant, modern. Works over images/gradients.</div>
+  </div>
+</div>
+
+<!-- 10. Stacked Lockup -->
+<div class="card">
+  <div class="card-preview gradient">
+    <svg width="160" height="180" viewBox="0 0 160 180">
+      <!-- Mark centered above -->
+      <rect x="30" y="4" width="100" height="100" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="3"/>
+      <text x="46" y="78" font-family="'Plus Jakarta Sans',sans-serif" font-size="68" font-weight="800" fill="#ffffff">R</text>
+      <circle cx="108" cy="30" r="9" fill="#FF6B35"/>
+      <!-- Wordmark below -->
+      <text x="80" y="130" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="4" text-anchor="middle">REIGNITE</text>
+      <line x1="30" y1="140" x2="130" y2="140" stroke="#FF6B35" stroke-width="1.5" opacity="0.4"/>
+      <text x="80" y="155" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="4" text-anchor="middle">ADVISORS</text>
+    </svg>
+  </div>
+  <div class="card-info">
+    <div class="card-label">Logo 10</div>
+    <div class="card-name">Stacked Lockup</div>
+    <div class="card-desc">Mark above wordmark. For presentations, title slides, business cards.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  Internal use only · Reignite Advisors · Built by Unbanked
+</div>
+
+</body>
+</html>

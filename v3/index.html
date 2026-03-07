@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Steven Tshakatumba | Reignite Advisors</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <style> :root { --navy: #1B2A4A; --navy-dark: #0F1A2E; --gold: #FF6B35; --gold-light: #FFB08A; --gold-dim: #CC4F1A; --white: #FFFFFF; --cream: #FAF9F7; --light-gray: #F5F5F5; --text-dark: #1A1A1A; --text-muted: #666666; } * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; height: auto; overflow-x: hidden; overflow-y: scroll !important; } body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.65; width: 100%; height: auto; overflow-x: hidden; overflow-y: scroll !important; -webkit-overflow-scrolling: touch; } h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; } a { text-decoration: none; transition: all 0.3s ease; } .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; } .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem; border: none; } .btn:not(.nav-cta) { --cta-width: 264px; --cta-height: 52px; --cta-padding-x: 24px; --cta-font-size: 1rem; --cta-radius: 8px; width: var(--cta-width); min-width: var(--cta-width); height: var(--cta-height); padding: 0 var(--cta-padding-x); font-size: var(--cta-font-size); line-height: 1; border-radius: var(--cta-radius); justify-content: center; white-space: nowrap; } .btn-gold { background: var(--gold); color: #ffffff; } .btn-gold:hover { background: #E05020; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,53,0.35); } .btn-navy { background: var(--navy); color: var(--white); } .btn-navy:hover { background: var(--navy-dark); transform: translateY(-2px); } .btn-outline-gold { background: transparent; color: var(--gold-light); border: 2px solid rgba(229,212,161,0.85); } .btn-outline-gold:hover { background: rgba(229,212,161,0.1); border-color: var(--gold-light); transform: translateY(-2px); } .tm { display:inline-block; font-size:0.5em; line-height:0; vertical-align:super; position:relative; top:-0.45em; margin:0; padding:0; color:inherit; letter-spacing:0; } .hero-ctas .btn { flex: 0 0 var(--cta-width); } .hero-ctas .btn-outline-gold .tm { display:inline-block !important; margin:0 !important; padding:0 !important; font-size:0.52em !important; line-height:0 !important; vertical-align:super !important; position:relative !important; top:-0.45em !important; color:currentColor !important; letter-spacing:0 !important; } /* Navigation */ nav:first-of-type { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 9999; padding: 20px 0; min-height: 70px; border-bottom: 1px solid rgba(27,42,74,0.08); } nav .container { display: flex; justify-content: space-between; align-items: center; } .logo-group { display: flex; flex-direction: column; } .logo-mark { display: flex; align-items: baseline; gap: 0; } .logo { font-size: 1.65rem; font-weight: 800; color: var(--navy); letter-spacing: 2px; text-transform: uppercase; } .logo-dot { color: var(--gold); font-size: 1.75rem; line-height: 1; margin-left: -2px; } .logo-sub { font-size: 0.58rem; font-weight: 600; color: var(--gold-dim); text-transform: uppercase; letter-spacing: 4px; margin-top: 2px; } nav .btn.nav-cta { width: auto; min-width: 0; max-width: none; height: 42px; padding: 0 16px; font-size: 0.88rem; line-height: 1; border-radius: 8px; white-space: nowrap; justify-content: center; font-weight: 700; gap: 7px; align-items: center; } nav .btn.nav-cta i { font-size: 0.95em; line-height: 1; display: inline-flex; align-items: center; justify-content: center; } /* Hero Section */ .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 62vh; } .hero-left { background: var(--navy); padding: 96px 44px 34px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; } .hero-left::before { content: ''; position: absolute; top: -100px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 60%); } .hero-left::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to top, rgba(27,42,74,0.5) 0%, transparent 100%); } .hero-tag { color: var(--gold); font-size: 0.7rem; font-weight: 600; letter-spacing: 3.2px; text-transform: uppercase; margin-bottom: 16px; position: relative; z-index: 1; } .hero-left h1 { font-size: 3.15rem; line-height: 1.12; color: var(--white); margin-bottom: 18px; font-weight: 800; letter-spacing: -0.7px; position: relative; z-index: 1; } .hero-left h1 .highlight { color: var(--gold); } .hero-sub { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 28px; max-width: 480px; line-height: 1.7; position: relative; z-index: 1; } .hero-ctas { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex-wrap: nowrap; margin-bottom: 18px; } .hero-right { position: relative; overflow: hidden; padding: 30px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--navy) 0%, #243B5A 100%); } .hero-image-wrapper { position: relative; width: 100%; max-width: 320px; display: flex; justify-content: center; } .hero-image-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 90%; background: radial-gradient(ellipse at center, rgba(255,107,53,0.15) 0%, transparent 70%); pointer-events: none; z-index: 1; } .hero-image-wrapper img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: contain; object-position: center bottom; -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%); } .hero-wordmark { position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); font-size: 6.5rem; font-weight: 800; color: rgba(255,255,255,0.32); letter-spacing: 12px; line-height: 1; text-align: center; width: 100%; pointer-events: none; } .hero-wordmark-sub { position: absolute; top: calc(80% + 3.5rem); left: 50%; transform: translate(-50%, -50%); font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.28); letter-spacing: 6px; text-transform: uppercase; text-align: center; width: 100%; pointer-events: none; } @media (max-width: 600px) { .hero-wordmark { font-size: 3.2rem; letter-spacing: 6px; } .hero-wordmark-sub { font-size: 0.7rem; letter-spacing: 4px; top: calc(80% + 2rem); } } /* Trust Strip */ .trust-strip { background: var(--navy); padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05); } .trust-strip p { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3.0px; margin-bottom: 18px; font-weight: 600; } .trust-marquee { overflow: hidden; position: relative; } .trust-marquee::before, .trust-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; } .trust-marquee::before { left: 0; background: linear-gradient(to right, var(--navy), transparent); } .trust-marquee::after { right: 0; background: linear-gradient(to left, var(--navy), transparent); } .trust-logos { display: flex; gap: 18px; width: max-content; animation: trustScroll 24s linear infinite; } .trust-marquee:hover .trust-logos { animation-play-state: paused; } .trust-logo { flex: 0 0 auto; width: 120px; height: 58px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 12px 14px; } .trust-logo img { height: 100%; max-width: 110px; object-fit: contain; filter: grayscale(100%) brightness(1.4) opacity(0.75); transition: all 0.3s ease; } .trust-logo img:hover { filter: grayscale(100%) brightness(1.6) opacity(1); } .trust-logo-fallback { color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; } @keyframes trustScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } } /* Why This Matters - with diagram */ .why { padding: 128px 0; background: var(--white); } .why h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .why h2 span { color: var(--gold); } .why .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 18px; max-width: 700px; margin-left: auto; margin-right: auto; } .why-bullets { list-style: none; display: grid; gap: 10px; max-width: 520px; margin: 0 auto 34px; } .why-bullets li { display: flex; justify-content: center; gap: 8px; color: var(--navy); font-weight: 600; font-size: 0.9rem; text-align: center; } .why-bullets li span { color: var(--gold-dim); } .why-visual { max-width: 520px; margin: 0 auto 45px; position: relative; } .flywheel { position: relative; width: 280px; height: 280px; margin: 0 auto; } .flywheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 8px 30px rgba(27,42,74,0.3); } .flywheel-center span { color: var(--gold); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; } .flywheel-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; border: 2px dashed rgba(255,107,53,0.35); border-radius: 50%; animation: spin 30s linear infinite; } .flywheel-node { position: absolute; width: 72px; height: 72px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(27,42,74,0.12); border: 2px solid var(--gold); z-index: 2; } .flywheel-node i { color: var(--navy); font-size: 1.4rem; } .flywheel-node.n1 { top: calc(50% - 100px); left: 50%; transform: translate(-50%, -50%); } .flywheel-node.n2 { top: calc(50% + 50px); left: calc(50% - 86.6px); transform: translate(-50%, -50%); } .flywheel-node.n3 { top: calc(50% + 50px); left: calc(50% + 86.6px); transform: translate(-50%, -50%); } @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } } .flywheel-arrows { position: absolute; top: 0; left: 0; z-index: 1; } .why-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 860px; margin: 0 auto; } .why-card { padding: 28px 24px; border-radius: 12px; border: 1px solid rgba(27,42,74,0.1); } .why-card h3 { font-size: 1.1rem; margin-bottom: 14px; } .why-card ul { list-style: none; display: grid; gap: 10px; } .why-card li { font-size: 0.92rem; display: flex; align-items: center; gap: 10px; } .why-card li::before { content: '•'; font-size: 1.2rem; line-height: 1; } .why-card-left { background: #fff7f7; border-color: #f1d6d6; } .why-card-left h3, .why-card-left li { color: #8a4343; } .why-card-right { background: var(--navy); border-color: var(--gold); } .why-card-right h3, .why-card-right li { color: var(--gold-light); } /* Reignite Advantage */ .advantage { padding: 128px 0; background: var(--cream); } .advantage h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .advantage h2 span { color: var(--gold); } .advantage .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 45px; max-width: 560px; margin-left: auto; margin-right: auto; } .advantage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; } .advantage-card { background: var(--white); padding: 32px 26px; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(27,42,74,0.08); } .advantage-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 35px rgba(27,42,74,0.1); } .advantage-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--navy) 0%, #2A3D5C 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; } .advantage-icon i { color: var(--gold); font-size: 1.4rem; } .advantage-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--navy); } .advantage-card p { color: var(--text-muted); font-size: 0.88rem; } /* Method */ /* Removed - replaced by Framework pathway section */ /* Results Carousel */ .results { padding: 128px 0; background: var(--navy); position: relative; overflow: hidden; } .results::before { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 60%); } .results h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--white); letter-spacing: -0.5px; } .results h2 span { color: var(--gold); } .results .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; } .carousel-wrapper { position: relative; max-width: 700px; margin: 0 auto; } .carousel-track { display: flex; gap: 20px; overflow: hidden; scroll-behavior: smooth; } .carousel-track::-webkit-scrollbar { display: none; } .carousel-card { flex: 0 0 100%; min-width: 100%; background: rgba(255,255,255,0.05); padding: 26px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; } .carousel-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,107,53,0.3); } .carousel-card img { width: 54px; height: 54px; border-radius: 50%; margin-bottom: 12px; object-fit: cover; border: 2px solid var(--gold); } .carousel-card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--gold-light); } .carousel-card p { color: rgba(255,255,255,0.66); font-size: 0.82rem; line-height: 1.6; margin-bottom: 12px; } .result-shift { padding: 10px 14px; background: rgba(255,107,53,0.15); border-radius: 6px; font-size: 0.78rem; font-weight: 600; color: var(--gold-light); border-left: 3px solid var(--gold); text-align: left; } .result-placeholder { margin-top: 10px; font-size: 0.73rem; color: rgba(255,255,255,0.58); font-style: italic; letter-spacing: 0.2px; text-align: left; } .result-profile { margin-top: 14px; display: flex; align-items: center; gap: 10px; justify-content: flex-start; } .result-profile img { width: 42px; height: 42px; margin: 0; border-width: 1.5px; } .result-profile-meta { text-align: left; } .result-profile-name { color: var(--white); font-size: 0.82rem; font-weight: 700; line-height: 1.2; } .result-role { color: var(--gold); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; } .results-wall { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } .results-chip { border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 8px 12px; font-size: 0.72rem; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.04); text-align: center; } .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 30px; } .carousel-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: var(--navy-dark); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.3s ease; } .carousel-btn:hover { background: #E05020; transform: scale(1.05); } .results-trust-line { text-align: center; margin-top: 18px; color: rgba(255,255,255,0.72); font-size: 0.78rem; letter-spacing: 0.3px; } /* Who */ .who { padding: 128px 0; background: var(--cream); } .who h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .who h2 span { color: var(--gold); } .who .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; } .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 720px; margin: 0 auto; } .who-item { display: flex; align-items: flex-start; gap: 12px; padding: 18px; background: var(--white); border-radius: 10px; border: 1px solid rgba(27,42,74,0.06); } .who-item i { color: var(--gold); margin-top: 3px; font-size: 0.9rem; } .who-item p { font-size: 0.92rem; color: var(--text-dark); } /* Lead Capture */ .lead-capture { padding: 96px 0; background: var(--white); text-align: center; border-top: 1px solid var(--light-gray); } .lead-capture h2 { font-size: 1.7rem; margin-bottom: 10px; color: var(--navy); } .lead-capture h2 span { color: var(--gold); } .lead-capture p { color: var(--text-muted); margin-bottom: 26px; } .lead-form { display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto; flex-wrap: wrap; } .lead-form input { flex: 1; min-width: 220px; padding: 14px 18px; border: 2px solid #E5E5E5; border-radius: 6px; font-size: 1rem; font-family: inherit; } .lead-form input:focus { outline: none; border-color: var(--gold); } /* FAQ */ .faq { padding: 128px 0; background: var(--cream); } .faq h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .faq h2 span { color: var(--gold); } .faq .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; } .faq-list { max-width: 660px; margin: 0 auto; } .faq-item { border-bottom: 1px solid rgba(27,42,74,0.08); } .faq-question { padding: 18px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; } .faq-question h4 { font-size: 0.98rem; font-weight: 600; color: var(--navy); } .faq-question i { color: var(--gold); transition: transform 0.3s ease; font-size: 0.8rem; } .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; } .faq-answer p { color: var(--text-muted); font-size: 0.88rem; padding-bottom: 18px; } .faq-item.active .faq-answer { max-height: 500px; } .faq-item.active .faq-question i { transform: rotate(180deg); } /* Final CTA */ .final-cta { padding: 96px 0; background: var(--navy); text-align: center; color: var(--white); position: relative; overflow: hidden; } .final-cta::before { content: ''; position: absolute; top: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, transparent 60%); } .final-cta::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 60%); } .final-cta h2 { font-size: 1.8rem; margin-bottom: 10px; position: relative; } .final-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 1rem; position: relative; } /* Footer */ footer { background: var(--navy-dark); padding: 36px 0 26px; color: rgba(255,255,255,0.45); text-align: center; } footer .site-footer .logo-group, footer .logo-group { align-items: center; margin-bottom: 6px; } footer .site-footer .logo { color: var(--white); font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; } footer .site-footer .logo-dot { font-size: 1.5rem; margin-left: -2px; } footer .site-footer .logo-sub { color: var(--gold); font-size: 0.52rem; letter-spacing: 4px; } footer .tagline { color: var(--gold); margin-bottom: 14px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; } footer .copyright { font-size: 0.65rem; margin-top: 16px; opacity: 0.4; } /* Responsive */ @media (max-width: 900px) { .hero { grid-template-columns: 1fr; min-height: auto; } .hero-left { padding: 96px 24px 32px; min-height: auto; justify-content: flex-start; overflow: visible; } .hero-left h1 { line-height: 1.2; } .hero-right { height: 420px; } .hero-right img { max-width: 300px; } .why-grid, .advantage-grid { grid-template-columns: 1fr 1fr; } .who-grid { grid-template-columns: 1fr; } .lead-form { flex-direction: column; padding: 0 20px; } .carousel-card { flex: 0 0 100%; } } @media (max-width: 600px) { .why-grid, .advantage-grid { grid-template-columns: 1fr; } .hero-left { padding-top: 104px; } .hero-left h1 { font-size: 1.9rem; } .hero-ctas { flex-direction: column; align-items: stretch; }  .trust-logos { gap: 24px; } .results-wall { grid-template-columns: 1fr; } .flywheel { transform: scale(0.85); } .why-visual { max-width: 360px; } .flywheel-label { font-size: 0.63rem; letter-spacing: 0.7px; } .triangle-wrap { width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; display: flex; justify-content: center; } .triangle-core { width: 320px; height: 229px; margin-left: auto; margin-right: auto; left: 50%; transform: translateX(-50%); } .triangle-node { width: 32px; height: 32px; } .triangle-node i { font-size: 0.82rem; } .triangle-node.clarity { top: 20px; left: 160px; } .triangle-node.offer { top: 223px; left: 43px; } .triangle-node.demand { top: 223px; left: 277px; } .triangle-label { font-size: 0.62rem; letter-spacing: 0.8px; } .triangle-label.clarity { top: -10px; left: 160px; } .triangle-label.offer { top: 245px; left: 43px; } .triangle-label.demand { top: 245px; left: 277px; } .triangle-center { width: 96px; height: 96px; font-size: 0.65rem; } .triangle-flow-dot { width: 7px; height: 7px; top: 20px; left: 160px; } .triangle-flow-dot.dot-2 { width: 7px; height: 7px; } @keyframes triangleOrbit { 0% { top: 20px; left: 160px; transform: translate(-50%, -50%); } 33.333% { top: 223px; left: 277px; transform: translate(-50%, -50%); } 66.666% { top: 223px; left: 43px; transform: translate(-50%, -50%); } 100% { top: 20px; left: 160px; transform: translate(-50%, -50%); } } } /* Anti-Pattern Stack */ .anti-pattern { padding: 128px 0; background: var(--white); border-bottom: 1px solid var(--light-gray); } .anti-pattern h2 { font-size: 1.7rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .anti-pattern .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; } .anti-pattern-stack { max-width: 560px; margin: 0 auto; background: var(--light-gray); border-radius: 10px; padding: 8px; } .anti-pattern-row { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--white); border-radius: 8px; margin-bottom: 6px; border: 1px solid rgba(27,42,74,0.06); } .anti-pattern-row:last-child { margin-bottom: 0; } .anti-pattern-row i { color: var(--gold-dim); font-size: 0.85rem; width: 18px; text-align: center; } .anti-pattern-row span { color: var(--text-muted); font-size: 0.92rem; } .anti-pattern-transition { text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 0.9rem; font-style: italic; } /* Momentum Triangle */ .momentum-triangle { padding: 128px 0; background: var(--cream); border-top: 1px solid rgba(27,42,74,0.06); border-bottom: 1px solid rgba(27,42,74,0.06); } .momentum-triangle h2 { font-size: 1.8rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.4px; } .momentum-triangle h2 span { color: var(--gold); } .momentum-triangle .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 34px; max-width: 620px; margin-left: auto; margin-right: auto; } .triangle-wrap { max-width: 560px; margin: 0 auto; position: relative; } .triangle-core { position: relative; width: 420px; height: 300px; margin: 0 auto; } .triangle-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; } .triangle-lines path { stroke: rgba(27,42,74,0.45); stroke-width: 1.2; fill: none; } .triangle-lines .triangle-accent { stroke: rgba(255,107,53,0.6); stroke-width: 0.9; stroke-dasharray: 5 9; } .triangle-node { position: absolute; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(145deg, #13213b 0%, var(--navy) 100%); border: 1.6px solid rgba(255,107,53,0.9); display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 0 4px rgba(255,107,53,0.12), 0 8px 18px rgba(15,26,46,0.28); transform: translate(-50%, -50%); } .triangle-node i { color: var(--gold-light); font-size: 0.96rem; line-height: 1; } .triangle-node.clarity { top: 26px; left: 210px; } .triangle-node.offer { top: 293px; left: 56px; } .triangle-node.demand { top: 293px; left: 364px; } .triangle-label { position: absolute; color: var(--navy); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; z-index: 4; } .triangle-label.clarity { top: -30px; left: 210px; transform: translateX(-50%); } .triangle-label.offer { top: 319px; left: 56px; transform: translateX(-50%); } .triangle-label.demand { top: 319px; left: 364px; transform: translateX(-50%); } .triangle-center { position: absolute; /* Triangle centroid (from vertices), not container midpoint */ top: 67.85%; left: 50%; transform: translate(-50%, -50%); width: 116px; height: 116px; color: var(--gold-light); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; line-height: 1.2; display: flex; align-items: center; justify-content: center; padding: 0 14px; border: 2px solid rgba(255,107,53,0.85); background: linear-gradient(145deg, #1b2a4a 0%, #22365f 100%); border-radius: 50%; box-shadow: 0 14px 30px rgba(15,26,46,0.28); z-index: 4; } .triangle-flow-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); border: 1px solid rgba(242,223,173,0.45); box-shadow: 0 0 12px rgba(255,107,53,0.45); z-index: 2; animation: triangleOrbit 13s linear infinite; top: 26px; left: 210px; transform: translate(-50%, -50%); } .triangle-flow-dot.dot-2 { opacity: 0.5; animation-delay: -6.5s; } @keyframes triangleOrbit { 0% { top: 26px; left: 210px; transform: translate(-50%, -50%); } 33.333% { top: 293px; left: 364px; transform: translate(-50%, -50%); } 66.666% { top: 293px; left: 56px; transform: translate(-50%, -50%); } 100% { top: 26px; left: 210px; transform: translate(-50%, -50%); } } @media (max-width: 600px) { .triangle-wrap { width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; display: flex; justify-content: center; } .triangle-core { width: 320px; height: 229px; margin-left: auto; margin-right: auto; left: auto; transform: none; } .triangle-node { width: 32px; height: 32px; } .triangle-node i { font-size: 0.82rem; } .triangle-node.clarity { top: 20px; left: 160px; } .triangle-node.offer { top: 223px; left: 43px; } .triangle-node.demand { top: 223px; left: 277px; } .triangle-label { font-size: 0.62rem; letter-spacing: 0.8px; } .triangle-label.clarity { top: -10px; left: 160px; transform: translateX(-50%); } .triangle-label.offer { top: 245px; left: 43px; transform: translateX(-50%); } .triangle-label.demand { top: 245px; left: 277px; transform: translateX(-50%); } .triangle-center { width: 96px; height: 96px; font-size: 0.65rem; } .triangle-flow-dot { width: 7px; height: 7px; top: 20px; left: 160px; } .triangle-flow-dot.dot-2 { width: 7px; height: 7px; } @keyframes triangleOrbit { 0% { top: 20px; left: 160px; transform: translate(-50%, -50%); } 33.333% { top: 223px; left: 277px; transform: translate(-50%, -50%); } 66.666% { top: 223px; left: 43px; transform: translate(-50%, -50%); } 100% { top: 20px; left: 160px; transform: translate(-50%, -50%); } } } /* Contrast Matrix */ .contrast-matrix { padding: 128px 0; background: var(--cream); } .contrast-matrix h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--navy); letter-spacing: -0.5px; } .contrast-matrix h2 span { color: var(--gold); } .contrast-matrix .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; } .matrix-container { max-width: 800px; margin: 0 auto; } .matrix-header { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 6px; } .matrix-header-left { background: #E8E8E8; padding: 14px 20px; text-align: center; border-radius: 8px 0 0 8px; font-weight: 600; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; } .matrix-header-right { background: var(--navy); padding: 14px 20px; text-align: center; border-radius: 0 8px 8px 0; font-weight: 700; font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--navy); } .matrix-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 6px; } .matrix-row-left { background: var(--white); padding: 18px 20px; border-radius: 8px 0 0 8px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(27,42,74,0.08); } .matrix-row-left i { color: var(--gold-dim); font-size: 0.8rem; } .matrix-row-left span { color: var(--text-muted); font-size: 0.88rem; } .matrix-row-right { background: var(--navy); padding: 18px 20px; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; border: 2px solid var(--navy); border-left: none; } .matrix-row-right i { color: var(--gold); font-size: 0.8rem; } .matrix-row-right span { color: var(--white); font-size: 0.88rem; font-weight: 500; } .matrix-cta { text-align: center; margin-top: 36px; }  @media (max-width: 600px) { .matrix-container { padding: 0 16px; } .matrix-header, .matrix-row { grid-template-columns: 1fr; } .matrix-header-left { border-radius: 8px 8px 0 0; } .matrix-header-right { border-radius: 0 0 8px 8px; } .matrix-row-left { border-radius: 8px 8px 0 0; } .matrix-row-right { border-radius: 0 0 8px 8px; border-left: 2px solid var(--navy); } } /* Micro assurance text */ .micro-assurance { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; text-align: center !important; width: 100%; margin-left: auto; margin-right: auto; } .hero-left .micro-assurance { color: rgba(255,255,255,0.55); text-align: left !important; margin-left: 0 !important; margin-right: auto !important; } .final-cta .micro-assurance { color: rgba(255,255,255,0.6); } /* Flywheel labels */ .flywheel { --flywheel-label-gap: 14px; } .flywheel-label { position: absolute; font-size: 0.68rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.9px; white-space: nowrap; z-index: 4; line-height: 1; pointer-events: none; } .flywheel-label.l1 { top: calc(50% - 100px - 36px - var(--flywheel-label-gap)); left: 50%; transform: translate(-50%, -100%); } .flywheel-label.l2 { top: calc(50% + 50px + 36px + var(--flywheel-label-gap)); left: calc(50% - 86.6px); transform: translateX(-50%); } .flywheel-label.l3 { top: calc(50% + 50px + 36px + var(--flywheel-label-gap)); left: calc(50% + 86.6px); transform: translateX(-50%); } /* Flywheel caption */ .flywheel-caption { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 16px; font-style: italic; } /* Arrow between nodes */ .flywheel-arrow { position: absolute; color: var(--gold-dim); font-size: 1rem; } /* Framework Pathway - Luxury 6-step architecture */ .framework { padding: 128px 0; background: linear-gradient(180deg, var(--navy) 0%, #172744 65%, #14213a 100%); position: relative; overflow: hidden; } .framework::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgba(255,107,53,0.09), transparent 42%); pointer-events: none; } .framework .container { position: relative; } .framework h2 { font-size: 1.9rem; text-align: center; margin-bottom: 10px; color: var(--white); letter-spacing: -0.5px; position: relative; z-index: 1; } .framework h2 span { color: var(--gold-light); } .framework .section-sub { text-align: center; color: rgba(255,255,255,0.74); margin-bottom: 48px; max-width: 860px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; } .framework-pathway-desktop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; column-gap: 20px; row-gap: 28px; position: relative; max-width: 980px; margin: 0 auto; z-index: 1; } .framework-pathway-desktop::before { content: none; } .framework-step { background: #fbfcff; border: 1px solid rgba(27,42,74,0.16); border-radius: 16px; padding: 9px 12px; min-height: 96px; height: 100%; display: grid; grid-template-columns: 40px 1fr; column-gap: 9px; row-gap: 1px; align-items: center; transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease; position: relative; box-shadow: 0 8px 24px rgba(10, 22, 44, 0.14); z-index: 1; } .framework-step:hover { transform: translateY(-2px); border-color: rgba(255,107,53,0.55); box-shadow: 0 12px 30px rgba(10, 22, 44, 0.2); } .framework-step-head { display: contents; } .framework-step-num, .framework-step-badge { display: none !important; } .framework-step-icon, .framework-step-mobile-icon { width: 36px; height: 36px; border-radius: 50%; background: #14213a; border: 2px solid #c9a84c; color: #F0A882; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; box-shadow: 0 6px 18px rgba(10,22,44,0.3); flex-shrink: 0; grid-column: 1; grid-row: 1; } .framework-step h4 { grid-column: 2; grid-row: 1; font-size: 0.94rem; color: var(--navy); margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; line-height: 1.15; } .framework-step-divider { display: none !important; border: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; } .framework-step p { grid-column: 2; grid-row: 2; font-size: 0.82rem; color: #445168; line-height: 1.3; margin: 0; } .framework-connector, .framework-pathway-mobile { display: none !important; } @media (max-width: 768px) { .framework { padding: 82px 0; } .framework .section-sub { margin-bottom: 34px; } .framework-pathway-desktop { grid-template-columns: 1fr; grid-auto-rows: 1fr; max-width: 680px; row-gap: 22px; column-gap: 0; } .framework-pathway-desktop::before { content: none; } .framework-step { grid-template-columns: 36px 1fr; min-height: 88px; padding: 8px 10px; column-gap: 8px; } .framework-step h4 { font-size: 0.86rem; } .framework-step p { font-size: 0.76rem; line-height: 1.25; } .framework-step-icon, .framework-step-mobile-icon { width: 32px; height: 32px; font-size: 0.86rem; } } /* TM tight-fix override */
+.hero-ctas .btn-outline-gold { letter-spacing: 0 !important; }
+.hero-ctas .btn-outline-gold .tm { display: inline-block !important; margin-left: -0.10em !important; margin-right: 0 !important; padding: 0 !important; font-size: 0.52em !important; line-height: 0 !important; vertical-align: super !important; position: relative !important; top: -0.48em !important; color: currentColor !important; letter-spacing: 0 !important;
+} 
+/* Trust strip force-color override */
+.trust-strip { background: #0A1428 !important; }
+.trust-strip .trust-line { color: rgba(255,255,255,0.88) !important; }
+.trust-strip .trust-logo,
+.trust-strip .trust-logos img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 16px !important;
+  border-radius: 0 !important;
+  height: 34px !important;
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+}
+@media (max-width: 900px){ .testimonials-grid{grid-template-columns:1fr !important;} }
+.metric-stamp{margin:12px 0 14px;padding:10px 12px;border-left:3px solid var(--gold);background:rgba(255,107,53,0.14);border-radius:8px;display:flex;flex-direction:column;gap:2px}
+.metric-label{font-size:.66rem;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:700}
+.metric-value{font-size:1rem;line-height:1.2;color:var(--gold-light);font-weight:800}
+.metric-time{font-size:.72rem;color:rgba(255,255,255,.74)}
+@media (max-width:900px){.testimonials-grid{grid-template-columns:1fr !important;}}
+/* === UI overrides (desktop) === */
+@media (min-width: 768px) {
+  .hero-ctas .hero-ctas { max-width: 520px; }
+  .micro-assurance { max-width: 520px; }
+}
+/* Force center the closing anti-pattern line */
+.anti-pattern .anti-pattern-transition { text-align: center !important; width: 100%; }
+/* Tighten trust strip density */
+.trust-logo { width: 110px !important; height: 54px !important; padding: 10px 12px !important; }
+.trust-logos { gap: 14px !important; }
+/* === Button sizing fix (hero) === */
+@media (min-width: 768px) {
+  .hero .hero-left .hero-ctas a.btn.btn-gold {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: none !important;
+    align-self: flex-start !important;
+  }
+}
+/* === Hero CTA width hard lock (all viewports) === */
+.hero-ctas a.btn {
+  width: auto !important;
+  max-width: none !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+}
+.hero-ctas { align-items: flex-start !important; }
+@media (max-width: 600px) {
+  .lead-capture .micro-assurance { text-align: center !important; width: 100%; }
+  nav .btn.nav-cta {
+    font-size: 0.72rem !important;
+    padding: 0 10px !important;
+    height: 36px !important;
+    gap: 5px !important;
+  }
+  nav .container {
+    gap: 8px;
+  }
+  .logo { font-size: 1.35rem !important; }
+}
+/* === Section spacing tighten === */
+.why-cards { padding: 80px 0 !important; }
+.truth-section { padding: 80px 0 !important; }
+.anti-pattern { padding: 80px 0 !important; }
+.momentum-triangle { padding: 80px 0 !important; }
+.contrast-matrix { padding: 80px 0 !important; }
+.client-proof-light { padding: 80px 0 !important; }
+.faq { padding: 80px 0 !important; }
+.lead-capture { padding: 72px 0 !important; }
+.framework { padding: 88px 0 !important; }
+.steven-bio { padding: 80px 0 !important; }
+.final-cta { padding: 72px 0 !important; }
+/* === #6: Tighter why-cards === */
+.why-icon-card { padding: 28px 20px !important; }
+.why-icon-card p { font-size: 0.95rem !important; line-height: 1.5 !important; }
+.why-cards h2 { margin-bottom: 32px !important; }
+/* === #9: Trust strip mobile fade === */
+@media (max-width: 600px) {
+  .trust-marquee::before, .trust-marquee::after {
+    width: 40px !important;
+    z-index: 2 !important;
+  }
+  .trust-marquee::before {
+    background: linear-gradient(to right, #0A1428, transparent) !important;
+  }
+  .trust-marquee::after {
+    background: linear-gradient(to left, #0A1428, transparent) !important;
+  }
+}
+/* === #10: Larger bio photo on desktop === */
+@media (min-width: 769px) {
+  .bio-layout { grid-template-columns: 340px 1fr !important; }
+}
+/* === Trust logos: ~5 visible at a time, smooth scroll === */
+.trust-logos {
+  gap: 40px !important;
+  animation-duration: 40s !important;
+}
+/* Fix desktop edge fade color to match strip bg */
+.trust-marquee::before {
+  background: linear-gradient(to right, #0A1428, transparent) !important;
+}
+.trust-marquee::after {
+  background: linear-gradient(to left, #0A1428, transparent) !important;
+}
+/* Mobile: compact logos */
+@media (max-width: 768px) {
+  .trust-strip .trust-logo,
+  .trust-strip .trust-logos img {
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+    height: 28px !important;
+    padding: 0 8px !important;
+  }
+  .trust-logos {
+    gap: 20px !important;
+  }
+}
+/* === #12: Anti-pattern equal height columns === */
+.ap-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.ap-col .ap-item:last-child {
+  margin-bottom: 0;
+  margin-top: auto;
+}
+/* === QA2 #2: Truth-to-antipattern gap === */
+.truth-section { padding-bottom: 48px !important; }
+.anti-pattern { padding-top: 48px !important; }
+/* === QA2 #5: Merge transition band into truth section === */
+.transition-band {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.truth-section {
+  background: var(--navy) !important;
+  padding-top: 48px !important;
+  padding-bottom: 64px !important;
+}
+.truth-section h2 { color: var(--white) !important; }
+.truth-section .section-sub { color: rgba(255,255,255,0.65) !important; }
+.truth-section .truth-item { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.1) !important; }
+.truth-section .truth-item i { color: var(--gold) !important; }
+.truth-section .truth-item span { color: rgba(255,255,255,0.9) !important; }
+.truth-section .truth-closer { color: var(--gold-light) !important; }
+/* === QA2 #6: Lead capture visual distinction === */
+.lead-capture {
+  background: var(--cream) !important;
+  border-top: none !important;
+}
+.lead-capture .container {
+  max-width: 640px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 48px 40px !important;
+  box-shadow: 0 8px 30px rgba(27,42,74,0.08);
+  border: 1px solid rgba(27,42,74,0.06);
+}
+/* === QA2 #9: Star ratings on testimonial cards === */
+.proof-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+.proof-stars i {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+/* === QA2 #10: Footer nav links polish === */
+.footer-nav a {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+.footer-nav a:hover {
+  color: var(--gold) !important;
+  background: rgba(255,107,53,0.1) !important;
+}
+/* Footer nav: stack on mobile */
+@media (max-width: 600px) {
+  .footer-nav {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+/* === QA2 #11: Softer hero image fade === */
+.hero-image-wrapper img {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%) !important;
+  mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%) !important;
+}
+/* === #13: FAQ-to-CTA bridge === */
+.faq-bridge {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(27,42,74,0.08);
+}
+.faq-bridge a {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.faq-bridge a:hover {
+  color: var(--gold-dim);
+  text-decoration: underline;
+}
+/* === Consistency: Standardize card border-radius to 12px === */
+.why-icon-card { border-radius: 12px !important; }
+.truth-item { border-radius: 12px !important; }
+.ap-item { border-radius: 12px !important; }
+.faq-item { border-radius: 12px !important; }
+.proof-card { border-radius: 12px !important; }
+.contrast-row { border-radius: 12px !important; }
+/* === Consistency: Normalize H2 sizes (primary 1.9rem, secondary 1.5rem) === */
+.why-cards h2,
+.contrast-matrix h2,
+.client-proof-light h2,
+.faq h2,
+.final-cta h2,
+.momentum-triangle h2,
+.anti-pattern h2,
+.lead-capture h2 { font-size: 1.9rem !important; }
+.truth-section h2,
+.steven-bio h2 { font-size: 1.6rem !important; }
+/* Normalize h2 margin-bottom */
+section h2 { margin-bottom: 10px !important; }
+.why-cards h2 { margin-bottom: 32px !important; }
+/* === Consistency: Separate consecutive cream sections === */
+.contrast-matrix { border-bottom: 1px solid rgba(27,42,74,0.06) !important; }
+.client-proof-light { background: var(--white) !important; }
+/* === Premium Testimonial Cards === */
+.results { padding: 80px 0; }
+.results .testimonials-grid { gap: 24px; margin-top: 40px; }
+.results .testimonial-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.results .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(255,107,53,0.45); }
+@media (max-width: 900px) { .results .testimonials-grid { grid-template-columns: 1fr !important; } }
+/* === Sprint 6: Premium Vertical Timeline === */
+.process-timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 48px auto 0;
+  padding-left: 0;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(255,107,53,0.6), rgba(255,107,53,0.1));
+}
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 0 0 48px 0;
+  position: relative;
+}
+.timeline-step:last-child { padding-bottom: 0; }
+.timeline-step--highlight .timeline-node { background: var(--navy); border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59,130,246,0.2), 0 6px 20px rgba(59,130,246,0.25); }
+.timeline-step--highlight .timeline-node i { color: #fff; }
+.timeline-step--highlight .timeline-node .step-num { background: #3b82f6; color: #fff; }
+.timeline-node {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+.timeline-step:hover .timeline-node {
+  background: rgba(255,107,53,0.12);
+  border-color: var(--gold);
+  transform: scale(1.08);
+}
+.timeline-node i {
+  font-size: 1.15rem;
+  color: #fff;
+}
+.timeline-node .step-num {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-content {
+  flex: 1;
+  padding-top: 4px;
+}
+.timeline-content h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: 0.02em;
+}
+.timeline-content p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .process-timeline { margin-top: 32px; }
+  .process-timeline::before { left: 22px; }
+  .timeline-node { flex: 0 0 44px; width: 44px; height: 44px; }
+  .timeline-node i { font-size: 1rem; }
+  .timeline-step { gap: 18px; padding-bottom: 36px; }
+  .timeline-content h4 { font-size: 1.05rem; }
+}
+/* === Testimonial Carousel === */
+.results { padding: 80px 0; background: var(--navy); position: relative; overflow: hidden; }
+.results::before { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 60%); }
+.results h2 { font-size: 1.9rem; text-align: center; color: var(--white); margin-bottom: 10px; letter-spacing: -0.5px; }
+.results h2 span { color: var(--gold); }
+.results .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.testimonial-carousel { max-width: 680px; margin: 0 auto; position: relative; overflow: hidden; }
+.tc-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.tc-card {
+  flex: 0 0 100%;
+  min-width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,107,53,0.2);
+  border-radius: 16px;
+  padding: 40px 36px 32px;
+  position: relative;
+  box-sizing: border-box;
+}
+.tc-quote-mark {
+  font-size: 5rem;
+  line-height: 0.6;
+  color: rgba(255,107,53,0.35);
+  font-family: Georgia, serif;
+  margin-bottom: 20px;
+  display: block;
+}
+.tc-quote {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 28px;
+  font-style: italic;
+}
+.tc-metric {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: rgba(255,107,53,0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+}
+.tc-metric-value { color: var(--gold); font-weight: 700; font-size: 0.95rem; }
+.tc-metric-time { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+.tc-profile { display: flex; align-items: center; gap: 14px; }
+.tc-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.08);
+  padding: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.tc-name { color: #fff; font-weight: 600; font-size: 0.95rem; }
+.tc-role { color: rgba(255,107,53,0.8); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+.tc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+.tc-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+@media (max-width: 600px) {
+  .tc-card { padding: 28px 22px 24px; }
+  .tc-quote { font-size: 0.95rem; }
+  .tc-quote-mark { font-size: 4rem; }
+}
+.tc-face {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,107,53,0.5);
+  flex-shrink: 0;
+}
+.tc-profile { gap: 12px; flex-wrap: nowrap; }
+/* Compound Curve Animation */
+@media (prefers-reduced-motion: no-preference) {
+  .curve-path { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: drawCurve 2.5s ease-in-out forwards; }
+  .node-group { opacity: 0; animation: fadeInNode 0.4s ease forwards; }
+  .node-group:nth-child(1) { animation-delay: 0.4s; }
+  .node-group:nth-child(2) { animation-delay: 0.7s; }
+  .node-group:nth-child(3) { animation-delay: 1.0s; }
+  .node-group:nth-child(4) { animation-delay: 1.3s; }
+  .node-group:nth-child(5) { animation-delay: 1.6s; }
+  .node-group:nth-child(6) { animation-delay: 1.9s; }
+  .node-group:nth-child(7) { animation-delay: 2.1s; }
+  .label-group { opacity: 0; animation: fadeInNode 0.35s ease forwards; }
+  .label-group:nth-child(1) { animation-delay: 0.5s; }
+  .label-group:nth-child(2) { animation-delay: 0.8s; }
+  .label-group:nth-child(3) { animation-delay: 1.1s; }
+  .label-group:nth-child(4) { animation-delay: 1.4s; }
+  .label-group:nth-child(5) { animation-delay: 1.7s; }
+  .label-group:nth-child(6) { animation-delay: 2.0s; }
+  .label-group:nth-child(7) { animation-delay: 2.2s; }
+}
+@keyframes drawCurve { to { stroke-dashoffset: 0; } }
+@keyframes fadeInNode { to { opacity: 1; } }
+/* A1: Why Icon Cards */
+.why-cards { padding: 120px 0; background: var(--cream); }
+.why-cards h2 { font-size: 1.9rem; text-align: center; margin-bottom: 48px; color: var(--navy); letter-spacing: -0.5px; }
+.why-icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+.why-icon-card { background: var(--white); border: 1px solid rgba(27,42,74,0.06); border-radius: 14px; padding: 36px 24px; text-align: center; transition: all 0.3s ease; }
+.why-icon-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 35px rgba(27,42,74,0.1); }
+.why-icon-circle { width: 56px; height: 56px; background: var(--navy); border: 3px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.why-icon-circle i { color: #fff; font-size: 1.3rem; }
+.why-icon-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; }
+@media (max-width: 768px) { .why-icon-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+@media (max-width: 480px) { .why-icon-grid { grid-template-columns: 1fr; gap: 14px; } .why-cards { padding: 80px 0; } }
+/* A2: Transition Band */
+.transition-band { background: var(--navy); padding: 52px 0; text-align: center; }
+.transition-band h2 { font-size: 1.7rem; color: var(--white); margin: 0; letter-spacing: -0.3px; }
+.transition-band h2 span { color: var(--gold); }
+/* A3: Truth Section */
+.truth-section { padding: 100px 0; background: var(--white); }
+.truth-section h2 { font-size: 1.6rem; text-align: center; margin-bottom: 10px; color: var(--navy); }
+.truth-section .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.truth-list { max-width: 520px; margin: 0 auto 28px; display: grid; gap: 16px; }
+.truth-item { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--cream); border-radius: 10px; border: 1px solid rgba(27,42,74,0.06); }
+.truth-item i { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+.truth-item span { color: var(--navy); font-weight: 600; font-size: 0.95rem; }
+.truth-closer { text-align: center; color: var(--gold-dim); font-weight: 600; font-size: 0.95rem; font-style: italic; margin-top: 8px; }
+/* A4: Before/After */
+.before-after { padding: 80px 0; background: var(--cream); }
+/* A5: Client Proof (stacked) */
+.client-proof { padding: 120px 0; background: var(--navy); position: relative; overflow: hidden; }
+.client-proof::before { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 60%); }
+.client-proof h2 { font-size: 1.9rem; text-align: center; color: var(--white); margin-bottom: 10px; letter-spacing: -0.5px; }
+.client-proof h2 span { color: var(--gold); }
+.client-proof .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.proof-stack { max-width: 680px; margin: 0 auto; display: grid; gap: 28px; }
+.proof-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,107,53,0.2); border-radius: 16px; padding: 40px 36px 32px; }
+.proof-quote-mark { font-size: 5rem; line-height: 0.6; color: rgba(255,107,53,0.35); font-family: Georgia, serif; margin-bottom: 20px; display: block; }
+.proof-quote { color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.7; margin: 0 0 28px; font-style: italic; }
+.proof-metric { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; padding: 12px 16px; background: rgba(255,107,53,0.1); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
+.proof-metric-value { color: var(--gold); font-weight: 700; font-size: 0.95rem; }
+.proof-metric-time { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+.proof-profile { display: flex; align-items: center; gap: 12px; }
+.proof-face { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,107,53,0.5); flex-shrink: 0; }
+.proof-name { color: #fff; font-weight: 600; font-size: 0.95rem; }
+.proof-role { color: rgba(255,107,53,0.8); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+@media (max-width: 600px) { .proof-card { padding: 28px 22px 24px; } .proof-quote { font-size: 0.95rem; } .client-proof { padding: 80px 0; } }
+/* B1: Anti-pattern side-by-side grid */
+.ap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 860px; margin: 0 auto; }
+.ap-col { border-radius: 14px; padding: 32px 28px; }
+.ap-col-left { background: #fdf6f6; border: 1px solid #f0d4d4; }
+.ap-col-right { background: var(--navy); border: 1px solid rgba(255,107,53,0.3); }
+.ap-col-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.ap-col-left .ap-col-title { color: #8a4343; }
+.ap-col-left .ap-col-title i { color: #c06060; }
+.ap-col-right .ap-col-title { color: var(--gold); }
+.ap-col-right .ap-col-title i { color: var(--gold); }
+.ap-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 8px; margin-bottom: 8px; }
+.ap-item:last-child { margin-bottom: 0; }
+.ap-item-bad { background: var(--white); border: 1px solid rgba(192,96,96,0.1); }
+.ap-item-bad i { color: #c06060; font-size: 0.8rem; flex-shrink: 0; }
+.ap-item-bad span { color: var(--text-muted); font-size: 0.9rem; }
+.ap-item-good { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,107,53,0.15); }
+.ap-item-good i { color: var(--gold); font-size: 0.8rem; flex-shrink: 0; }
+.ap-item-good span { color: var(--gold-light); font-size: 0.9rem; }
+@media (max-width: 768px) { .ap-grid { grid-template-columns: 1fr; gap: 20px; } }
+/* B2: Lead capture merged */
+.lc-divider { width: 60px; height: 1px; background: rgba(27,42,74,0.12); margin: 28px auto; }
+.lc-investment { color: var(--text-muted); font-size: 0.88rem; max-width: 520px; margin: 0 auto; font-style: italic; }
+/* C1: Steven Bio */
+.steven-bio { padding: 120px 0; background: var(--white); border-bottom: 1px solid var(--light-gray); }
+.bio-layout { display: grid; grid-template-columns: 280px 1fr; gap: 48px; max-width: 860px; margin: 0 auto; align-items: center; }
+.bio-image { position: relative; }
+.bio-image img { width: 100%; position: relative; z-index: 2; object-fit: contain; }
+.bio-image::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; padding-bottom: 85%; border-radius: 50%; background: linear-gradient(145deg, #FF6B35 0%, #FFB08A 40%, #FF6B35 100%); z-index: 1; }
+.bio-image::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 88%; padding-bottom: 88%; border-radius: 50%; background: rgba(255,107,53,0.15); filter: blur(20px); z-index: 0; }
+.bio-content h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 20px; }
+.bio-content h2 span { color: var(--gold); }
+.bio-content p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 14px; }
+.bio-closer { font-weight: 700; color: var(--navy) !important; font-size: 0.95rem !important; }
+.bio-tagline { color: var(--gold) !important; font-weight: 700; font-size: 0.88rem !important; letter-spacing: 0.5px; margin-top: 6px !important; }
+@media (max-width: 768px) {
+  .bio-layout { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+  .bio-image { max-width: 220px; margin: 0 auto; }
+  .steven-bio { padding: 80px 0; }
+}
+/* C2: Footer nav */
+.footer-nav { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+.footer-nav a { color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s ease; }
+.footer-nav a:hover { color: var(--gold); }
+/* Client Proof — Light 3-col */
+.client-proof-light { padding: 120px 0; background: var(--cream); }
+.client-proof-light h2 { font-size: 1.9rem; text-align: center; color: var(--navy); margin-bottom: 10px; letter-spacing: -0.5px; }
+.client-proof-light h2 span { color: var(--gold); }
+.client-proof-light .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.proof-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1060px; margin: 0 auto; }
+.proof-card-light { background: var(--white); border: 1px solid rgba(27,42,74,0.08); border-radius: 16px; padding: 32px 26px 28px; display: flex; flex-direction: column; transition: all 0.3s ease; }
+.proof-card-light:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 35px rgba(27,42,74,0.1); }
+.proof-quote-icon { color: var(--gold); font-size: 1.4rem; margin-bottom: 16px; opacity: 0.5; }
+.proof-quote-light { color: var(--text-dark); font-size: 0.88rem; line-height: 1.7; flex: 1; margin-bottom: 20px; }
+.proof-metric-light { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; padding: 12px 14px; background: rgba(255,107,53,0.06); border-radius: 8px; border-left: 3px solid var(--gold); }
+.proof-metric-val { color: var(--gold-dim); font-size: 1.3rem; font-weight: 800; }
+.proof-metric-desc { color: var(--text-muted); font-size: 0.78rem; line-height: 1.3; }
+.proof-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(27,42,74,0.06); }
+.proof-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,107,53,0.4); }
+.proof-author-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
+.proof-author-role { font-size: 0.72rem; color: var(--gold-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+@media (max-width: 768px) { .proof-row { grid-template-columns: 1fr; gap: 20px; } .client-proof-light { padding: 80px 0; } }
+</style>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body> <nav> <div class="container"> <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <svg width="38" height="38" viewBox="0 0 140 140" style="flex-shrink:0;"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+        <div style="display:flex;flex-direction:column;line-height:1.1;">
+          <span style="font-size:1.1rem;font-weight:800;color:#1B2A4A;letter-spacing:2px;">REIGNITE</span>
+          <span style="font-size:0.5rem;font-weight:600;color:#FF6B35;letter-spacing:3px;margin-top:3px;">ADVISORS</span>
+        </div>
+      </a> <a href="/Reignite/assessment/" class="btn btn-gold nav-cta"><i class="fas fa-calendar-check"></i> Apply Now</a> </div> </nav> <section class="hero"> <div class="hero-left"> <h1>Turn What You Already Know Into a Sellable Intellectual Asset</h1> <p class="hero-sub">A private architecture engagement for experienced professionals ready to turn lived expertise into structured offers for a defined audience</p>
+  <p class="hero-sub" style="margin-top: 16px; color: var(--gold-light); font-weight: 600;">No courses. No guesswork. No trading time for money.</p>
+<div class="hero-ctas"> <a href="/Reignite/assessment/" class="btn btn-gold"> <i class="fas fa-calendar-check"></i> Apply Now </a> <span class="micro-assurance">Limited private slots each month. Qualified applicants only.</span> </div> </div> <div class="hero-right"> <div class="hero-image-wrapper"> <img src="steven-headshot-transparent.png" alt="Steven Tshakatumba"> </div> <div class="hero-wordmark">REIGNITE</div><div class="hero-wordmark-sub">Your Experience</div> </div> </section> <section class="trust-strip"> <div class="container"> <p>Trusted by current and former executives and leaders across Fortune 500 and high-growth organizations, including:</p> <div class="trust-marquee"> <div class="trust-logos" aria-label="Trust logos"><div class="trust-logo"><img src="/steven/logo-tsx.png?v=12" alt="TSX"></div>
+<div class="trust-logo"><img src="/steven/logo-kpmg.png?v=12" alt="KPMG"></div>
+<div class="trust-logo"><img src="/steven/logo-stradig.png?v=12" alt="Stradig"></div>
+<div class="trust-logo"><img src="/steven/logo-whycoach.png?v=12" alt="WHY Coach"></div>
+<div class="trust-logo"><img src="/steven/logo-salesforce.png?v=12" alt="Salesforce"></div>
+<div class="trust-logo"><img src="/steven/logo-1.png?v=12" alt="Reignite"></div>
+<div class="trust-logo"><img src="/steven/logo-tsx.png?v=12" alt="TSX"></div>
+<div class="trust-logo"><img src="/steven/logo-kpmg.png?v=12" alt="KPMG"></div>
+<div class="trust-logo"><img src="/steven/logo-stradig.png?v=12" alt="Stradig"></div>
+<div class="trust-logo"><img src="/steven/logo-whycoach.png?v=12" alt="WHY Coach"></div>
+<div class="trust-logo"><img src="/steven/logo-salesforce.png?v=12" alt="Salesforce"></div>
+<div class="trust-logo"><img src="/steven/logo-1.png?v=12" alt="Reignite"></div></div> </div> </div> </section> 
+<section class="why-cards">
+  <div class="container">
+    <h2>You're here because…</h2>
+    <div class="why-icon-grid">
+      <div class="why-icon-card">
+        <div class="why-icon-circle"><i class="fas fa-coins"></i></div>
+        <p>You've spent years solving real problems, yet your value feels under-monetized</p>
+      </div>
+      <div class="why-icon-card">
+        <div class="why-icon-circle"><i class="fas fa-comment-slash"></i></div>
+        <p>You can explain what you know, but struggle to sell it</p>
+      </div>
+      <div class="why-icon-card">
+        <div class="why-icon-circle"><i class="fas fa-hourglass-half"></i></div>
+        <p>You're tired of trading hours for income</p>
+      </div>
+      <div class="why-icon-card">
+        <div class="why-icon-circle"><i class="fas fa-arrow-up-right-dots"></i></div>
+        <p>You want leverage, legacy, and impact</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="transition-band">
+  <div class="container">
+    <h2>The Problem Isn't Experience — <span>It's Packaging</span></h2>
+  </div>
+</div>
+<section class="truth-section">
+  <div class="container">
+    <h2>Here's the truth about your experience</h2>
+    <p class="section-sub">Most professionals think value only exists as a job title, resume or hourly consulting. But real value lives in:</p>
+    <div class="truth-list">
+      <div class="truth-item"><i class="fas fa-check-circle"></i><span>Patterns you've learned to recognize</span></div>
+      <div class="truth-item"><i class="fas fa-check-circle"></i><span>Processes you instinctively apply</span></div>
+      <div class="truth-item"><i class="fas fa-check-circle"></i><span>Decisions you make that others can't</span></div>
+    </div>
+    <p class="truth-closer">This is your intellectual capital — and it's sitting untapped.</p>
+  </div>
+</section>
+ <!-- Anti-Pattern Stack -->
+<section class="anti-pattern">
+  <div class="container">
+    <h2>You've Probably Tried…</h2>
+    <p class="section-sub">Common approaches that keep you stuck in the advisory trap.</p>
+    <div class="ap-grid">
+      <div class="ap-col ap-col-left">
+        <h3 class="ap-col-title"><i class="fas fa-times-circle"></i> What Doesn't Work</h3>
+        <div class="ap-item ap-item-bad"><i class="fas fa-times"></i><span>Free advice on LinkedIn</span></div>
+        <div class="ap-item ap-item-bad"><i class="fas fa-times"></i><span>Generic courses that don't fit your context</span></div>
+        <div class="ap-item ap-item-bad"><i class="fas fa-times"></i><span>Pricing guesswork</span></div>
+        <div class="ap-item ap-item-bad"><i class="fas fa-times"></i><span>Hourly consulting with no leverage</span></div>
+      </div>
+      <div class="ap-col ap-col-right">
+        <h3 class="ap-col-title"><i class="fas fa-check-circle"></i> What's Actually Needed</h3>
+        <div class="ap-item ap-item-good"><i class="fas fa-check"></i><span>Defines your real asset</span></div>
+        <div class="ap-item ap-item-good"><i class="fas fa-check"></i><span>Creates a repeatable offer</span></div>
+        <div class="ap-item ap-item-good"><i class="fas fa-check"></i><span>Converts easily into revenue</span></div>
+        <div class="ap-item ap-item-good"><i class="fas fa-check"></i><span>Scales beyond your time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="momentum-triangle"> <div class="container"> <h2>The REIGNITE<span class="tm">™</span> <span>Value Triangle</span></h2> <p class="section-sub">When Clarity, Demand, and Offer are engineered together, your advisory business builds compounding value.</p> <div class="triangle-wrap"> <div class="triangle-core"> <svg class="triangle-lines" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M210 26L56 293H364L210 26Z"/> <path class="triangle-accent" d="M210 26L56 293H364L210 26Z"/> </svg> <div class="triangle-flow-dot" aria-hidden="true"></div> <div class="triangle-flow-dot dot-2" aria-hidden="true"></div> <div class="triangle-node clarity" aria-hidden="true"><i class="fas fa-lightbulb"></i></div> <div class="triangle-node offer" aria-hidden="true"><i class="fas fa-gem"></i></div> <div class="triangle-node demand" aria-hidden="true"><i class="fas fa-bullhorn"></i></div> <div class="triangle-label clarity">Clarity</div> <div class="triangle-label offer">Offer</div> <div class="triangle-label demand">Demand</div> <div class="triangle-center">Value</div> </div> </div> </div> </section> <section class="framework" id="architecture"><div class="container"><h2 style="margin-bottom: 10px; color: var(--white);">The REIGNITE<span class="tm">™</span> <span style="color: var(--gold-light);">Architecture Process</span></h2>
+<p class="section-sub" style="margin-bottom: 40px;">A private, selective 7-step engagement that extracts your deepest expertise and transforms it into a premium, scalable intellectual asset.</p><div style="max-width: 920px; margin: 0 auto 40px; overflow: visible;">
+<svg viewBox="0 0 940 560" xmlns="http://www.w3.org/2000/svg" aria-label="Compound curve chart showing 7 steps of The Architecture Process">
+      <defs>
+        <!-- Glow filter for curve + nodes -->
+        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <!-- Node glow (softer) -->
+        <filter id="nodeGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <!-- Gradient fill below curve -->
+        <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FF6B35" stop-opacity="0.12" />
+          <stop offset="100%" stop-color="#FF6B35" stop-opacity="0" />
+        </linearGradient>
+        <!-- Clip path for gradient fill area -->
+        <clipPath id="curveClip">
+          <path d="M 100,460 C 200,457 290,440 380,390 S 540,275 630,200 S 760,100 860,60 L 860,480 L 100,480 Z" />
+        </clipPath>
+      </defs>
+      <!-- ── Grid lines ── -->
+      <g opacity="0.04" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="6 4">
+        <line x1="80" y1="140" x2="900" y2="140" />
+        <line x1="80" y1="200" x2="900" y2="200" />
+        <line x1="80" y1="280" x2="900" y2="280" />
+        <line x1="80" y1="360" x2="900" y2="360" />
+        <line x1="80" y1="430" x2="900" y2="430" />
+      </g>
+      <!-- ── X-axis ── -->
+      <line x1="80" y1="480" x2="900" y2="480" stroke="rgba(255,255,255,0.12)" stroke-width="0.5" />
+      <!-- ── Y-axis label ── -->
+      <text
+        x="22"
+        y="300"
+        transform="rotate(-90, 22, 300)"
+        fill="rgba(255,255,255,0.3)"
+        font-family="'Plus Jakarta Sans', sans-serif"
+        font-size="10"
+        font-variant="small-caps"
+        letter-spacing="2"
+        text-anchor="middle"
+      >GROWTH</text>
+      <!-- ── X-axis label ── -->
+      <text
+        x="490"
+        y="548"
+        fill="rgba(255,255,255,0.25)"
+        font-family="'Plus Jakarta Sans', sans-serif"
+        font-size="10"
+        font-variant="small-caps"
+        letter-spacing="2"
+        text-anchor="middle"
+      >THE ARCHITECTURE PROCESS</text>
+      <!-- ── Phase zones (below x-axis) ── -->
+      <!-- FOUNDATION -->
+      <text x="240" y="520" fill="rgba(255,107,53,0.4)" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-variant="small-caps" letter-spacing="2" text-anchor="middle">FOUNDATION</text>
+      <line x1="100" y1="495" x2="380" y2="495" stroke="rgba(255,107,53,0.2)" stroke-width="0.75" />
+      <!-- MOMENTUM -->
+      <text x="505" y="520" fill="rgba(255,107,53,0.65)" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-variant="small-caps" letter-spacing="2" text-anchor="middle">MOMENTUM</text>
+      <line x1="380" y1="495" x2="630" y2="495" stroke="rgba(255,107,53,0.4)" stroke-width="0.75" />
+      <!-- TRACTION -->
+      <text x="745" y="520" fill="rgba(255,107,53,1)" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-variant="small-caps" letter-spacing="2" font-weight="600" text-anchor="middle">TRACTION</text>
+      <line x1="630" y1="495" x2="860" y2="495" stroke="rgba(255,107,53,0.6)" stroke-width="0.75" />
+      <!-- ── Gradient fill below curve ── -->
+      <rect x="0" y="0" width="940" height="560" fill="url(#curveGrad)" clip-path="url(#curveClip)" />
+      <!-- ── Compound curve ── -->
+      <path
+        class="curve-path"
+        d="M 100,460 C 200,457 290,440 380,390 S 540,275 630,200 S 760,100 860,60"
+        fill="none"
+        stroke="#FF6B35"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        filter="url(#glow)"
+      />
+      <!-- ══════════════════════════════════════════════
+           NODE GROUPS (rendered after curve)
+           ══════════════════════════════════════════════ -->
+      <!-- Step 1 — Reveal (100, 460) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="100" cy="460" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="100" cy="460" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 2 — Essence (220, 448) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="220" cy="448" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="220" cy="448" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 3 — Ideal Client (355, 400) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="355" cy="400" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="355" cy="400" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 4 — Generate (480, 315) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="480" cy="315" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="480" cy="315" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 5 — Navigate the Market (600, 220) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="600" cy="220" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="600" cy="220" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 6 — Intellectual Asset (720, 128) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="720" cy="128" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="720" cy="128" r="5" fill="#FF6B35" />
+      </g>
+      <!-- Step 7 — Traction (860, 60) -->
+      <g class="node-group" filter="url(#nodeGlow)">
+        <circle cx="860" cy="60" r="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="1.5" />
+        <circle cx="860" cy="60" r="5" fill="#FF6B35" />
+      </g>
+      <!-- ══════════════════════════════════════════════
+           LABEL GROUPS (connector line + pill + text)
+           ══════════════════════════════════════════════ -->
+      <!-- Label 1 — Reveal: BELOW node, pill center (100, 510) -->
+      <g class="label-group">
+        <line x1="100" y1="474" x2="100" y2="496" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="38" y="496" width="124" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="60" y="514" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">01</text>
+        <text x="78" y="514" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Reveal</text>
+      </g>
+      <!-- Label 2 — Essence: ABOVE node, pill center (220, 400) -->
+      <g class="label-group">
+        <line x1="220" y1="440" x2="220" y2="462" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="158" y="464" width="124" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="180" y="482" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">02</text>
+        <text x="198" y="482" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Essence</text>
+      </g>
+      <!-- Label 3 — Ideal Client: BELOW node, pill center (355, 450) -->
+      <g class="label-group">
+        <line x1="355" y1="414" x2="355" y2="436" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="285" y="436" width="140" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="305" y="454" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">03</text>
+        <text x="323" y="454" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Ideal Client</text>
+      </g>
+      <!-- Label 4 — Generate: ABOVE node, pill center (480, 250) -->
+      <g class="label-group">
+        <line x1="480" y1="330" x2="480" y2="356" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="405" y="358" width="150" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="423" y="376" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">04</text>
+        <text x="441" y="376" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Generate Offer</text>
+      </g>
+      <!-- Label 5 — Navigate the Market: BELOW node, pill center (600, 280) -->
+      <g class="label-group">
+        <line x1="600" y1="200" x2="600" y2="174" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="525" y="144" width="150" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="543" y="162" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">05</text>
+        <text x="561" y="162" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Nav. Market</text>
+      </g>
+      <!-- Label 6 — Intellectual Asset: ABOVE node, pill center (720, 60) -->
+      <g class="label-group">
+        <line x1="720" y1="114" x2="720" y2="88" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="645" y="46" width="150" height="28" rx="6" fill="rgba(10,10,10,0.9)" stroke="rgba(255,107,53,0.25)" stroke-width="1" />
+        <text x="663" y="64" fill="#FF6B35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">06</text>
+        <text x="681" y="64" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Intell. Asset</text>
+      </g>
+      <!-- Label 7 — Traction: BELOW node -->
+      <g class="label-group">
+        <line x1="860" y1="46" x2="860" y2="24" stroke="rgba(255,107,53,0.4)" stroke-width="1" />
+        <rect x="796" y="-6" width="128" height="28" rx="6" fill="#FF6B35" stroke="rgba(255,107,53,0.6)" stroke-width="1" />
+        <text x="814" y="12" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">07</text>
+        <text x="832" y="12" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Traction</text>
+      </g>
+    </svg>
+</div>
+<div class="process-timeline">
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-magnifying-glass"></i><span class="step-num">1</span></div>
+    <div class="timeline-content">
+      <h4>Reveal</h4>
+      <p>Uncover what's really valuable in what you've done.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-gem"></i><span class="step-num">2</span></div>
+    <div class="timeline-content">
+      <h4>Essence</h4>
+      <p>Distill why it matters and what you stand for.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-bullseye"></i><span class="step-num">3</span></div>
+    <div class="timeline-content">
+      <h4>Ideal Client</h4>
+      <p>Clarify exactly who pays, why they pay, and what they value most.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-layer-group"></i><span class="step-num">4</span></div>
+    <div class="timeline-content">
+      <h4>Generate Offer</h4>
+      <p>Design a sellable, structured product from your expertise.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-compass"></i><span class="step-num">5</span></div>
+    <div class="timeline-content">
+      <h4>Navigate the Market</h4>
+      <p>Test and validate with precision — no wasted runway.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="timeline-node"><i class="fas fa-brain"></i><span class="step-num">6</span></div>
+    <div class="timeline-content">
+      <h4>Intellectual Asset</h4>
+      <p>Package your methodology so it generates revenue without your constant time.</p>
+    </div>
+  </div>
+  <div class="timeline-step timeline-step--highlight">
+    <div class="timeline-node"><i class="fas fa-rocket"></i><span class="step-num">7</span></div>
+    <div class="timeline-content">
+      <h4 style="color: var(--gold);">Traction</h4>
+      <p>Build sustainable market momentum and create real optionality.</p>
+    </div>
+  </div>
+</div>
+</div> </section> <!-- Contrast Matrix --> <section class="contrast-matrix"> <div class="container"> <h2>What REIGNITE<span class="tm">™</span> <span>Delivers</span></h2> <p class="section-sub">The difference between struggling to monetize and building a scalable asset.</p> <div class="matrix-container"> <div class="matrix-header"> <div class="matrix-header-left">Typical Approach</div> <div class="matrix-header-right">REIGNITE<span class="tm">™</span> Approach</div> </div> <div class="matrix-row"> <div class="matrix-row-left"> <i class="fas fa-minus"></i> <span>Vague expertise</span> </div> <div class="matrix-row-right"> <i class="fas fa-check"></i> <span>Clearly defined strategic advisory asset</span> </div> </div> <div class="matrix-row"> <div class="matrix-row-left"> <i class="fas fa-minus"></i> <span>Broad audience</span> </div> <div class="matrix-row-right"> <i class="fas fa-check"></i> <span>Precise buyer profile</span> </div> </div> <div class="matrix-row"> <div class="matrix-row-left"> <i class="fas fa-minus"></i> <span>Inconsistent services</span> </div> <div class="matrix-row-right"> <i class="fas fa-check"></i> <span>Structured sellable offer</span> </div> </div> <div class="matrix-row"> <div class="matrix-row-left"> <i class="fas fa-minus"></i> <span>Time-for-money</span> </div> <div class="matrix-row-right"> <i class="fas fa-check"></i> <span>Scalable advisory model</span> </div> </div> <div class="matrix-cta"> <a href="/Reignite/assessment/" class="btn btn-gold"> <i class="fas fa-calendar-check"></i> Apply Now </a> <span class="micro-assurance">Selective engagement. Results-oriented professionals only.</span> </div> </div> </div> </section>
+<section class="client-proof-light">
+  <div class="container">
+    <h2>Client <span>Proof</span></h2>
+    <p class="section-sub">What clients said before and after tightening their positioning and execution with Reignite.</p>
+    <div class="proof-row">
+      <div class="proof-card-light">
+        <div class="proof-quote-icon"><i class="fas fa-quote-left"></i></div>
+        <div class="proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="proof-quote-light">Before working with Steven, our message felt broad and prospects weren't clear on our edge. After we reworked the positioning, conversations became sharper and the right buyers leaned in faster.</p>
+        <div class="proof-metric-light">
+          <span class="proof-metric-val">+47%</span>
+          <span class="proof-metric-desc">qualified discovery calls within 45 days</span>
+        </div>
+        <div class="proof-author">
+          <div>
+            <div class="proof-author-name">Greg</div>
+            <div class="proof-author-role">Advisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card-light">
+        <div class="proof-quote-icon"><i class="fas fa-quote-left"></i></div>
+        <div class="proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="proof-quote-light">Before Reignite, we had too many ideas and no clear sequence. After the reset, our offer became easier to explain and we moved with far less friction week to week.</p>
+        <div class="proof-metric-light">
+          <span class="proof-metric-val">31%</span>
+          <span class="proof-metric-desc">faster sales cycle within 8 weeks</span>
+        </div>
+        <div class="proof-author">
+          <div>
+            <div class="proof-author-name">Julie</div>
+            <div class="proof-author-role">Founder</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card-light">
+        <div class="proof-quote-icon"><i class="fas fa-quote-left"></i></div>
+        <div class="proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="proof-quote-light">Before this process, we kept revisiting the same strategic debates. After implementing Steven's framework, alignment improved and decisions turned into execution much faster.</p>
+        <div class="proof-metric-light">
+          <span class="proof-metric-val">2.1x</span>
+          <span class="proof-metric-desc">proposal-to-close rate within 60 days</span>
+        </div>
+        <div class="proof-author">
+          <div>
+            <div class="proof-author-name">James</div>
+            <div class="proof-author-role">Operating Leader</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  <section class="lead-capture" id="momentum-score">
+  <div class="container">
+    <h2>Take the 3-Minute <span>Momentum Score</span></h2>
+    <p>Get a tailored snapshot of where your positioning, offer, and demand architecture stand right now.</p>
+    <a href="/Reignite/assessment/" class="btn btn-gold">
+      <i class="fas fa-calendar-check"></i> See Your Score
+    </a>
+    <span class="micro-assurance">Fast diagnostic. Clear next steps. No dead-end report.</span>
+    <div class="lc-divider"></div>
+    <p class="lc-investment">REIGNITE<span class="tm">™</span> is priced as strategic architecture, not content. All private advisory and architecture engagements start with a fit assessment.</p>
+  </div>
+</section> <section class="steven-bio">
+  <div class="container">
+    <div class="bio-layout">
+      <div class="bio-image">
+        <img src="steven-bio-transparent.png" alt="Steven Tshakatumba">
+      </div>
+      <div class="bio-content">
+        <h2>I'm <span>Steven Tshakatumba</span></h2>
+        <p>For most of my career, I've worked at the intersection of complex systems and human decision-making — helping leaders make sense of ambiguity, align people around clarity, and turn ideas into execution.</p>
+        <p>Over time, I noticed a pattern. The people creating the most value weren't the loudest or most visible. They were the ones with deep experience across roles, industries, and transitions — but had never been taught how to extract that experience into something tangible and repeatable.</p>
+        <p class="bio-closer">They didn't lack knowledge. They lacked structure.</p>
+        <p class="bio-tagline">REIGNITE<span class="tm">™</span> was built to solve that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="faq"> <div class="container"> <h2>Frequently <span>Asked</span></h2> <p class="section-sub">Common questions about working with REIGNITE<span class="tm">™</span> Advisors.</p> <div class="faq-list"> <div class="faq-item"> <div class="faq-question" onclick="toggleFaq(this)"> <h4>Who is REIGNITE<span class="tm">™</span> for?</h4> <i class="fas fa-chevron-down"></i> </div> <div class="faq-answer"> <p>REIGNITE<span class="tm">™</span> is for experienced professionals with 10+ years of expertise who are ready to monetize their knowledge. You should have deep experience in your field and be willing to package it into a structured offer. This is not for those looking for quick fixes — it's for professionals ready to build a real, scalable asset.</p> </div> </div> <div class="faq-item"> <div class="faq-question" onclick="toggleFaq(this)"> <h4>Do I need a business idea already?</h4> <i class="fas fa-chevron-down"></i> </div> <div class="faq-answer"> <p>No. You bring the experience — we bring the structure. Many of our clients have expertise but no clear business idea. We help you identify what you've actually built and how to package it. You don't need a plan; you need experience and willingness to do the work.</p> </div> </div> <div class="faq-item"> <div class="faq-question" onclick="toggleFaq(this)"> <h4>Is this a course?</h4> <i class="fas fa-chevron-down"></i> </div> <div class="faq-answer"> <p>No. REIGNITE<span class="tm">™</span> is a private architecture engagement — not a course, not a group program. You get 1-on-1 strategic advisory throughout the entire process. We build your asset with you, not just teach you how to do it.</p> </div> </div> <div class="faq-item"> <div class="faq-question" onclick="toggleFaq(this)"> <h4>How long is the engagement?</h4> <i class="fas fa-chevron-down"></i> </div> <div class="faq-answer"> <p>The core engagement is designed to deliver clarity within 30 days and a market-ready offer within 90 days. However, the exact timeline depends on your starting position and the complexity of your expertise. Strategic advisory continues throughout to ensure your asset evolves with market opportunities.</p> </div> </div> <div class="faq-item"> <div class="faq-question" onclick="toggleFaq(this)"> <h4>What do I leave with?</h4> <i class="fas fa-chevron-down"></i> </div> <div class="faq-answer"> <p>You leave with a clearly defined strategic advisory asset, a precise audience willing to pay, a structured sellable offer, and premium-aligned positioning. You'll have a repeatable system that converts expertise into revenue and scales beyond your time.</p> </div> </div> </div> <div class="faq-bridge"><a href="/Reignite/assessment/">Still have questions? Let's talk <i class="fas fa-arrow-right" style="font-size:0.8em;margin-left:4px;"></i></a></div> </div> </section> <section class="final-cta"> <div class="container"> <h2>Ready to Structure What You Already Know?</h2> <p>All engagements start with a consultation to determine mutual fit.</p> <a href="/Reignite/assessment/" class="btn btn-gold"> <i class="fas fa-calendar-check"></i> Apply Now </a> <span class="micro-assurance">Your next step starts with a 3-minute scorecard.</span> </div> </section> <footer>
+  <div class="container">
+    <div class="logo-group" style="display:flex;align-items:center;gap:12px;">
+      <svg width="40" height="40" viewBox="0 0 140 140" style="flex-shrink:0;"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+      <div>
+        <div style="font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:2px;">REIGNITE</div>
+        <div style="font-size:0.52rem;font-weight:600;color:#FF6B35;letter-spacing:4px;">ADVISORS</div>
+      </div>
+    </div>
+    <p class="tagline">Transform expertise into impact.</p>
+    <div class="footer-nav">
+      <a href="#architecture">Architecture Process</a>
+      <a href="#momentum-score">Scorecard</a>
+      <a href="/Reignite/assessment/">Apply</a>
+    </div>
+    <p class="copyright">&copy; 2025 Reignite Advisors. All rights reserved.</p>
+  </div>
+</footer> <script> function scrollCarousel(direction) { const track = document.getElementById('resultsCarousel'); const card = track.querySelector('.carousel-card'); const cardWidth = card.offsetWidth + 20; track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' }); } function toggleFaq(element) { const faqItem = element.parentElement; faqItem.classList.toggle('active'); } </script> 
+</body>
+</html>

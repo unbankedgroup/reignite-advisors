@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience-to-Asset Scorecard | Reignite Advisors</title>
+<link rel="icon" type="image/svg+xml" href="/Reignite/v3/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #1B2A4A;
+  --navy-dark: #0F1A2E;
+  --navy-light: #243556;
+  --gold: #FF6B35;
+  --gold-dim: #E85A25;
+  --gold-light: #FFB08A;
+  --cream: #FAF9F7;
+  --white: #ffffff;
+  --text-dark: #1a1a2e;
+  --text-muted: #6b7280;
+  --card-radius: 16px;
+  --transition: 0.3s ease;
+}
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV BAR */
+.nav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  padding: 16px 24px;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(27,42,74,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-logo-brand { font-size: 1.1rem; font-weight: 800; color: var(--navy); letter-spacing: 2px; }
+.nav-logo-sub { font-size: 0.5rem; font-weight: 600; color: var(--gold); letter-spacing: 3px; margin-top: 2px; }
+
+/* SCREENS */
+.screen {
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  min-height: calc(100vh - 64px);
+  padding: 32px 16px 48px;
+}
+.screen.active { display: flex; flex-direction: column; align-items: center; }
+.screen.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ SPLIT HERO (Start Page) ============ */
+.split-hero {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  margin-top: 64px;
+}
+.split-left {
+  flex: 1;
+  background: linear-gradient(145deg, #1B2A4A 0%, #0F1A2E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.split-left::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.split-left-inner { max-width: 440px; }
+.split-left-inner svg { filter: drop-shadow(0 0 24px rgba(255,107,53,0.25)); }
+.split-right {
+  flex: 1;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+}
+.split-right-inner { max-width: 420px; width: 100%; }
+
+/* Trust Indicators */
+.trust-indicators { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
+.trust-ind {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+}
+.trust-ind i { color: var(--gold); font-size: 14px; }
+
+/* Inline Testimonial */
+.inline-testimonial {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.inline-testimonial p {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  line-height: 1.5;
+}
+.inline-testimonial span {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+}
+
+/* Preview Card (Right Panel) */
+.preview-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px 32px;
+  box-shadow: 0 20px 60px rgba(27,42,74,0.1), 0 0 0 1px rgba(27,42,74,0.04);
+  text-align: center;
+  transform: perspective(800px) rotateY(-2deg);
+  transition: transform 0.5s ease;
+}
+.preview-card:hover { transform: perspective(800px) rotateY(0deg); }
+.preview-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(255,107,53,0.08);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+/* Preview Gauge SVG */
+@keyframes gaugeGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+.preview-gauge-glow { animation: gaugeGlow 3s ease-in-out infinite; }
+
+/* Preview Bars */
+.preview-bars { max-width: 280px; margin: 20px auto; text-align: left; }
+.preview-bar-row { margin-bottom: 10px; }
+.preview-bar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.preview-bar-label i { color: var(--gold); font-size: 10px; }
+.preview-bar-track { height: 6px; background: rgba(27,42,74,0.06); border-radius: 3px; }
+
+/* Preview Checklist */
+.preview-checklist { text-align: left; max-width: 240px; margin: 20px auto 0; }
+.preview-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.preview-check-item i { color: var(--gold); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .split-hero { flex-direction: column; }
+  .split-left, .split-right { padding: 32px 24px; }
+  .split-left { min-height: auto; padding-bottom: 40px; }
+  .preview-card { transform: none; }
+  .preview-card:hover { transform: none; }
+}
+
+/* ============ BUTTONS ============ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gold);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,107,53,0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: var(--navy); color: var(--white); }
+
+/* ============ QUESTION CARD ============ */
+.q-wrapper { max-width: 580px; width: 100%; padding-top: 64px; }
+.q-card {
+  background: linear-gradient(145deg, #1B2A4A 0%, #243556 100%);
+  border-radius: var(--card-radius);
+  padding: 32px 28px 28px;
+  color: var(--white);
+  box-shadow: 0 8px 32px rgba(27, 42, 74, 0.18);
+  position: relative;
+  animation: cardIn 0.4s ease forwards;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.q-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.btn-back {
+  background: none; border: none; color: rgba(255,255,255,0.5);
+  font-size: 14px; font-family: inherit; font-weight: 500;
+  cursor: pointer; padding: 4px 8px 4px 0; transition: color 0.2s;
+}
+.btn-back:hover { color: var(--white); }
+.btn-back.hidden { visibility: hidden; pointer-events: none; }
+.q-category { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; }
+.q-step { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 500; }
+.q-progress { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; margin: 12px 0 24px; overflow: hidden; }
+.q-progress-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.5s ease; }
+.q-text { font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 24px; }
+.q-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.q-option {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  text-align: left; font-family: inherit; width: 100%; display: block;
+}
+.q-option:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+.q-option.selected { border-color: var(--gold); background: rgba(255,107,53,0.12); color: var(--white); }
+.q-textarea {
+  width: 100%; min-height: 120px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 14px 18px;
+  font-size: 15px; font-family: inherit; color: var(--white);
+  resize: vertical; margin-bottom: 24px; outline: none; transition: border-color 0.2s;
+}
+.q-textarea::placeholder { color: rgba(255,255,255,0.35); }
+.q-textarea:focus { border-color: var(--gold); }
+
+/* ============ EMAIL CAPTURE ============ */
+.email-card {
+  background: linear-gradient(145deg, #1B2A4A 0%, #243556 100%);
+  border-radius: var(--card-radius);
+  padding: 40px 32px; max-width: 580px; width: 100%;
+  color: var(--white);
+  box-shadow: 0 8px 32px rgba(27, 42, 74, 0.18);
+  margin-top: 64px;
+}
+.email-card h2 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+.email-card .email-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+.email-field {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 14px 18px;
+  font-size: 15px; font-family: inherit; color: var(--white);
+  outline: none; margin-bottom: 14px; transition: border-color 0.2s;
+}
+.email-field::placeholder { color: rgba(255,255,255,0.35); }
+.email-field:focus { border-color: var(--gold); }
+.email-privacy { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 14px; line-height: 1.5; }
+
+/* ============ RESULTS PAGE ============ */
+.results-container { max-width: 720px; width: 100%; padding-top: 64px; }
+
+/* Score Gauge */
+.score-hero { text-align: center; margin-bottom: 40px; }
+.score-greeting {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.score-gauge {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 16px;
+}
+.score-gauge svg { width: 100%; height: 100%; }
+.gauge-track { fill: none; stroke: rgba(27,42,74,0.08); stroke-width: 14; }
+.gauge-fill {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 534;
+  stroke-dashoffset: 534;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 10px rgba(255,107,53,0.35));
+}
+.score-gauge-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.gauge-number { font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; }
+.gauge-pct { font-size: 24px; font-weight: 700; color: var(--navy); margin-left: 2px; }
+.gauge-tier {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-top: 6px;
+}
+
+/* Tier Spectrum */
+.tier-spectrum-wrap { max-width: 340px; margin: 0 auto 40px; }
+.tier-spectrum {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+    rgba(249,115,22,0.15) 0%, rgba(249,115,22,0.15) 25%,
+    rgba(234,179,8,0.15) 25%, rgba(234,179,8,0.15) 63%,
+    rgba(34,197,94,0.15) 63%, rgba(34,197,94,0.15) 100%);
+  overflow: visible;
+}
+.tier-spectrum-marker {
+  position: absolute;
+  top: 50%;
+  width: 18px; height: 18px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,107,53,0.2);
+  transform: translate(-50%, -50%);
+  transition: left 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+.tier-spectrum-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Category Scorecard Grid */
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+.cat-card {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  padding: 22px 20px;
+  border: 1px solid rgba(27,42,74,0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(27,42,74,0.08); }
+.cat-card-icon { font-size: 1.1rem; color: var(--gold); margin-bottom: 10px; }
+.cat-card-name { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.cat-card-pct { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 10px; }
+.cat-card-bar { height: 6px; background: var(--cream); border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
+.cat-card-fill { height: 100%; background: var(--gold); border-radius: 3px; transition: width 1.2s ease; width: 0; }
+.cat-card-tier {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 100px;
+  background: var(--cream); color: var(--text-muted);
+}
+.cat-card-tier.tier-top { background: rgba(34,197,94,0.12); color: #16a34a; }
+.cat-card-tier.tier-avg { background: rgba(234,179,8,0.12); color: #ca8a04; }
+.cat-card-tier.tier-poor { background: rgba(249,115,22,0.12); color: #ea580c; }
+
+/* Growth Projection Card */
+.growth-card {
+  background: linear-gradient(145deg, #1B2A4A, #0F1A2E);
+  border-radius: var(--card-radius);
+  padding: 28px 24px;
+  color: white;
+  margin-bottom: 28px;
+  box-shadow: 0 0 0 1px rgba(255,107,53,0.15), 0 8px 30px rgba(15,26,46,0.2);
+}
+.growth-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+.growth-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.growth-row:last-of-type { margin-bottom: 0; }
+.growth-label {
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  min-width: 100px;
+  flex-shrink: 0;
+}
+.growth-bars {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.growth-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.growth-bar.current { background: rgba(255,255,255,0.08); }
+.growth-bar.projected { background: rgba(255,255,255,0.08); }
+.growth-fill-current {
+  height: 100%;
+  background: rgba(255,255,255,0.25);
+  border-radius: 4px;
+  transition: width 1.2s ease;
+  width: 0;
+}
+.growth-fill-projected {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px;
+  transition: width 1.2s ease 0.3s;
+  width: 0;
+}
+.growth-arrow { color: var(--gold); font-size: 11px; flex-shrink: 0; }
+.growth-pcts {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  min-width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.growth-pcts .projected-pct { color: var(--gold); }
+.growth-callout {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Accordion Deep Dive */
+.accordion-section { margin-bottom: 28px; }
+.accordion-section-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.accordion-card {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  margin-bottom: 12px;
+  border: 1px solid rgba(27,42,74,0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.accordion-card.expanded { border-color: rgba(255,107,53,0.25); box-shadow: 0 4px 20px rgba(27,42,74,0.06); }
+.accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  gap: 12px;
+  transition: background 0.2s;
+  user-select: none;
+}
+.accordion-header:hover { background: rgba(27,42,74,0.015); }
+.accordion-icon { font-size: 1rem; color: var(--gold); width: 24px; text-align: center; flex-shrink: 0; }
+.accordion-title { flex: 1; font-size: 15px; font-weight: 700; color: var(--navy); }
+.accordion-tier {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 100px;
+  background: var(--cream); color: var(--text-muted);
+  flex-shrink: 0;
+}
+.accordion-tier.tier-top { background: rgba(34,197,94,0.12); color: #16a34a; }
+.accordion-tier.tier-avg { background: rgba(234,179,8,0.12); color: #ca8a04; }
+.accordion-tier.tier-poor { background: rgba(249,115,22,0.12); color: #ea580c; }
+.accordion-pct { font-size: 14px; font-weight: 800; color: var(--gold); min-width: 36px; text-align: right; flex-shrink: 0; }
+.accordion-chevron {
+  font-size: 12px; color: var(--text-muted);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.accordion-card.expanded .accordion-chevron { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-card.expanded .accordion-body { max-height: 600px; }
+.accordion-body-inner { padding: 0 20px 22px; }
+.accordion-bar { height: 6px; background: var(--cream); border-radius: 3px; margin-bottom: 16px; overflow: hidden; }
+.accordion-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 3px;
+  transition: width 1s ease;
+  width: 0;
+}
+.accordion-narrative { font-size: 14px; color: var(--text-muted); line-height: 1.75; white-space: pre-line; }
+
+/* CTA Section */
+.cta-card {
+  background: var(--navy);
+  border-radius: var(--card-radius);
+  padding: 40px 32px;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 28px;
+}
+.cta-label { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.cta-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+.cta-card p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 28px; line-height: 1.6; }
+.cta-card .btn-primary { max-width: 380px; margin: 0 auto; display: flex; }
+
+/* Bio Horizontal */
+.bio-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--white);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  border: 1px solid rgba(27,42,74,0.06);
+  margin-bottom: 28px;
+}
+.bio-horizontal img {
+  width: 72px; height: 72px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--navy);
+  flex-shrink: 0;
+}
+.bio-horizontal-text { text-align: left; }
+.bio-name { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+.bio-title { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.bio-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.final-cta { text-align: center; margin-bottom: 16px; }
+
+/* ============ MOBILE ============ */
+@media (max-width: 600px) {
+  .screen { padding: 20px 12px 40px; }
+  .email-card { padding: 28px 20px; margin-top: 72px; }
+  .q-wrapper { padding-top: 72px; }
+  .q-card { padding: 24px 20px 22px; }
+  .q-text { font-size: 17px; }
+  .cta-card { padding: 28px 20px; }
+  .results-container { padding-top: 72px; }
+  .nav-bar { padding: 12px 16px; min-height: 56px; }
+  .score-gauge { width: 180px; height: 180px; }
+  .gauge-number { font-size: 42px; }
+  .gauge-pct { font-size: 20px; }
+  .cat-card-pct { font-size: 26px; }
+  .growth-label { min-width: 70px; font-size: 10px; }
+  .growth-pcts { min-width: 60px; font-size: 10px; }
+  .accordion-title { font-size: 13px; }
+  .bio-horizontal { flex-direction: column; text-align: center; }
+  .bio-horizontal-text { text-align: center; }
+}
+@media (max-width: 480px) {
+  .cat-grid { grid-template-columns: 1fr; }
+  .trust-indicators { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <a href="/Reignite/v3/" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 140 140" style="flex-shrink:0;"><rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-brand">REIGNITE</span>
+      <span class="nav-logo-sub">ADVISORS</span>
+    </div>
+  </a>
+</div>
+
+<!-- ============ START SCREEN ============ -->
+<div class="screen active" id="screen-start" style="padding:0;min-height:calc(100vh - 64px);">
+  <div class="split-hero">
+    <!-- Left: Navy panel -->
+    <div class="split-left">
+      <div class="split-left-inner">
+        <div style="margin-bottom:24px;">
+          <svg width="48" height="48" viewBox="0 0 140 140"><rect x="6" y="6" width="128" height="128" rx="16" fill="rgba(255,255,255,0.1)" stroke="#FF6B35" stroke-width="5"/><text x="30" y="100" font-family="'Plus Jakarta Sans',sans-serif" font-size="80" font-weight="800" fill="#fff">R</text><circle cx="100" cy="36" r="10" fill="#FF6B35"/></svg>
+        </div>
+        <h1 style="font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:800;line-height:1.12;margin-bottom:14px;color:#fff;letter-spacing:-0.5px;">The Experience&#8209;to&#8209;Asset <span style="color:var(--gold);">Scorecard</span></h1>
+        <p style="font-size:0.95rem;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:28px;">Is your experience structured to function as a sellable asset? Discover where you stand across 4 critical dimensions.</p>
+        <div class="trust-indicators">
+          <div class="trust-ind"><i class="fas fa-clipboard-list"></i> 15 Questions</div>
+          <div class="trust-ind"><i class="fas fa-clock"></i> Under 5 Minutes</div>
+          <div class="trust-ind"><i class="fas fa-chart-bar"></i> Instant Results</div>
+        </div>
+        <button class="btn-primary" onclick="startAssessment()" style="width:100%;max-width:340px;padding:18px 36px;font-size:17px;"><i class="fas fa-arrow-right"></i> Start Your Diagnostic</button>
+        <span style="display:block;font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:12px;">Free. Personalized. No email required to start.</span>
+        <div class="inline-testimonial">
+          <p>"I could see the gap between what I know and what I've actually productized."</p>
+          <span>— Jonathan M., Director, Financial Services</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right: Preview Card -->
+    <div class="split-right">
+      <div class="split-right-inner">
+        <div class="preview-card">
+          <div class="preview-badge">Your Personalized Report</div>
+          <!-- Preview Gauge (grayed out) -->
+          <svg width="180" height="180" viewBox="0 0 200 200" style="display:block;margin:0 auto;">
+            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(27,42,74,0.06)" stroke-width="14"/>
+            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,107,53,0.12)" stroke-width="14"
+              stroke-linecap="round" stroke-dasharray="534" stroke-dashoffset="400"
+              transform="rotate(-90 100 100)" class="preview-gauge-glow"/>
+            <text x="100" y="95" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="44" font-weight="800" fill="rgba(27,42,74,0.2)">?</text>
+            <text x="117" y="95" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="24" font-weight="700" fill="rgba(27,42,74,0.15)">%</text>
+            <text x="100" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" fill="rgba(107,114,128,0.5)" letter-spacing="2">YOUR SCORE</text>
+          </svg>
+          <!-- Preview Bars -->
+          <div class="preview-bars">
+            <div class="preview-bar-row">
+              <div class="preview-bar-label"><i class="fas fa-bullseye"></i> Signal</div>
+              <div class="preview-bar-track"></div>
+            </div>
+            <div class="preview-bar-row">
+              <div class="preview-bar-label"><i class="fas fa-cubes"></i> Structure</div>
+              <div class="preview-bar-track"></div>
+            </div>
+            <div class="preview-bar-row">
+              <div class="preview-bar-label"><i class="fas fa-chart-line"></i> Commercial Gravity</div>
+              <div class="preview-bar-track"></div>
+            </div>
+            <div class="preview-bar-row">
+              <div class="preview-bar-label"><i class="fas fa-rocket"></i> Scale Readiness</div>
+              <div class="preview-bar-track"></div>
+            </div>
+          </div>
+          <!-- Checklist -->
+          <div class="preview-checklist">
+            <div class="preview-check-item"><i class="fas fa-check"></i> Overall score & tier placement</div>
+            <div class="preview-check-item"><i class="fas fa-check"></i> Category-by-category breakdown</div>
+            <div class="preview-check-item"><i class="fas fa-check"></i> Growth projection map</div>
+            <div class="preview-check-item"><i class="fas fa-check"></i> Tailored strategic analysis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ QUESTION SCREEN ============ -->
+<div class="screen" id="screen-question">
+  <div class="q-wrapper">
+    <div class="q-card" id="q-card">
+      <div class="q-top-row">
+        <button class="btn-back hidden" id="btn-back" onclick="goBack()">← Back</button>
+        <span class="q-category" id="q-category"></span>
+        <span class="q-step" id="q-step"></span>
+      </div>
+      <div class="q-progress"><div class="q-progress-fill" id="q-progress"></div></div>
+      <div class="q-text" id="q-text"></div>
+      <div id="q-body"></div>
+      <button class="btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EMAIL SCREEN ============ -->
+<div class="screen" id="screen-email">
+  <div class="email-card">
+    <h2>You're almost there.</h2>
+    <p class="email-sub">Enter your details to see your personalized scorecard results.</p>
+    <input class="email-field" type="text" id="input-name" placeholder="First Name" autocomplete="given-name">
+    <input class="email-field" type="email" id="input-email" placeholder="Email Address" autocomplete="email">
+    <button class="btn-primary" id="btn-email" onclick="submitEmail()"><i class="fas fa-chart-bar"></i> See My Score</button>
+    <p class="email-privacy">We respect your privacy. Your information is secure and will never be shared.</p>
+  </div>
+</div>
+
+<!-- ============ RESULTS SCREEN ============ -->
+<div class="screen" id="screen-results">
+  <div class="results-container">
+
+    <!-- Score Hero -->
+    <div class="score-hero">
+      <p class="score-greeting" id="r-greeting"></p>
+      <div class="score-gauge">
+        <svg viewBox="0 0 200 200">
+          <circle class="gauge-track" cx="100" cy="100" r="85"/>
+          <circle class="gauge-fill" id="gauge-fill" cx="100" cy="100" r="85"/>
+        </svg>
+        <div class="score-gauge-inner">
+          <div><span class="gauge-number" id="r-score-num">0</span><span class="gauge-pct">%</span></div>
+          <span class="gauge-tier" id="r-tier"></span>
+        </div>
+      </div>
+      <!-- Tier Spectrum -->
+      <div class="tier-spectrum-wrap">
+        <div class="tier-spectrum">
+          <div class="tier-spectrum-marker" id="tier-marker" style="left:0%"></div>
+        </div>
+        <div class="tier-spectrum-labels">
+          <span>Poor</span>
+          <span>Average</span>
+          <span>Top</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="cat-grid" id="cat-grid"></div>
+
+    <!-- Growth Projection -->
+    <div class="growth-card" id="growth-card"></div>
+
+    <!-- Deep Dive Accordion -->
+    <div class="accordion-section">
+      <div class="accordion-section-title">Detailed Analysis</div>
+      <div id="deep-dive"></div>
+    </div>
+
+    <!-- CTA Card -->
+    <div class="cta-card">
+      <div class="cta-label">Architecture Matters</div>
+      <h3 id="cta-heading"></h3>
+      <p id="cta-subtext"></p>
+      <a href="/Reignite/v3/" class="btn-primary"><i class="fas fa-arrow-right"></i> Work with Steven</a>
+    </div>
+
+    <!-- Bio Horizontal -->
+    <div class="bio-horizontal">
+      <img src="/Reignite/v3/steven-bio-transparent.png" alt="Steven" onerror="this.style.display='none'">
+      <div class="bio-horizontal-text">
+        <div class="bio-name">Steven Tshakatumba</div>
+        <div class="bio-title">Founder, Reignite Advisors</div>
+        <p class="bio-desc">I help senior professionals and consultants architect their expertise into structured, scalable advisory practices — turning experience into premium, sellable assets.</p>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta">
+      <a href="/Reignite/v3/" class="btn-secondary">Learn More About Reignite</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const questions = [
+    { id: 1, category: 'Signal', text: 'Can you describe your offer in one clear sentence without rambling?', options: [
+        { text: 'Clearly and confidently', value: 4 }, { text: 'Mostly clear', value: 3 }, { text: 'Somewhat unclear', value: 2 }, { text: "No, it's not clear", value: 1 }
+    ]},
+    { id: 2, category: 'Signal', text: 'How clearly can someone understand what makes your work different within 30 seconds?', options: [
+        { text: 'Instantly — within seconds', value: 4 }, { text: 'Usually within 30 seconds', value: 3 }, { text: 'Takes some explanation', value: 2 }, { text: 'They rarely get it quickly', value: 1 }
+    ]},
+    { id: 3, category: 'Signal', text: 'Do you have an offer that generates value without your constant involvement?', options: [
+        { text: 'Yes', value: 4 }, { text: 'No', value: 1 }
+    ]},
+    { id: 4, category: 'Structure', text: 'Have you narrowed your audience to a specific group, not \u201cleaders\u201d or \u201cbusinesses\u201d?', options: [
+        { text: 'Highly specific (role, industry, stage)', value: 4 }, { text: 'Somewhat specific', value: 3 }, { text: 'Broad (generic category)', value: 2 }, { text: 'Very broad (everyone)', value: 1 }
+    ]},
+    { id: 5, category: 'Structure', text: 'If you stopped working for 30 days, what would happen?', options: [
+        { text: 'Revenue continues (systems in place)', value: 4 }, { text: 'Slows but continues', value: 3 }, { text: 'Stops significantly', value: 2 }, { text: 'Stops completely', value: 1 }
+    ]},
+    { id: 6, category: 'Structure', text: 'Do you have a defined progression from entry-level work to higher-value engagements?', options: [
+        { text: 'Yes', value: 4 }, { text: 'No', value: 1 }
+    ]},
+    { id: 7, category: 'Commercial Gravity', text: 'Is your expertise delivered through a defined framework, not just conversations?', options: [
+        { text: 'Yes', value: 4 }, { text: 'Not sure', value: 2 }, { text: 'No', value: 1 }
+    ]},
+    { id: 8, category: 'Commercial Gravity', text: 'Is your offer tied to a problem with measurable financial or strategic consequences?', options: [
+        { text: 'Clearly measurable', value: 4 }, { text: 'Somewhat measurable', value: 3 }, { text: 'Hard to quantify', value: 2 }, { text: 'Not clearly tied to impact', value: 1 }
+    ]},
+    { id: 9, category: 'Commercial Gravity', text: 'Have you validated demand with paying clients?', options: [
+        { text: 'Repeat paying clients', value: 4 }, { text: 'Some paying clients', value: 3 }, { text: 'Interest but no payments', value: 2 }, { text: 'No validation', value: 1 }
+    ]},
+    { id: 10, category: 'Scale Readiness', text: 'How is your work currently priced?', options: [
+        { text: 'Value or outcome-based', value: 4 }, { text: 'Hybrid (value + time)', value: 3 }, { text: 'Mostly time-based', value: 2 }, { text: 'Fully time-based', value: 1 }
+    ]},
+    { id: 11, category: 'Scale Readiness', text: 'Which best describes your current professional situation?', options: [
+        { text: 'Senior leader earning under $150K', value: 2 }, { text: 'Senior leader earning $150K\u2013$300K', value: 4 }, { text: 'Independent consultant below $150K', value: 2 }, { text: 'Founder/advisor earning $300K+', value: 5 }
+    ]},
+    { id: 12, category: 'Scale Readiness', text: 'Which outcome best describes your current focus?', options: [
+        { text: 'Turn my experience into a premium, structured offer', value: 3 }, { text: 'Replace or surpass my income through advisory revenue', value: 5 }, { text: 'Build scalable leverage beyond trading time for money', value: 5 }, { text: 'Elevate my positioning to operate at a more strategic level', value: 4 }
+    ]},
+    { id: 13, category: 'Scale Readiness', text: 'What is quietly holding you back from moving forward?', options: [
+        { text: "I'm not fully clear on how to package what I know", value: 4 }, { text: "I'm unsure how to position myself without narrowing too much", value: 4 }, { text: "I question whether my experience is truly distinct", value: 2 }, { text: "I haven't committed to structuring this properly", value: 4 }, { text: "I'm concerned about charging at a higher level", value: 3 }
+    ]},
+    { id: 14, category: 'Scale Readiness', text: 'What level of support are you prepared to invest in to structure this properly?', options: [
+        { text: 'Private, one-to-one advisory engagement', value: 5 }, { text: 'Structured architecture program with direct guidance', value: 4 }, { text: 'Defined system with limited support', value: 2 }, { text: 'Self-guided resources only', value: 1 }
+    ]},
+    { id: 15, category: 'Scale Readiness', text: 'Is there anything else that would help me understand your situation?', isTextarea: true }
+];
+
+const maxScores = { 'Signal': 12, 'Structure': 12, 'Commercial Gravity': 12, 'Scale Readiness': 23 };
+
+const narratives = {
+    'Signal': {
+        low: { title: 'Your Signal Is Blurry', body: "Your positioning isn't landing. People can't quickly understand what you do or why it matters.\n\nWithout a clear signal, your expertise remains invisible \u2014 even to the right people.\n\nThe market doesn't buy what it can't explain to itself.\n\nClarity precedes credibility." },
+        med: { title: 'Your Signal Is Inconsistent', body: "Some people understand your value. Others don't.\n\nThat inconsistency creates friction.\n\nYour positioning may be clear to you \u2014 but not obvious to the market.\n\nWith sharper language and a tighter audience focus, your authority will increase fast.\n\nRefinement, not reinvention." },
+        high: { title: 'Your Signal Is Strong', body: "People can understand what you do quickly.\n\nYour positioning likely feels focused and intentional.\n\nThat reduces friction and increases trust.\n\nNow the opportunity is leverage \u2014 turning that clarity into scalable offers.\n\nStrong signal is a commercial advantage." }
+    },
+    'Structure': {
+        low: { title: 'Your Expertise Lives in Conversations', body: "Right now, your knowledge only works when you're present.\n\nThere's no structure that carries your value forward without you.\n\nThat means every engagement starts from zero.\n\nArchitecture turns conversations into assets.\n\nStart building." },
+        med: { title: 'You Have Pieces of Structure', body: "You've started putting shape around your thinking.\n\nBut it may still rely heavily on you explaining it.\n\nSome parts are documented. Some parts live in your head.\n\nWith stronger frameworks and clearer systems, your value becomes easier to deliver \u2014 and easier to price.\n\nRefine the structure. Don't rely on presence." },
+        high: { title: 'Your Thinking Is Structured', body: "Your expertise likely follows a repeatable framework.\n\nClients can see how you think \u2014 not just what you say.\n\nThat structure increases trust and perceived value instantly.\n\nNow the opportunity is turning that structure into scalable assets.\n\nArchitecture creates independence." }
+    },
+    'Commercial Gravity': {
+        low: { title: 'Your Revenue Pull Is Weak', body: "The problem you solve may not be clearly tied to money or results.\n\nIf the impact isn't obvious, pricing becomes hard.\n\nYou may still be charging for time instead of value.\n\nWithout paying proof, momentum stays slow.\n\nRevenue follows consequence." },
+        med: { title: 'Your Revenue Has Potential', body: "You solve real problems.\n\nBut the financial or strategic impact may not be fully clear to buyers.\n\nYou may still default to time-based pricing in some cases.\n\nWith stronger value alignment and clearer outcomes, your pricing power increases.\n\nClarity strengthens commercial gravity." },
+        high: { title: 'Your Revenue Has Gravity', body: "The problems you solve are clearly tied to real consequence.\n\nClients understand the value \u2014 and pay for outcomes, not hours.\n\nYour pricing reflects impact.\n\nPaying clients signal proof, not just potential.\n\nStrong commercial gravity creates momentum." }
+    },
+    'Scale Readiness': {
+        low: { title: "Your Growth Depends on You", body: "Every result currently requires your direct involvement.\n\nThere are no systems creating value while you're not working.\n\nThis limits your capacity, your pricing, and your income ceiling.\n\nArchitecture matters. Build the structure first." },
+        med: { title: "You've Started Building Leverage", body: "You may have early systems or repeatable processes.\n\nBut growth still depends heavily on your involvement.\n\nSome independence exists \u2014 but it's not fully intentional.\n\nWith stronger design, scale becomes sustainable.\n\nRefine the structure before pushing growth." },
+        high: { title: "You're Built for Scale", body: "Your revenue is not fully tied to your time.\n\nYou likely have structured offers, defined processes, or leverage layers in place.\n\nGrowth feels designed \u2014 not forced.\n\nScale happens when effort is replaced with architecture.\n\nYou're thinking beyond effort." }
+    }
+};
+
+const catIcons = {
+    'Signal': 'fa-bullseye',
+    'Structure': 'fa-cubes',
+    'Commercial Gravity': 'fa-chart-line',
+    'Scale Readiness': 'fa-rocket'
+};
+
+// STATE
+let currentQ = 0;
+const answers = {};
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active', 'visible');
+    });
+    const el = document.getElementById(id);
+    el.classList.add('active');
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.add('visible'));
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startAssessment() {
+    currentQ = 0;
+    showScreen('screen-question');
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const q = questions[currentQ];
+    const card = document.getElementById('q-card');
+
+    card.style.animation = 'none';
+    card.offsetHeight;
+    card.style.animation = '';
+
+    document.getElementById('q-category').textContent = q.category.toUpperCase();
+    document.getElementById('q-step').textContent = `Q${currentQ + 1} of 15`;
+    document.getElementById('q-progress').style.width = ((currentQ + 1) / 15 * 100) + '%';
+    document.getElementById('q-text').textContent = q.text;
+
+    const backBtn = document.getElementById('btn-back');
+    if (currentQ === 0) {
+        backBtn.classList.add('hidden');
+    } else {
+        backBtn.classList.remove('hidden');
+    }
+
+    const body = document.getElementById('q-body');
+    body.innerHTML = '';
+    const nextBtn = document.getElementById('btn-next');
+
+    if (q.isTextarea) {
+        const ta = document.createElement('textarea');
+        ta.className = 'q-textarea';
+        ta.placeholder = 'Type your response here (optional)...';
+        if (answers[currentQ] && answers[currentQ].text !== undefined) {
+            ta.value = answers[currentQ].text;
+        }
+        ta.addEventListener('input', () => {
+            answers[currentQ] = { value: 0, optionIndex: -1, text: ta.value };
+        });
+        body.appendChild(ta);
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'See My Results';
+    } else {
+        const wrap = document.createElement('div');
+        wrap.className = 'q-options';
+        q.options.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'q-option';
+            btn.textContent = opt.text;
+            if (answers[currentQ] && answers[currentQ].optionIndex === i) {
+                btn.classList.add('selected');
+            }
+            btn.addEventListener('click', () => {
+                wrap.querySelectorAll('.q-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                answers[currentQ] = { value: opt.value, optionIndex: i };
+                nextBtn.disabled = false;
+            });
+            wrap.appendChild(btn);
+        });
+        body.appendChild(wrap);
+        nextBtn.textContent = 'Next';
+        nextBtn.disabled = !(answers[currentQ] && answers[currentQ].optionIndex !== undefined && answers[currentQ].optionIndex >= 0);
+    }
+}
+
+function goBack() {
+    if (currentQ > 0) {
+        currentQ--;
+        renderQuestion();
+    }
+}
+
+function nextQuestion() {
+    const q = questions[currentQ];
+    if (!q.isTextarea && (!answers[currentQ] || answers[currentQ].optionIndex < 0)) return;
+
+    if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQuestion();
+    } else {
+        showScreen('screen-email');
+    }
+}
+
+function submitEmail() {
+    const name = document.getElementById('input-name').value.trim();
+    const email = document.getElementById('input-email').value.trim();
+    if (!name || !email || !email.includes('@')) {
+        document.getElementById('input-email').style.borderColor = '#ff4444';
+        if (!name) document.getElementById('input-name').style.borderColor = '#ff4444';
+        return;
+    }
+
+    const btn = document.getElementById('btn-email');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Calculating...';
+
+    localStorage.setItem('reignite_name', name);
+    localStorage.setItem('reignite_email', email);
+
+    setTimeout(() => showResults(), 800);
+}
+
+function toggleAccordion(card) {
+    card.classList.toggle('expanded');
+}
+
+function showResults() {
+    // === SCORING ===
+    const catScores = { 'Signal': 0, 'Structure': 0, 'Commercial Gravity': 0, 'Scale Readiness': 0 };
+    for (let i = 0; i < questions.length; i++) {
+        if (answers[i] && answers[i].value) {
+            catScores[questions[i].category] += answers[i].value;
+        }
+    }
+
+    const categories = Object.keys(maxScores);
+    const catPcts = {};
+    let totalScore = 0, totalMax = 0;
+    categories.forEach(cat => {
+        catPcts[cat] = Math.round((catScores[cat] / maxScores[cat]) * 100);
+        totalScore += catScores[cat];
+        totalMax += maxScores[cat];
+    });
+    const overallPct = Math.round((totalScore / totalMax) * 100);
+
+    function getTier(pct) {
+        if (pct <= 25) return 'Poor';
+        if (pct <= 63) return 'Average';
+        return 'Top';
+    }
+    function getTierKey(pct) {
+        if (pct <= 25) return 'low';
+        if (pct <= 63) return 'med';
+        return 'high';
+    }
+
+    const overallTier = getTier(overallPct);
+
+    // === PERSONALIZED GREETING ===
+    const userName = localStorage.getItem('reignite_name') || 'there';
+    document.getElementById('r-greeting').textContent = `Here's your scorecard, ${userName}.`;
+
+    // === TIER COLORS ===
+    function getTierColor(tier) {
+        if (tier === 'Top') return '#16a34a';
+        if (tier === 'Average') return '#eab308';
+        return '#ea580c';
+    }
+    function getTierColorLight(tier) {
+        if (tier === 'Top') return 'rgba(34,197,94,0.35)';
+        if (tier === 'Average') return 'rgba(234,179,8,0.35)';
+        return 'rgba(249,115,22,0.35)';
+    }
+
+    const overallColor = getTierColor(overallTier);
+
+    // === TIER DISPLAY ===
+    document.getElementById('r-tier').textContent = overallTier.toUpperCase();
+    document.getElementById('r-tier').style.color = overallColor;
+
+    // === SHOW SCREEN ===
+    showScreen('screen-results');
+
+    // === GAUGE ANIMATION ===
+    const gaugeFill = document.getElementById('gauge-fill');
+    gaugeFill.style.stroke = overallColor;
+    gaugeFill.style.filter = `drop-shadow(0 0 10px ${getTierColorLight(overallTier)})`;
+    const circumference = 2 * Math.PI * 85; // ~534
+    const targetOffset = circumference * (1 - overallPct / 100);
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            gaugeFill.style.strokeDashoffset = targetOffset;
+        });
+    });
+
+    // === SCORE COUNT-UP ===
+    const scoreEl = document.getElementById('r-score-num');
+    let count = 0;
+    const duration = 1800;
+    const steps = 60;
+    const increment = overallPct / steps;
+    const interval = duration / steps;
+    const counter = setInterval(() => {
+        count += increment;
+        if (count >= overallPct) {
+            count = overallPct;
+            clearInterval(counter);
+        }
+        scoreEl.textContent = Math.round(count);
+    }, interval);
+
+    // === TIER SPECTRUM MARKER ===
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.getElementById('tier-marker').style.left = overallPct + '%';
+        });
+    });
+
+    // === CATEGORY GRID ===
+    const gridEl = document.getElementById('cat-grid');
+    gridEl.innerHTML = '';
+    categories.forEach(cat => {
+        const pct = catPcts[cat];
+        const tier = getTier(pct);
+        const tierClass = tier === 'Top' ? 'tier-top' : tier === 'Poor' ? 'tier-poor' : '';
+        gridEl.innerHTML += `
+            <div class="cat-card ${tierClass}">
+                <div class="cat-card-icon"><i class="fas ${catIcons[cat]}"></i></div>
+                <div class="cat-card-name">${cat}</div>
+                <div class="cat-card-pct">${pct}%</div>
+                <div class="cat-card-bar"><div class="cat-card-fill" data-width="${pct}" style="background:${getTierColor(tier)}"></div></div>
+                <span class="cat-card-tier ${tier === 'Top' ? 'tier-top' : tier === 'Poor' ? 'tier-poor' : 'tier-avg'}">${tier}</span>
+            </div>`;
+    });
+
+    // === GROWTH PROJECTION ===
+    const growthEl = document.getElementById('growth-card');
+    let growthRows = '';
+    categories.forEach(cat => {
+        const pct = catPcts[cat];
+        const projected = Math.min(100, pct + 25);
+        growthRows += `
+            <div class="growth-row">
+                <div class="growth-label">${cat}</div>
+                <div class="growth-bars">
+                    <div class="growth-bar current"><div class="growth-fill-current" data-width="${pct}"></div></div>
+                    <div class="growth-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="growth-bar projected"><div class="growth-fill-projected" data-width="${projected}"></div></div>
+                </div>
+                <div class="growth-pcts">
+                    <span>${pct}%</span> <span class="projected-pct">${projected}%</span>
+                </div>
+            </div>`;
+    });
+    growthEl.innerHTML = `
+        <div class="growth-title">Where Reignite Takes You</div>
+        ${growthRows}
+        <div class="growth-callout"><i class="fas fa-bolt"></i> Average projected improvement: +25 percentage points</div>`;
+
+    // === DEEP DIVE ACCORDION ===
+    const deepEl = document.getElementById('deep-dive');
+    deepEl.innerHTML = '';
+    categories.forEach((cat, idx) => {
+        const pct = catPcts[cat];
+        const tierKey = getTierKey(pct);
+        const tier = getTier(pct);
+        const narr = narratives[cat][tierKey];
+        const expanded = 'expanded';
+        deepEl.innerHTML += `
+            <div class="accordion-card ${expanded}" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <div class="accordion-icon"><i class="fas ${catIcons[cat]}"></i></div>
+                    <div class="accordion-title">${narr.title}</div>
+                    <span class="accordion-tier ${tier === 'Top' ? 'tier-top' : tier === 'Poor' ? 'tier-poor' : 'tier-avg'}">${tier}</span>
+                    <span class="accordion-pct">${pct}%</span>
+                    <span class="accordion-chevron"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <div class="accordion-bar"><div class="accordion-bar-fill" data-width="${pct}" style="background:${getTierColor(tier)}"></div></div>
+                        <div class="accordion-narrative">${narr.body}</div>
+                    </div>
+                </div>
+            </div>`;
+    });
+
+    // === TIER-SPECIFIC CTA ===
+    const ctaMessages = {
+        'Top': {
+            h: "You've built the foundation. Now let's architect the asset.",
+            p: "Your experience scores well — but scoring well and earning well are different games. Architecture turns signal into scalable revenue."
+        },
+        'Average': {
+            h: "You have the experience. Architecture turns it into income.",
+            p: "The gap between what you know and what you earn is a structural problem. Most professionals can close it in 90 days."
+        },
+        'Poor': {
+            h: "Most people start here. The gap is fixable.",
+            p: "Low scores mean high upside. You have experience — it just isn't structured yet. That's exactly what architecture solves."
+        }
+    };
+    const msg = ctaMessages[overallTier];
+    document.getElementById('cta-heading').textContent = msg.h;
+    document.getElementById('cta-subtext').textContent = msg.p;
+
+    // === ANIMATE ALL BARS ===
+    setTimeout(() => {
+        document.querySelectorAll('[data-width]').forEach(el => {
+            el.style.width = el.dataset.width + '%';
+        });
+    }, 400);
+}
+
+// Init: show start screen
+document.addEventListener('DOMContentLoaded', () => {
+    const start = document.getElementById('screen-start');
+    if (start) {
+        requestAnimationFrame(() => start.classList.add('visible'));
+    }
+});
+</script>
+</body>
+</html>
