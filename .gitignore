@@ -1,8 +1,4 @@
 *.log
 .DS_Store
 node_modules/
-*.png
-*.jpg
-*.jpeg
-*.gif
 *.bak
