@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name and email required' }, { status: 400, headers: CORS })
     }
 
-    const supabase = await createAdminClient()
+    const supabase = createAdminClient()
 
     const { error } = await supabase.from('leads').insert({
       name,

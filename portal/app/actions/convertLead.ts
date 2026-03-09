@@ -10,7 +10,7 @@ export async function convertLeadToClient(leadId: string) {
 
   if (!user) throw new Error('Not authenticated')
 
-  const admin = await createAdminClient()
+  const admin = createAdminClient()
 
   // Fetch the lead
   const { data: lead, error: leadError } = await admin

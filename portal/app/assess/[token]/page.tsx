@@ -9,7 +9,7 @@ export default async function AssessPage({
   params: Promise<{ token: string }>
 }) {
   const { token } = await params
-  const supabase = await createAdminClient()
+  const supabase = createAdminClient()
 
   const { data: assessment } = await supabase
     .from('assessments')
