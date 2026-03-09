@@ -25,10 +25,10 @@ export default function DeleteLeadButton({ leadId }: { leadId: string }) {
     return (
       <button
         onClick={() => setConfirming(true)}
-        className="text-sm font-medium transition-opacity hover:opacity-70"
-        style={{ color: '#991b1b' }}
+        className="text-sm font-semibold px-4 py-2 rounded-lg border transition-opacity hover:opacity-80"
+        style={{ color: '#991b1b', borderColor: '#991b1b', background: 'transparent' }}
       >
-        Delete this lead
+        Delete
       </button>
     )
   }
