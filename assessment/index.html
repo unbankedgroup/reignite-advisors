@@ -1025,11 +1025,18 @@ function submitEmail() {
         value: answers[i] ? answers[i].value : 0,
     }));
 
+    // Calculate total score to store alongside responses
+    const _catScores = { 'Signal': 0, 'Structure': 0, 'Commercial Gravity': 0, 'Scale Readiness': 0 };
+    for (let i = 0; i < questions.length; i++) {
+        if (answers[i] && answers[i].value) _catScores[questions[i].category] += answers[i].value;
+    }
+    const totalScore = Object.values(_catScores).reduce((a, b) => a + b, 0);
+
     // Fire-and-forget: submit to portal
     fetch('https://portal.reigniteadvisors.com/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, responses }),
+        body: JSON.stringify({ name, email, responses, score: totalScore }),
     }).catch(() => {}); // don't block on error
 
     setTimeout(() => showResults(), 800);

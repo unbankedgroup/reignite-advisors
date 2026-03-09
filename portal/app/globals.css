@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ── Light theme (default) ─────────────────────────────── */
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
@@ -10,6 +11,19 @@
   --muted: #666666;
   --navy: #1B2A4A;
   --navy-dark: #0F1A2E;
+}
+
+/* ── Dark brand theme ──────────────────────────────────── */
+[data-theme="dark"] {
+  --background: #0F1A2E;
+  --foreground: #f0f0f0;
+  --accent: #FF6B35;
+  --accent-light: #FFB08A;
+  --surface: #1B2A4A;
+  --border: rgba(255, 255, 255, 0.08);
+  --muted: #8a9bbf;
+  --navy: #e8ecf4;
+  --navy-dark: #ffffff;
 }
 
 @theme inline {
@@ -27,6 +41,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-jakarta), 'Plus Jakarta Sans', sans-serif;
+  transition: background 0.2s, color 0.2s;
 }
 
 * {

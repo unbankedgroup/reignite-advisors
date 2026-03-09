@@ -5,6 +5,16 @@ export const dynamic = 'force-dynamic'
 import { createClient } from '@/lib/supabase/client'
 import { useState } from 'react'
 
+function RLogo({ size = 52 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 140 140" style={{ flexShrink: 0 }}>
+      <rect x="6" y="6" width="128" height="128" rx="16" fill="#1B2A4A" stroke="#FF6B35" strokeWidth="5"/>
+      <text x="30" y="100" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="80" fontWeight="800" fill="#fff">R</text>
+      <circle cx="100" cy="36" r="10" fill="#FF6B35"/>
+    </svg>
+  )
+}
+
 export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const supabase = createClient()
@@ -26,17 +36,11 @@ export default function LoginPage() {
         style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.1)', boxShadow: '0 4px 24px rgba(27,42,74,0.08)' }}
       >
         {/* Logo */}
-        <div className="text-center mb-10">
-          <div className="inline-block mb-2">
-            <div className="flex items-baseline justify-center gap-0">
-              <span style={{ color: 'var(--navy)', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                REIGNITE
-              </span>
-              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '1.4rem', lineHeight: 1, marginLeft: '-1px' }}>.</span>
-            </div>
-            <div style={{ color: 'var(--accent)', fontSize: '0.5rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '4px', textAlign: 'center' }}>
-              ADVISORS
-            </div>
+        <div className="flex flex-col items-center mb-10">
+          <RLogo size={52} />
+          <div style={{ marginTop: '12px', textAlign: 'center' }}>
+            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1B2A4A', letterSpacing: '2px' }}>REIGNITE</div>
+            <div style={{ fontSize: '0.5rem', fontWeight: 600, color: '#FF6B35', letterSpacing: '3px', marginTop: '2px' }}>ADVISORS</div>
           </div>
           <h1 className="text-xl font-bold mt-6" style={{ color: 'var(--navy)' }}>
             Advisor Portal
@@ -48,10 +52,7 @@ export default function LoginPage() {
           onClick={signInWithGoogle}
           disabled={loading}
           className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg text-sm font-semibold transition-all disabled:opacity-50 hover:opacity-80"
-          style={{
-            background: 'var(--navy)',
-            color: '#fff',
-          }}
+          style={{ background: 'var(--navy)', color: '#fff' }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
