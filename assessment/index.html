@@ -1026,7 +1026,7 @@ function submitEmail() {
     }));
 
     // Fire-and-forget: submit to portal
-    fetch('https://claude-update-advisory-year-k4cvr-reignite-portal.mposha-malanga.workers.dev/api/leads', {
+    fetch('https://portal.reigniteadvisors.com/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, responses }),
