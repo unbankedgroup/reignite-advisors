@@ -251,7 +251,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
             onClick={goNext}
             disabled={!canAdvance || submitting}
             className="flex-1 py-3 rounded-xl text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-30"
-            style={{ background: 'var(--accent)', color: '#000' }}
+            style={{ background: 'var(--accent)', color: '#fff' }}
           >
             {submitting ? 'Submitting…' : current === QUESTIONS.length - 1 ? 'Submit' : 'Next'}
           </button>

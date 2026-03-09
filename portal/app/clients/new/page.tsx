@@ -103,7 +103,7 @@ export default function NewClientPage() {
             type="submit"
             disabled={loading}
             className="w-full py-3 rounded-lg text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-50"
-            style={{ background: 'var(--accent)', color: '#000' }}
+            style={{ background: 'var(--accent)', color: '#fff' }}
           >
             {loading ? 'Saving...' : 'Add Client'}
           </button>

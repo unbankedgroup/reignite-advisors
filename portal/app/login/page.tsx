@@ -20,30 +20,37 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--background)' }}>
-      <div className="w-full max-w-sm px-8 py-12 rounded-2xl" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: 'var(--surface)' }}>
+      <div
+        className="w-full max-w-sm px-8 py-12 rounded-2xl"
+        style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.1)', boxShadow: '0 4px 24px rgba(27,42,74,0.08)' }}
+      >
         {/* Logo */}
         <div className="text-center mb-10">
-          <div className="inline-block mb-6">
-            <div className="w-10 h-px mx-auto mb-2" style={{ background: 'var(--accent)' }} />
-            <span className="text-xs tracking-[0.25em] uppercase" style={{ color: 'var(--accent)' }}>
-              Reignite Advisors
-            </span>
-            <div className="w-10 h-px mx-auto mt-2" style={{ background: 'var(--accent)' }} />
+          <div className="inline-block mb-2">
+            <div className="flex items-baseline justify-center gap-0">
+              <span style={{ color: 'var(--navy)', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                REIGNITE
+              </span>
+              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '1.4rem', lineHeight: 1, marginLeft: '-1px' }}>.</span>
+            </div>
+            <div style={{ color: 'var(--accent)', fontSize: '0.5rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '4px', textAlign: 'center' }}>
+              ADVISORS
+            </div>
           </div>
-          <h1 className="text-2xl font-light tracking-wide" style={{ color: 'var(--foreground)' }}>
+          <h1 className="text-xl font-bold mt-6" style={{ color: 'var(--navy)' }}>
             Advisor Portal
           </h1>
+          <p className="text-sm mt-1" style={{ color: 'var(--muted)' }}>Sign in to access your dashboard</p>
         </div>
 
         <button
           onClick={signInWithGoogle}
           disabled={loading}
-          className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg text-sm font-medium transition-all disabled:opacity-50"
+          className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg text-sm font-semibold transition-all disabled:opacity-50 hover:opacity-80"
           style={{
-            background: 'var(--background)',
-            border: '1px solid var(--border)',
-            color: 'var(--foreground)',
+            background: 'var(--navy)',
+            color: '#fff',
           }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24">
@@ -52,7 +59,7 @@ export default function LoginPage() {
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
-          {loading ? 'Redirecting...' : 'Sign in with Google'}
+          {loading ? 'Redirecting...' : 'Continue with Google'}
         </button>
 
         <p className="text-center text-xs mt-8" style={{ color: 'var(--muted)' }}>
