@@ -1,0 +1,17 @@
+portal/
+design-refs/
+process-refs/
+logos/
+.git/
+.github/
+*.sh
+*.md
+redesign-*.png
+iteration-*.png
+t1.png
+t2.png
+t3.png
+t4.png
+t5.png
+t6.png
+logo-1.png
