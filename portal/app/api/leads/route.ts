@@ -12,24 +12,28 @@ export async function OPTIONS() {
 }
 
 export async function POST(req: NextRequest) {
-  const { name, email, responses, score } = await req.json()
+  try {
+    const { name, email, responses, score } = await req.json()
 
-  if (!name || !email) {
-    return NextResponse.json({ error: 'Name and email required' }, { status: 400, headers: CORS })
+    if (!name || !email) {
+      return NextResponse.json({ error: 'Name and email required' }, { status: 400, headers: CORS })
+    }
+
+    const supabase = createAdminClient()
+
+    const { error } = await supabase.from('leads').insert({
+      name,
+      email,
+      responses,
+      score: score ?? null,
+    })
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500, headers: CORS })
+    }
+
+    return NextResponse.json({ ok: true }, { headers: CORS })
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500, headers: CORS })
   }
-
-  const supabase = createAdminClient()
-
-  const { error } = await supabase.from('leads').insert({
-    name,
-    email,
-    responses,
-    score: score ?? null,
-  })
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500, headers: CORS })
-  }
-
-  return NextResponse.json({ ok: true }, { headers: CORS })
 }
