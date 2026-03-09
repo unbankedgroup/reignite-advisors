@@ -19,6 +19,12 @@ export default async function DashboardPage() {
     .from('assessments')
     .select('status')
 
+  const { data: leads } = await supabase
+    .from('leads')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(10)
+
   const total = clients?.length ?? 0
   const active = clients?.filter(c => c.status === 'active').length ?? 0
   const pending = assessments?.filter(a => a.status === 'pending').length ?? 0
@@ -52,6 +58,35 @@ export default async function DashboardPage() {
             </div>
           ))}
         </div>
+
+        {/* Inbound leads */}
+        {leads && leads.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-sm font-medium tracking-wide uppercase mb-5" style={{ color: 'var(--muted)' }}>
+              Inbound Leads
+            </h2>
+            <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+              {leads.map((lead, i) => (
+                <div
+                  key={lead.id}
+                  className="flex items-center justify-between px-6 py-4"
+                  style={{
+                    background: 'var(--surface)',
+                    borderTop: i > 0 ? '1px solid var(--border)' : 'none',
+                  }}
+                >
+                  <div>
+                    <div className="text-sm font-medium" style={{ color: 'var(--foreground)' }}>{lead.name}</div>
+                    <div className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{lead.email}</div>
+                  </div>
+                  <div className="text-xs" style={{ color: 'var(--muted)' }}>
+                    {new Date(lead.created_at).toLocaleDateString()}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Recent clients */}
         <div className="flex items-center justify-between mb-5">
