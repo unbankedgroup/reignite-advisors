@@ -12,9 +12,9 @@ export default async function ClientsPage() {
 
   if (!user) redirect('/login')
 
-  const { data: clients } = await supabase
-    .from('clients')
-    .select('*, assessments(count)')
+  const { data: leads } = await supabase
+    .from('leads')
+    .select('*')
     .order('created_at', { ascending: false })
 
   return (
@@ -23,48 +23,55 @@ export default async function ClientsPage() {
 
       <main className="max-w-5xl mx-auto px-8 py-12">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-xl font-light" style={{ color: 'var(--foreground)' }}>Clients</h1>
-          <Link
-            href="/clients/new"
-            className="text-xs px-4 py-2 rounded-lg transition-opacity hover:opacity-80"
-            style={{ background: 'var(--accent)', color: '#fff' }}
-          >
-            + Add Client
-          </Link>
+          <h1 className="text-xl font-bold" style={{ color: 'var(--navy)' }}>Clients</h1>
         </div>
 
-        {!clients || clients.length === 0 ? (
+        {!leads || leads.length === 0 ? (
           <div className="text-center py-20 rounded-xl" style={{ border: '1px dashed var(--border)' }}>
-            <p className="text-sm mb-4" style={{ color: 'var(--muted)' }}>No clients yet.</p>
-            <Link href="/clients/new" className="text-sm" style={{ color: 'var(--accent)' }}>
-              Add your first client →
-            </Link>
+            <p className="text-sm" style={{ color: 'var(--muted)' }}>
+              No submissions yet. They'll appear here when someone fills out your form.
+            </p>
           </div>
         ) : (
           <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
-            {/* Header */}
-            <div className="grid grid-cols-12 px-6 py-3" style={{ background: 'var(--background)', borderBottom: '1px solid var(--border)' }}>
-              {['Name', 'Company', 'Email', 'Status', ''].map((h, i) => (
-                <div key={i} className={`text-xs uppercase tracking-wider col-span-${[3,3,3,2,1][i]}`} style={{ color: 'var(--muted)' }}>{h}</div>
+            <div className="grid grid-cols-12 px-6 py-3" style={{ background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
+              {['Name', 'Email', 'Date', 'Score', ''].map((h, i) => (
+                <div
+                  key={i}
+                  className={`text-xs font-semibold uppercase tracking-wider col-span-${[3, 4, 2, 2, 1][i]}`}
+                  style={{ color: 'var(--muted)' }}
+                >
+                  {h}
+                </div>
               ))}
             </div>
-            {clients.map((client, i) => (
+            {leads.map((lead, i) => (
               <div
-                key={client.id}
+                key={lead.id}
                 className="grid grid-cols-12 px-6 py-4 items-center"
                 style={{
-                  background: 'var(--surface)',
+                  background: i % 2 === 0 ? '#fff' : 'var(--surface)',
                   borderTop: i > 0 ? '1px solid var(--border)' : 'none',
                 }}
               >
-                <div className="col-span-3 text-sm font-medium" style={{ color: 'var(--foreground)' }}>{client.name}</div>
-                <div className="col-span-3 text-sm" style={{ color: 'var(--muted)' }}>{client.company ?? '—'}</div>
-                <div className="col-span-3 text-sm" style={{ color: 'var(--muted)' }}>{client.email}</div>
+                <div className="col-span-3 text-sm font-semibold" style={{ color: 'var(--navy)' }}>{lead.name}</div>
+                <div className="col-span-4 text-sm" style={{ color: 'var(--muted)' }}>{lead.email}</div>
+                <div className="col-span-2 text-xs" style={{ color: 'var(--muted)' }}>
+                  {new Date(lead.created_at).toLocaleDateString()}
+                </div>
                 <div className="col-span-2">
-                  <StatusBadge status={client.status} />
+                  {lead.score != null ? (
+                    <span className="text-xs px-2 py-0.5 rounded font-bold" style={{ background: '#fff7ed', color: '#9a3412' }}>
+                      {lead.score} pts
+                    </span>
+                  ) : (
+                    <span className="text-xs" style={{ color: 'var(--muted)' }}>—</span>
+                  )}
                 </div>
                 <div className="col-span-1 text-right">
-                  <Link href={`/clients/${client.id}`} className="text-xs" style={{ color: 'var(--accent)' }}>View →</Link>
+                  <Link href={`/clients/${lead.id}`} className="text-xs font-semibold" style={{ color: 'var(--accent)' }}>
+                    View →
+                  </Link>
                 </div>
               </div>
             ))}
@@ -72,21 +79,5 @@ export default async function ClientsPage() {
         )}
       </main>
     </div>
-  )
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const colors: Record<string, string> = {
-    active: '#22c55e',
-    prospect: '#c9a84c',
-    inactive: '#6b6b6b',
-  }
-  return (
-    <span className="text-xs px-2.5 py-1 rounded-full" style={{
-      background: `${colors[status] ?? '#6b6b6b'}20`,
-      color: colors[status] ?? '#6b6b6b',
-    }}>
-      {status}
-    </span>
   )
 }
