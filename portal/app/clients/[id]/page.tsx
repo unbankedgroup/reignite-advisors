@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import EditLeadProfile from '@/components/EditLeadProfile'
 import CollapsibleResponses from '@/components/CollapsibleResponses'
+import DeleteLeadButton from '@/components/DeleteLeadButton'
 
 const MAX_SCORES: Record<string, number> = {
   Signal: 12,
@@ -125,6 +126,18 @@ export default async function ClientDetailPage({
             <p className="text-sm" style={{ color: 'var(--muted)' }}>No assessment responses recorded.</p>
           </div>
         )}
+
+        {/* Danger zone */}
+        <div
+          className="mt-16 pt-6 flex items-center justify-between"
+          style={{ borderTop: '1px solid var(--border)' }}
+        >
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: 'var(--muted)' }}>Danger zone</p>
+            <p className="text-xs" style={{ color: 'var(--muted)' }}>Permanently remove this lead and all their data.</p>
+          </div>
+          <DeleteLeadButton leadId={lead.id} />
+        </div>
       </main>
     </div>
   )
