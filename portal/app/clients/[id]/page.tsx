@@ -61,7 +61,7 @@ export default async function ClientDetailPage({
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       <Nav active="clients" />
 
-      <main className="max-w-3xl mx-auto px-8 py-12">
+      <main className="max-w-3xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         {/* Header */}
         <div className="flex items-start justify-between mb-8">
           <div>
@@ -99,7 +99,7 @@ export default async function ClientDetailPage({
             <h2 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--muted)' }}>
               Experience-to-Asset Scorecard
             </h2>
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {Object.entries(catScores).map(([cat, score]) => {
                 const max = MAX_SCORES[cat]
                 const pct = score / max

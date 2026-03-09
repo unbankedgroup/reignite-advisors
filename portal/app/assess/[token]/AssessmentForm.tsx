@@ -88,7 +88,17 @@ const QUESTIONS = [
 
 type Answer = { optionIndex: number; value: number; text?: string } | { text: string; value: 0 }
 
+type ContactInfo = {
+  first_name: string
+  last_name: string
+  email: string
+  company: string
+}
+
 export default function AssessmentForm({ token, assessmentId }: { token: string; assessmentId: string }) {
+  const [step, setStep] = useState<'contact' | 'questions'>('contact')
+  const [contact, setContact] = useState<ContactInfo>({ first_name: '', last_name: '', email: '', company: '' })
+  const [contactError, setContactError] = useState('')
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<Record<number, Answer>>({})
   const [submitting, setSubmitting] = useState(false)
@@ -100,8 +110,25 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
   const answer = answers[current]
   const isTextarea = 'isTextarea' in q && q.isTextarea
   const canAdvance = isTextarea
-    ? true // text is optional
+    ? true
     : answer && 'optionIndex' in answer && answer.optionIndex >= 0
+
+  function setContactField(field: keyof ContactInfo, value: string) {
+    setContact(prev => ({ ...prev, [field]: value }))
+  }
+
+  function submitContact() {
+    if (!contact.first_name.trim() || !contact.last_name.trim() || !contact.email.trim()) {
+      setContactError('Please fill in your first name, last name, and email.')
+      return
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email)) {
+      setContactError('Please enter a valid email address.')
+      return
+    }
+    setContactError('')
+    setStep('questions')
+  }
 
   function selectOption(index: number, value: number) {
     setAnswers(prev => ({ ...prev, [current]: { optionIndex: index, value } }))
@@ -139,7 +166,13 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
     const res = await fetch(`/api/assess/${token}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ responses }),
+      body: JSON.stringify({
+        responses,
+        first_name: contact.first_name.trim(),
+        last_name: contact.last_name.trim(),
+        email: contact.email.trim(),
+        company: contact.company.trim(),
+      }),
     })
 
     if (!res.ok) {
@@ -159,10 +192,113 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
           <h1 className="text-2xl font-light mb-4" style={{ color: 'var(--foreground)' }}>
             Thank you.
           </h1>
-          <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
             Your responses have been submitted. Your advisor will review your scorecard and be in touch shortly.
           </p>
+          <a
+            href={`/results/${token}`}
+            className="inline-block px-6 py-3 rounded-xl text-sm font-medium"
+            style={{ background: 'var(--accent)', color: '#fff' }}
+          >
+            View My Scorecard →
+          </a>
         </div>
+      </div>
+    )
+  }
+
+  if (step === 'contact') {
+    return (
+      <div className="min-h-screen" style={{ background: 'var(--background)' }}>
+        {/* Header */}
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: '1px solid var(--border)' }}>
+          <span className="text-xs tracking-[0.2em] uppercase" style={{ color: 'var(--accent)' }}>
+            Reignite Advisors
+          </span>
+        </div>
+
+        <main className="max-w-lg mx-auto px-6 py-14">
+          <div className="text-xs tracking-widest uppercase mb-6" style={{ color: 'var(--accent)' }}>
+            About You
+          </div>
+          <h2 className="text-xl font-light mb-3 leading-relaxed" style={{ color: 'var(--foreground)' }}>
+            Before we begin, let us know a bit about you.
+          </h2>
+          <p className="text-sm mb-10" style={{ color: 'var(--muted)' }}>
+            Your advisor will use this to personalise your scorecard.
+          </p>
+
+          <div className="space-y-5">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--muted)' }}>
+                  First Name <span style={{ color: 'var(--accent)' }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={contact.first_name}
+                  onChange={e => setContactField('first_name', e.target.value)}
+                  placeholder="Jane"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--muted)' }}>
+                  Last Name <span style={{ color: 'var(--accent)' }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={contact.last_name}
+                  onChange={e => setContactField('last_name', e.target.value)}
+                  placeholder="Smith"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--muted)' }}>
+                Email <span style={{ color: 'var(--accent)' }}>*</span>
+              </label>
+              <input
+                type="email"
+                value={contact.email}
+                onChange={e => setContactField('email', e.target.value)}
+                placeholder="jane@company.com"
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--muted)' }}>
+                Company / Organisation
+              </label>
+              <input
+                type="text"
+                value={contact.company}
+                onChange={e => setContactField('company', e.target.value)}
+                placeholder="Acme Inc."
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+              />
+            </div>
+          </div>
+
+          {contactError && (
+            <p className="text-sm mt-4" style={{ color: '#f87171' }}>{contactError}</p>
+          )}
+
+          <button
+            onClick={submitContact}
+            className="w-full mt-8 py-3 rounded-xl text-sm font-medium transition-opacity hover:opacity-80"
+            style={{ background: 'var(--accent)', color: '#fff' }}
+          >
+            Begin Assessment →
+          </button>
+        </main>
       </div>
     )
   }
@@ -170,7 +306,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       {/* Header */}
-      <div className="px-8 py-5 flex items-center justify-between" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: '1px solid var(--border)' }}>
         <span className="text-xs tracking-[0.2em] uppercase" style={{ color: 'var(--accent)' }}>
           Reignite Advisors
         </span>
@@ -187,7 +323,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
         />
       </div>
 
-      <main className="max-w-lg mx-auto px-8 py-14">
+      <main className="max-w-lg mx-auto px-6 py-14">
         {/* Category */}
         <div className="text-xs tracking-widest uppercase mb-6" style={{ color: 'var(--accent)' }}>
           {q.category}
@@ -234,13 +370,21 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
           </div>
         )}
 
-        {error && <p className="text-sm text-red-400 mt-4">{error}</p>}
+        {error && <p className="text-sm mt-4" style={{ color: '#f87171' }}>{error}</p>}
 
         {/* Navigation */}
         <div className="flex gap-3 mt-10">
-          {current > 0 && (
+          {current > 0 ? (
             <button
               onClick={() => setCurrent(c => c - 1)}
+              className="px-5 py-3 rounded-xl text-sm transition-opacity hover:opacity-70"
+              style={{ border: '1px solid var(--border)', color: 'var(--muted)' }}
+            >
+              Back
+            </button>
+          ) : (
+            <button
+              onClick={() => setStep('contact')}
               className="px-5 py-3 rounded-xl text-sm transition-opacity hover:opacity-70"
               style={{ border: '1px solid var(--border)', color: 'var(--muted)' }}
             >

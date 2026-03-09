@@ -17,18 +17,18 @@ export { RLogo }
 export default function Nav({ active }: { active?: string }) {
   return (
     <nav
-      className="flex items-center justify-between px-8 py-4"
-      style={{ background: '#fff', borderBottom: '1px solid rgba(27,42,74,0.08)' }}
+      className="flex items-center justify-between px-4 sm:px-8 py-4"
+      style={{ background: 'var(--background)', borderBottom: '1px solid var(--border)' }}
     >
       <a href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
         <RLogo />
-        <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-          <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1B2A4A', letterSpacing: '2px' }}>REIGNITE</span>
+        <div className="hidden sm:flex" style={{ flexDirection: 'column', lineHeight: 1.1 }}>
+          <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy)', letterSpacing: '2px' }}>REIGNITE</span>
           <span style={{ fontSize: '0.5rem', fontWeight: 600, color: '#FF6B35', letterSpacing: '3px', marginTop: '3px' }}>ADVISORS</span>
         </div>
       </a>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 sm:gap-6">
         <Link
           href="/dashboard"
           className="text-sm transition-colors"
@@ -45,7 +45,7 @@ export default function Nav({ active }: { active?: string }) {
         </Link>
         <Link
           href="/admin"
-          className="text-sm transition-colors"
+          className="hidden sm:inline text-sm transition-colors"
           style={{ color: active === 'admin' ? 'var(--navy)' : 'var(--muted)', fontWeight: active === 'admin' ? 700 : 400 }}
         >
           Admin

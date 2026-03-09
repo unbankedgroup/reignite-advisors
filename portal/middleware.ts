@@ -5,7 +5,7 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Public routes — no auth required
-  if (pathname.startsWith('/assess') || pathname.startsWith('/api/assess') || pathname.startsWith('/api/leads') || pathname.startsWith('/auth')) {
+  if (pathname.startsWith('/assess') || pathname.startsWith('/results') || pathname.startsWith('/api/assess') || pathname.startsWith('/api/leads') || pathname.startsWith('/auth')) {
     return NextResponse.next()
   }
 

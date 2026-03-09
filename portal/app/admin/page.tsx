@@ -32,7 +32,7 @@ export default async function AdminPage() {
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       <Nav active="admin" />
 
-      <main className="max-w-3xl mx-auto px-8 py-12">
+      <main className="max-w-3xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex items-start justify-between mb-10">
           <div>
             <h1 className="text-2xl font-bold" style={{ color: 'var(--navy)' }}>Access Management</h1>
@@ -67,7 +67,7 @@ export default async function AdminPage() {
                 key={admin.id}
                 className="grid grid-cols-12 px-6 py-4 items-center"
                 style={{
-                  background: i % 2 === 0 ? '#fff' : 'var(--surface)',
+                  background: i % 2 === 0 ? 'var(--background)' : 'var(--surface)',
                   borderTop: i > 0 ? '1px solid var(--border)' : 'none',
                 }}
               >
@@ -104,19 +104,21 @@ export default async function AdminPage() {
           )}
         </div>
 
-        {/* Setup instructions */}
-        <div className="mt-8 p-5 rounded-xl" style={{ background: '#fffbeb', border: '1px solid #fde68a' }}>
-          <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#92400e' }}>First-time setup</div>
-          <p className="text-sm mb-3" style={{ color: '#78350f' }}>
-            Run this in your <strong>Supabase SQL Editor</strong> to seed yourself as the first admin, then refresh this page:
-          </p>
-          <pre className="text-xs p-3 rounded-lg overflow-x-auto" style={{ background: '#fff7ed', color: '#7c2d12' }}>
+        {/* Setup instructions — only shown when no admins exist yet */}
+        {(!admins || admins.length === 0) && (
+          <div className="mt-8 p-5 rounded-xl" style={{ background: '#fffbeb', border: '1px solid #fde68a' }}>
+            <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#92400e' }}>First-time setup</div>
+            <p className="text-sm mb-3" style={{ color: '#78350f' }}>
+              Run this in your <strong>Supabase SQL Editor</strong> to seed yourself as the first admin, then refresh this page:
+            </p>
+            <pre className="text-xs p-3 rounded-lg overflow-x-auto" style={{ background: '#fff7ed', color: '#7c2d12' }}>
 {`insert into admins (user_id, email, role)
 select id, email, 'admin'
 from auth.users
 where email = '${user.email}';`}
-          </pre>
-        </div>
+            </pre>
+          </div>
+        )}
       </main>
     </div>
   )

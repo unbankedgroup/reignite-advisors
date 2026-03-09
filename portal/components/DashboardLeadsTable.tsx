@@ -55,7 +55,7 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
   return (
     <>
       {/* Stat cards */}
-      <div className="grid grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
         {[
           { label: 'Total Leads', value: total, filter: 'All' as FilterVal, color: 'var(--accent)' },
           { label: 'Top',         value: topCount,  filter: 'Top' as FilterVal,     color: '#166534', bg: '#dcfce7' },
@@ -65,43 +65,38 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
           <button
             key={stat.label}
             onClick={() => setFilter(stat.filter)}
-            className="p-6 rounded-xl text-left transition-all hover:opacity-80"
+            className="p-4 sm:p-6 rounded-xl text-left transition-all hover:opacity-80"
             style={{
               background: filter === stat.filter ? (stat.bg ?? 'var(--surface)') : 'var(--surface)',
               border: filter === stat.filter ? `2px solid ${stat.color}` : '1px solid var(--border)',
             }}
           >
-            <div className="text-3xl font-bold mb-1" style={{ color: stat.color }}>{stat.value}</div>
+            <div className="text-2xl sm:text-3xl font-bold mb-1" style={{ color: stat.color }}>{stat.value}</div>
             <div className="text-xs font-medium" style={{ color: 'var(--muted)' }}>{stat.label}</div>
           </button>
         ))}
       </div>
 
-      {/* Table header */}
-      <div className="flex items-center justify-between mb-4">
+      {/* Table header with dropdown sort */}
+      <div className="flex items-center justify-between mb-4 gap-3">
         <h2 className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--muted)' }}>
           {filter === 'All' ? 'All Clients' : `${filter} Clients`}
           {filtered.length !== total && <span className="ml-2 font-normal">({filtered.length})</span>}
         </h2>
-        <div className="flex items-center gap-2">
-          {(['newest', 'score_desc', 'score_asc'] as SortVal[]).map(s => {
-            const label = s === 'newest' ? 'Newest' : s === 'score_desc' ? 'Score ↓' : 'Score ↑'
-            return (
-              <button
-                key={s}
-                onClick={() => setSort(s)}
-                className="text-xs px-3 py-1.5 rounded-lg font-semibold transition-all"
-                style={{
-                  background: sort === s ? 'var(--navy)' : 'var(--surface)',
-                  color: sort === s ? '#fff' : 'var(--muted)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                {label}
-              </button>
-            )
-          })}
-        </div>
+        <select
+          value={sort}
+          onChange={e => setSort(e.target.value as SortVal)}
+          className="text-xs px-3 py-1.5 rounded-lg font-medium outline-none"
+          style={{
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+            color: 'var(--foreground)',
+          }}
+        >
+          <option value="newest">Newest first</option>
+          <option value="score_desc">Score: high to low</option>
+          <option value="score_asc">Score: low to high</option>
+        </select>
       </div>
 
       {/* List */}
@@ -121,22 +116,29 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
               <Link
                 key={lead.id}
                 href={`/clients/${lead.id}`}
-                className="flex items-center justify-between px-6 py-4 hover:opacity-80 transition-opacity"
+                className="flex items-start sm:items-center justify-between px-4 sm:px-6 py-4 hover:opacity-80 transition-opacity gap-3"
                 style={{
-                  background: i % 2 === 0 ? '#fff' : 'var(--surface)',
+                  background: i % 2 === 0 ? 'var(--background)' : 'var(--surface)',
                   borderTop: i > 0 ? '1px solid var(--border)' : 'none',
+                  display: 'flex',
                 }}
               >
-                <div>
-                  <div className="text-sm font-semibold" style={{ color: 'var(--navy)' }}>{displayName}</div>
-                  <div className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{lead.email}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-semibold truncate" style={{ color: 'var(--navy)' }}>{displayName}</div>
+                  <div className="text-xs mt-0.5 truncate" style={{ color: 'var(--muted)' }}>{lead.email}</div>
+                  <div className="text-xs mt-1 sm:hidden" style={{ color: 'var(--muted)' }}>
+                    {new Date(lead.created_at).toLocaleDateString()}
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xs" style={{ color: 'var(--muted)' }}>
+                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                  <span className="hidden sm:inline text-xs" style={{ color: 'var(--muted)' }}>
                     {new Date(lead.created_at).toLocaleDateString()}
                   </span>
                   {lead.score != null && (
-                    <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: '#fff7ed', color: '#9a3412' }}>
+                    <span
+                      className="text-xs font-bold px-2 py-0.5 rounded"
+                      style={{ background: 'var(--accent)20', color: 'var(--accent)' }}
+                    >
                       {lead.score}/{TOTAL_MAX}
                     </span>
                   )}
@@ -145,7 +147,7 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
                       {tier}
                     </span>
                   ) : (
-                    <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: '#f5f5f5', color: '#525252' }}>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: 'var(--surface)', color: 'var(--muted)', border: '1px solid var(--border)' }}>
                       no score
                     </span>
                   )}
