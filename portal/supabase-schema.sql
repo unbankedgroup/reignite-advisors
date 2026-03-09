@@ -93,12 +93,23 @@ create policy "Admins can read admins table"
   on admins for select
   using (auth.role() = 'authenticated');
 
+-- Helper function that checks admin status without triggering RLS
+-- (SECURITY DEFINER runs as the function owner, bypassing row-level policies)
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+stable
+as $$
+  select exists (
+    select 1 from public.admins where user_id = auth.uid() and role = 'admin'
+  );
+$$;
+
 -- Only admins can insert/update/delete
 create policy "Admins can manage admins"
   on admins for all
-  using (exists (
-    select 1 from admins where user_id = auth.uid() and role = 'admin'
-  ));
+  using (public.is_admin());
 
 -- ============================================================
 -- ALTER TABLE MIGRATIONS — run these if leads table already exists
