@@ -19,6 +19,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name and email required' }, { status: 400, headers: CORS })
     }
 
+    const _debug = { url: !!process.env.NEXT_PUBLIC_SUPABASE_URL, key: !!process.env.SUPABASE_SERVICE_ROLE_KEY }
+    if (!_debug.url || !_debug.key) {
+      return NextResponse.json({ error: 'missing env', debug: _debug }, { status: 500, headers: CORS })
+    }
     const supabase = createAdminClient()
 
     const { error } = await supabase.from('leads').insert({
