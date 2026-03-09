@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "reignite-advisors",
+  "name": "reignite-portal",
   "compatibility_date": "2025-09-27",
   "observability": {
     "enabled": true
