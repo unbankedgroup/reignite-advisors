@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import SignOutButton from './SignOutButton'
-import ThemeToggle from './ThemeToggle'
+import ProfileMenu from './ProfileMenu'
 
 function RLogo({ size = 38 }: { size?: number }) {
   return (
@@ -36,22 +35,7 @@ export default function Nav({ active }: { active?: string }) {
         >
           Dashboard
         </Link>
-        <Link
-          href="/clients"
-          className="text-sm transition-colors"
-          style={{ color: active === 'clients' ? 'var(--navy)' : 'var(--muted)', fontWeight: active === 'clients' ? 700 : 400 }}
-        >
-          Clients
-        </Link>
-        <Link
-          href="/admin"
-          className="hidden sm:inline text-sm transition-colors"
-          style={{ color: active === 'admin' ? 'var(--navy)' : 'var(--muted)', fontWeight: active === 'admin' ? 700 : 400 }}
-        >
-          Admin
-        </Link>
-        <ThemeToggle />
-        <SignOutButton />
+        <ProfileMenu />
       </div>
     </nav>
   )

@@ -59,7 +59,7 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
         {[
           { label: 'Total Leads', value: total, filter: 'All' as FilterVal, color: 'var(--accent)' },
           { label: 'Top',         value: topCount,  filter: 'Top' as FilterVal,     color: '#166534', bg: '#dcfce7' },
-          { label: 'Average',     value: avgCount,  filter: 'Average' as FilterVal, color: '#854d0e', bg: '#fef9c3' },
+          { label: 'Avg',         value: avgCount,  filter: 'Average' as FilterVal, color: '#854d0e', bg: '#fef9c3' },
           { label: 'Poor',        value: poorCount, filter: 'Poor' as FilterVal,    color: '#991b1b', bg: '#fee2e2' },
         ].map(stat => (
           <button
