@@ -98,7 +98,8 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
   const q = QUESTIONS[current]
   const progress = ((current + 1) / QUESTIONS.length) * 100
   const answer = answers[current]
-  const canAdvance = q.isTextarea
+  const isTextarea = 'isTextarea' in q && q.isTextarea
+  const canAdvance = isTextarea
     ? true // text is optional
     : answer && 'optionIndex' in answer && answer.optionIndex >= 0
 
@@ -128,7 +129,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
       return {
         questionId: q.id,
         category: q.category,
-        text: q.isTextarea
+        text: ('isTextarea' in q && q.isTextarea)
           ? (a && 'text' in a ? a.text : '')
           : (a && 'optionIndex' in a ? q.options[a.optionIndex].text : ''),
         value: a?.value ?? 0,
@@ -198,7 +199,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
         </h2>
 
         {/* Options */}
-        {q.isTextarea ? (
+        {isTextarea ? (
           <textarea
             rows={5}
             placeholder="Share as much or as little as you like…"
