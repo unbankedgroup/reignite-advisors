@@ -3,6 +3,10 @@ compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
 
+routes = [
+  { pattern = "portal.reigniteadvisors.com/*", zone_name = "reigniteadvisors.com" }
+]
+
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
