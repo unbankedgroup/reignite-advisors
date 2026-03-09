@@ -13,17 +13,20 @@ export async function OPTIONS() {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, responses, score } = await req.json()
+    const { name, first_name, last_name, email, company, responses, score } = await req.json()
 
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Name and email required' }, { status: 400, headers: CORS })
+    if (!email) {
+      return NextResponse.json({ error: 'Email required' }, { status: 400, headers: CORS })
     }
 
     const supabase = createAdminClient()
 
     const { error } = await supabase.from('leads').insert({
-      name,
+      name: name || [first_name, last_name].filter(Boolean).join(' ') || email,
+      first_name: first_name || null,
+      last_name: last_name || null,
       email,
+      company: company || null,
       responses: responses ?? null,
       score: score ?? null,
     })
