@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
+import ConvertLeadButton from '@/components/ConvertLeadButton'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -79,8 +80,11 @@ export default async function DashboardPage() {
                     <div className="text-sm font-medium" style={{ color: 'var(--foreground)' }}>{lead.name}</div>
                     <div className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{lead.email}</div>
                   </div>
-                  <div className="text-xs" style={{ color: 'var(--muted)' }}>
-                    {new Date(lead.created_at).toLocaleDateString()}
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs" style={{ color: 'var(--muted)' }}>
+                      {new Date(lead.created_at).toLocaleDateString()}
+                    </span>
+                    <ConvertLeadButton leadId={lead.id} />
                   </div>
                 </div>
               ))}
