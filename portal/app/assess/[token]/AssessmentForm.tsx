@@ -131,7 +131,7 @@ export default function AssessmentForm({ token, assessmentId }: { token: string;
         category: q.category,
         text: ('isTextarea' in q && q.isTextarea)
           ? (a && 'text' in a ? a.text : '')
-          : (a && 'optionIndex' in a ? q.options[a.optionIndex].text : ''),
+          : ('options' in q && a && 'optionIndex' in a ? q.options[a.optionIndex].text : ''),
         value: a?.value ?? 0,
       }
     })
