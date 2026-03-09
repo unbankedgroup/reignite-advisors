@@ -144,7 +144,7 @@ export default function DashboardLeadsTable({ leads }: { leads: Lead[] }) {
                   )}
                   {tierStyle ? (
                     <span className="text-xs px-2.5 py-1 rounded-full font-bold" style={{ background: tierStyle.bg, color: tierStyle.color }}>
-                      {tier}
+                      {tier === 'Average' ? 'Avg' : tier}
                     </span>
                   ) : (
                     <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: 'var(--surface)', color: 'var(--muted)', border: '1px solid var(--border)' }}>
