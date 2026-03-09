@@ -9,7 +9,7 @@ export async function POST(
   const { token } = await params
   const { responses } = await req.json()
 
-  const supabase = createAdminClient()
+  const supabase = await createAdminClient()
 
   const { error } = await supabase
     .from('assessments')
