@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0c0c0c;
-  --foreground: #f0f0f0;
-  --accent: #c9a84c;
-  --accent-light: #e8c97a;
-  --surface: #161616;
-  --border: #2a2a2a;
-  --muted: #6b6b6b;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --accent: #FF6B35;
+  --accent-light: #FFB08A;
+  --surface: #FAF9F7;
+  --border: rgba(27, 42, 74, 0.1);
+  --muted: #666666;
+  --navy: #1B2A4A;
+  --navy-dark: #0F1A2E;
 }
 
 @theme inline {
@@ -17,13 +19,14 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans);
+  --color-navy: var(--navy);
+  --font-sans: var(--font-jakarta);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, sans-serif;
+  font-family: var(--font-jakarta), 'Plus Jakarta Sans', sans-serif;
 }
 
 * {

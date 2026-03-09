@@ -27,7 +27,7 @@ export default async function ClientsPage() {
           <Link
             href="/clients/new"
             className="text-xs px-4 py-2 rounded-lg transition-opacity hover:opacity-80"
-            style={{ background: 'var(--accent)', color: '#000' }}
+            style={{ background: 'var(--accent)', color: '#fff' }}
           >
             + Add Client
           </Link>

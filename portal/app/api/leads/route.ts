@@ -21,15 +21,33 @@ export async function POST(req: NextRequest) {
 
     const supabase = createAdminClient()
 
-    const { error } = await supabase.from('leads').insert({
-      name,
-      email,
-      responses,
-      score: score ?? null,
-    })
+    // Store the lead for the record
+    await supabase.from('leads').insert({ name, email, responses, score: score ?? null })
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500, headers: CORS })
+    // Auto-create client — skip if this email already exists
+    const { data: existing } = await supabase
+      .from('clients')
+      .select('id')
+      .eq('email', email)
+      .maybeSingle()
+
+    if (!existing) {
+      const { data: newClient } = await supabase
+        .from('clients')
+        .insert({ name, email, status: 'prospect' })
+        .select('id')
+        .single()
+
+      // Store their assessment responses as a completed assessment
+      if (newClient && responses && Array.isArray(responses) && responses.length > 0) {
+        await supabase.from('assessments').insert({
+          client_id: newClient.id,
+          token: crypto.randomUUID(),
+          status: 'completed',
+          responses,
+          completed_at: new Date().toISOString(),
+        })
+      }
     }
 
     return NextResponse.json({ ok: true }, { headers: CORS })
