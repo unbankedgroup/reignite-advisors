@@ -73,12 +73,12 @@ export default function EditLeadProfile({ lead }: { lead: LeadProfile }) {
           <button
             onClick={() => setEditing(true)}
             className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg transition-opacity hover:opacity-70"
-            style={{ color: 'var(--muted)', border: '1px solid var(--border)', background: '#fff' }}
+            style={{ color: 'var(--muted)', border: '1px solid var(--border)', background: 'var(--surface)' }}
           >
             <PencilIcon /> Edit
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
           <InfoRow label="First Name" value={saved.first_name || '—'} />
           <InfoRow label="Last Name" value={saved.last_name || '—'} />
           <InfoRow label="Email" value={saved.email} />
@@ -100,7 +100,7 @@ export default function EditLeadProfile({ lead }: { lead: LeadProfile }) {
           <button
             onClick={cancel}
             className="text-xs px-3 py-1.5 rounded-lg font-semibold"
-            style={{ border: '1px solid var(--border)', color: 'var(--muted)', background: '#fff' }}
+            style={{ border: '1px solid var(--border)', color: 'var(--muted)', background: 'var(--surface)' }}
           >
             Cancel
           </button>
@@ -114,7 +114,7 @@ export default function EditLeadProfile({ lead }: { lead: LeadProfile }) {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <EditField label="First Name" value={form.first_name} onChange={v => set('first_name', v)} />
         <EditField label="Last Name" value={form.last_name} onChange={v => set('last_name', v)} />
         <EditField label="Email" value={form.email} onChange={v => set('email', v)} type="email" />
@@ -152,7 +152,7 @@ function EditField({
         value={value}
         onChange={e => onChange(e.target.value)}
         className="w-full px-3 py-2 rounded-lg text-sm outline-none"
-        style={{ background: '#fff', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+        style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
       />
     </div>
   )

@@ -52,7 +52,7 @@ export default function CollapsibleResponses({ responses }: { responses: Respons
                 key={r.questionId}
                 className="px-6 py-4"
                 style={{
-                  background: i % 2 === 0 ? '#fff' : 'var(--surface)',
+                  background: i % 2 === 0 ? 'var(--background)' : 'var(--surface)',
                   borderTop: i > 0 ? '1px solid var(--border)' : 'none',
                 }}
               >
@@ -66,7 +66,7 @@ export default function CollapsibleResponses({ responses }: { responses: Respons
                   <span className="text-sm" style={{ color: 'var(--foreground)' }}>{r.text || '—'}</span>
                   <span
                     className="text-xs px-2 py-0.5 rounded font-bold shrink-0"
-                    style={{ background: '#fff7ed', color: '#9a3412' }}
+                    style={{ background: 'var(--accent)20', color: 'var(--accent)' }}
                   >
                     {r.value} pts
                   </span>

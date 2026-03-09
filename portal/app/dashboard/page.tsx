@@ -21,8 +21,8 @@ export default async function DashboardPage() {
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       <Nav active="dashboard" />
 
-      <main className="max-w-5xl mx-auto px-8 py-12">
-        <div className="mb-10">
+      <main className="max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+        <div className="mb-8 sm:mb-10">
           <h1 className="text-2xl font-bold mb-1" style={{ color: 'var(--navy)' }}>
             Good {getGreeting()}, {user.user_metadata?.name?.split(' ')[0] ?? 'Advisor'}
           </h1>
