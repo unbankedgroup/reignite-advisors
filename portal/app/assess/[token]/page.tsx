@@ -1,4 +1,3 @@
-export const runtime = 'edge'
 
 import { createAdminClient } from '@/lib/supabase/admin'
 import { notFound } from 'next/navigation'
