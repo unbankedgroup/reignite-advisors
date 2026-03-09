@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic'
 
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
 import Nav from '@/components/Nav'
 import InviteAdminButton from '@/components/InviteAdminButton'
@@ -13,8 +14,11 @@ export default async function AdminPage() {
 
   if (!user) redirect('/login')
 
-  // Check if current user is an admin
-  const { data: me } = await supabase
+  // Use service-role client to read admins table (bypasses RLS which can
+  // silently fail on Cloudflare Workers due to cookie-based auth quirks)
+  const adminClient = createAdminClient()
+
+  const { data: me } = await adminClient
     .from('admins')
     .select('role')
     .eq('user_id', user.id)
@@ -22,8 +26,7 @@ export default async function AdminPage() {
 
   const isAdmin = me?.role === 'admin'
 
-  // Fetch all admins
-  const { data: admins } = await supabase
+  const { data: admins } = await adminClient
     .from('admins')
     .select('*')
     .order('created_at', { ascending: true })

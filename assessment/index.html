@@ -743,8 +743,10 @@ body {
   <div class="email-card">
     <h2>You're almost there.</h2>
     <p class="email-sub">Enter your details to see your personalized scorecard results.</p>
-    <input class="email-field" type="text" id="input-name" placeholder="First Name" autocomplete="given-name">
+    <input class="email-field" type="text" id="input-first-name" placeholder="First Name" autocomplete="given-name">
+    <input class="email-field" type="text" id="input-last-name" placeholder="Last Name" autocomplete="family-name">
     <input class="email-field" type="email" id="input-email" placeholder="Email Address" autocomplete="email">
+    <input class="email-field" type="text" id="input-company" placeholder="Company / Organisation" autocomplete="organization">
     <button class="btn-primary" id="btn-email" onclick="submitEmail()"><i class="fas fa-chart-bar"></i> See My Score</button>
     <p class="email-privacy">We respect your privacy. Your information is secure and will never be shared.</p>
   </div>
@@ -1000,19 +1002,29 @@ function nextQuestion() {
 }
 
 function submitEmail() {
-    const name = document.getElementById('input-name').value.trim();
+    const firstName = document.getElementById('input-first-name').value.trim();
+    const lastName = document.getElementById('input-last-name').value.trim();
     const email = document.getElementById('input-email').value.trim();
-    if (!name || !email || !email.includes('@')) {
-        document.getElementById('input-email').style.borderColor = '#ff4444';
-        if (!name) document.getElementById('input-name').style.borderColor = '#ff4444';
+    const company = document.getElementById('input-company').value.trim();
+
+    // Reset borders
+    ['input-first-name', 'input-last-name', 'input-email'].forEach(id => {
+        document.getElementById(id).style.borderColor = '';
+    });
+
+    if (!firstName || !lastName || !email || !email.includes('@')) {
+        if (!firstName) document.getElementById('input-first-name').style.borderColor = '#ff4444';
+        if (!lastName) document.getElementById('input-last-name').style.borderColor = '#ff4444';
+        if (!email || !email.includes('@')) document.getElementById('input-email').style.borderColor = '#ff4444';
         return;
     }
 
+    const name = `${firstName} ${lastName}`;
     const btn = document.getElementById('btn-email');
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Calculating...';
 
-    localStorage.setItem('reignite_name', name);
+    localStorage.setItem('reignite_name', firstName);
     localStorage.setItem('reignite_email', email);
 
     // Build responses payload
@@ -1036,7 +1048,7 @@ function submitEmail() {
     fetch('https://portal.reigniteadvisors.com/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, responses, score: totalScore }),
+        body: JSON.stringify({ name, first_name: firstName, last_name: lastName, email, company, responses, score: totalScore }),
     }).catch(() => {}); // don't block on error
 
     setTimeout(() => showResults(), 800);
