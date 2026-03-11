@@ -255,6 +255,24 @@
   margin-bottom: 10px;
   font-variant-numeric: tabular-nums;
 }
+.ladder-step-icon {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 48px;
+  height: 48px;
+  color: var(--gold);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+.ladder-step:hover .ladder-step-icon { opacity: 0.85; }
+.ladder-step:nth-child(4) .ladder-step-icon { color: var(--navy); opacity: 0.4; }
+.ladder-step:nth-child(4):hover .ladder-step-icon { opacity: 0.65; }
+.ladder-step-icon svg { width: 100%; height: 100%; }
+.ladder-step-icon i { font-size: 1.8rem; }
 .ladder-step-badge {
   display: inline-block;
   background: rgba(255,255,255,0.13);
@@ -1026,13 +1044,13 @@ section h2 { margin-bottom: 10px !important; }
 <div class="trust-logo"><img src="/logo-stradig.png?v=12" alt="Stradig"></div>
 <div class="trust-logo"><img src="/logo-whycoach.png?v=12" alt="WHY Coach"></div>
 <div class="trust-logo"><img src="/logo-salesforce.png?v=12" alt="Salesforce"></div>
-<div class="trust-logo"><img src="/logo-bmo.png?v=13" alt="BMO"></div>
+<div class="trust-logo"><img src="/logo-1.png?v=12" alt="Reignite"></div>
 <div class="trust-logo"><img src="/logo-tsx.png?v=12" alt="TSX"></div>
 <div class="trust-logo"><img src="/logo-kpmg.png?v=12" alt="KPMG"></div>
 <div class="trust-logo"><img src="/logo-stradig.png?v=12" alt="Stradig"></div>
 <div class="trust-logo"><img src="/logo-whycoach.png?v=12" alt="WHY Coach"></div>
 <div class="trust-logo"><img src="/logo-salesforce.png?v=12" alt="Salesforce"></div>
-<div class="trust-logo"><img src="/logo-bmo.png?v=13" alt="BMO"></div></div> </div> </div> </section> 
+<div class="trust-logo"><img src="/logo-1.png?v=12" alt="Reignite"></div></div> </div> </div> </section> 
 <section class="why-cards">
   <div class="container">
     <h2>You're here because…</h2>
@@ -1106,6 +1124,7 @@ section h2 { margin-bottom: 10px !important; }
       <div class="ladder-step">
         <div class="ladder-step-num">01</div>
         <div class="ladder-step-badge">Free</div>
+        <div class="ladder-step-icon"><i class="fas fa-clipboard-check"></i></div>
         <h3>Diagnose</h3>
         <div class="step-price">Momentum Score Assessment</div>
         <p>Take the free Momentum Score to get a clear snapshot of where your purpose, strategy, and systems stand — and where the gaps are.</p>
@@ -1115,6 +1134,7 @@ section h2 { margin-bottom: 10px !important; }
       </div>
       <div class="ladder-step">
         <div class="ladder-step-num">02</div>
+        <div class="ladder-step-icon"><i class="fas fa-bullseye"></i></div>
         <h3>Discover</h3>
         <div class="step-price">WHY Discovery Session</div>
         <p>A guided deep-dive to uncover your core purpose, identify your real value, and clarify the direction your business needs to move — built on your unique story.</p>
@@ -1124,6 +1144,7 @@ section h2 { margin-bottom: 10px !important; }
       </div>
       <div class="ladder-step">
         <div class="ladder-step-num">03</div>
+        <div class="ladder-step-icon"><i class="fas fa-cogs"></i></div>
         <h3>Align</h3>
         <div class="step-price">Purpose Strategy Intensive</div>
         <p>Translate insight into a concrete execution plan. Includes momentum score review, offer alignment, ideal client clarity, and a full growth roadmap.</p>
@@ -1133,6 +1154,7 @@ section h2 { margin-bottom: 10px !important; }
       </div>
       <div class="ladder-step">
         <div class="ladder-step-num">04</div>
+        <div class="ladder-step-icon"><i class="fas fa-rocket"></i></div>
         <h3>Scale</h3>
         <div class="step-price">Reignite Advisory</div>
         <p>Hands-on advisory partnership for leaders ready to build at scale. Strategy, positioning, offer architecture, and acquisition systems — built together, side by side.</p>
